@@ -5,9 +5,10 @@ publishdir: "public"
 indexes:
   category: "categories"
 baseurl: "http://adelehedrick.github.io/Fall-2016-CSCI-3055U"
-title: "CSCI-3055U"
+title: "Adele Hedrick - CSCI-3055U"
 canonifyurls: true
 params:
-  Subtitle: "TA blog for Fall 2016 Programming Languages"
+  Subtitle: "TA blog for Fall 2016 CSCI-3055U Programming Languages"
+  description: "TA blog for Fall 2016 CSCI-3055U Programming Languages"
   AuthorName: "Adele Hedrick"
   GitHubUser: "adelehedrick"
