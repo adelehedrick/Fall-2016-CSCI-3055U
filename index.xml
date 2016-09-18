@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Adele the TA</title>
+    <title>Programming Languages</title>
     <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/</link>
-    <description>Recent content on Adele the TA</description>
+    <description>Recent content on Programming Languages</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 19 Sep 2016 00:00:00 +0000</lastBuildDate>
@@ -47,48 +47,38 @@
     </item>
     
     <item>
-      <title>Your First Clojure REPL</title>
-      <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/clojure/first-clojure-repl/</link>
-      <pubDate>Mon, 19 Sep 2016 00:00:00 +0000</pubDate>
+      <title>Learn Clojure</title>
+      <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/clojure/</link>
+      <pubDate>Sun, 18 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/clojure/first-clojure-repl/</guid>
+      <guid>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/clojure/</guid>
       <description>
 
-&lt;h2 id=&#34;before-we-begin&#34;&gt;Before We Begin&lt;/h2&gt;
+&lt;h2 id=&#34;tutorials&#34;&gt;Tutorials&lt;/h2&gt;
 
-&lt;p&gt;Have you installed Leiningen? It is a requirement of running the lein repl! If you have no idea what I am saying you can head on over to the Setting Up Clojure page&lt;/p&gt;
+&lt;p&gt;Let me help you through the wonderful world of the Lisp like language &lt;em&gt;Clojure&lt;/em&gt; by providing you&amp;ndash;in order&amp;ndash;the blog posts dedicated to the topic.&lt;/p&gt;
 
-&lt;h2 id=&#34;your-first-repl&#34;&gt;Your First REPL&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/18/setting-up-clojure/&#34;&gt;Setting Up Clojure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/19/first-clojure-repl/&#34;&gt;Your First Clojure REPL&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;I like to think of the read-eval-print loop (REPL) as the &lt;em&gt;interactive programming&lt;/em&gt; mode of a language. The first time you create a REPL through lein, it will download any extra files it needs.&lt;/p&gt;
+&lt;h2 id=&#34;resources&#34;&gt;Resources&lt;/h2&gt;
 
-&lt;p&gt;Open up one now in your terminal window with:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;lein repl
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You will now see that you have a new prompt that looks like:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;user=&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You are now ready to get your Clojure on! When starting a new language, it is good luck to do the typical &amp;ldquo;Hello World&amp;rdquo;. To do this, we will use the &lt;code&gt;println&lt;/code&gt; function.&lt;/p&gt;
-
-&lt;p&gt;Type the following Clojure command to bring yourself lots of good luck with Clojure:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-clojure&#34;&gt;(println &amp;quot;Hello World&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To leave the REPL, you just need to use &lt;code&gt;CTRL + D&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://clojure.org&#34;&gt;Official Clojure website&lt;/a&gt; is always good to have handy.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.braveclojure.com/clojure-for-the-brave-and-true/&#34;&gt;Clojure for the Brave and True&lt;/a&gt; is an amusing book on Clojure. Can be confusing at times, but push on and it will explain everything.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://clojurekoans.com/&#34;&gt;Clojure Koans&lt;/a&gt; are fun little exercises&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
     <item>
       <title>Setting Up Clojure</title>
-      <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/clojure/setting-up-clojure/</link>
+      <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/18/setting-up-clojure/</link>
       <pubDate>Sun, 18 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/clojure/setting-up-clojure/</guid>
+      <guid>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/18/setting-up-clojure/</guid>
       <description>
 
 &lt;h2 id=&#34;before-we-begin&#34;&gt;Before We Begin&lt;/h2&gt;
@@ -147,6 +137,10 @@
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; Leiningen 2.7.0 on Java 1.7.0_80 Java HotSpot(TM) 64-Bit Server VM
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;next-steps&#34;&gt;Next Steps&lt;/h2&gt;
+
+&lt;p&gt;Now that you have Leiningen installed and the Clojure compiler downloaded, why don&amp;rsquo;t you start &lt;a href=&#34;https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/19/first-clojure-repl/&#34;&gt;your first Clojure REPL&lt;/a&gt;?&lt;/p&gt;
 </description>
     </item>
     
@@ -185,6 +179,22 @@
 &lt;p&gt;Have questions or suggestions? Feel free to &lt;a href=&#34;https://github.com/spf13/hugo/issues/new&#34;&gt;open an issue on GitHub&lt;/a&gt; or &lt;a href=&#34;https://twitter.com/spf13&#34;&gt;ask me on Twitter&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Thanks for reading!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/contact/</guid>
+      <description>
+
+&lt;h1 id=&#34;i-am-here-to-help-you&#34;&gt;I am here to help you&lt;/h1&gt;
+
+&lt;p&gt;For in-person help, come to my office hour currently scheduled for Tuesdays at 10am in the TA office (specific office TBA).&lt;/p&gt;
+
+&lt;p&gt;Other than that feel free to email me, post to the Google Community for this course, or message me through Google Hangouts. When using the Google Community or Hangouts make sure you are logged in with your UOIT.net account!&lt;/p&gt;
 </description>
     </item>
     

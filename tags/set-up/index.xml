@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Set Up on Adele the TA</title>
+    <title>Set Up on Programming Languages</title>
     <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/set-up/</link>
-    <description>Recent content in Set Up on Adele the TA</description>
+    <description>Recent content in Set Up on Programming Languages</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 19 Sep 2016 00:00:00 +0000</lastBuildDate>
@@ -47,48 +47,11 @@
     </item>
     
     <item>
-      <title>Your First Clojure REPL</title>
-      <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/clojure/first-clojure-repl/</link>
-      <pubDate>Mon, 19 Sep 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/clojure/first-clojure-repl/</guid>
-      <description>
-
-&lt;h2 id=&#34;before-we-begin&#34;&gt;Before We Begin&lt;/h2&gt;
-
-&lt;p&gt;Have you installed Leiningen? It is a requirement of running the lein repl! If you have no idea what I am saying you can head on over to the Setting Up Clojure page&lt;/p&gt;
-
-&lt;h2 id=&#34;your-first-repl&#34;&gt;Your First REPL&lt;/h2&gt;
-
-&lt;p&gt;I like to think of the read-eval-print loop (REPL) as the &lt;em&gt;interactive programming&lt;/em&gt; mode of a language. The first time you create a REPL through lein, it will download any extra files it needs.&lt;/p&gt;
-
-&lt;p&gt;Open up one now in your terminal window with:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;lein repl
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You will now see that you have a new prompt that looks like:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;user=&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You are now ready to get your Clojure on! When starting a new language, it is good luck to do the typical &amp;ldquo;Hello World&amp;rdquo;. To do this, we will use the &lt;code&gt;println&lt;/code&gt; function.&lt;/p&gt;
-
-&lt;p&gt;Type the following Clojure command to bring yourself lots of good luck with Clojure:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-clojure&#34;&gt;(println &amp;quot;Hello World&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To leave the REPL, you just need to use &lt;code&gt;CTRL + D&lt;/code&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Setting Up Clojure</title>
-      <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/clojure/setting-up-clojure/</link>
+      <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/18/setting-up-clojure/</link>
       <pubDate>Sun, 18 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/clojure/setting-up-clojure/</guid>
+      <guid>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/18/setting-up-clojure/</guid>
       <description>
 
 &lt;h2 id=&#34;before-we-begin&#34;&gt;Before We Begin&lt;/h2&gt;
@@ -147,6 +110,10 @@
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; Leiningen 2.7.0 on Java 1.7.0_80 Java HotSpot(TM) 64-Bit Server VM
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;next-steps&#34;&gt;Next Steps&lt;/h2&gt;
+
+&lt;p&gt;Now that you have Leiningen installed and the Clojure compiler downloaded, why don&amp;rsquo;t you start &lt;a href=&#34;https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/19/first-clojure-repl/&#34;&gt;your first Clojure REPL&lt;/a&gt;?&lt;/p&gt;
 </description>
     </item>
     
