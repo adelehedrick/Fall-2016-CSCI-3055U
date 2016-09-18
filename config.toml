@@ -1,4 +1,4 @@
-baseurl = "https://adelehedrick.github.io/Fall-2016-CSCI-3055U"
+baseurl = "https://adelehedrick.github.io/Fall-2016-CSCI-3055U/"
 title = "Adele the TA"
 theme = "hugo-universal-theme"
 languageCode = "en-us"
