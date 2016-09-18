@@ -12,6 +12,7 @@ categories = [
     "Clojure",
 ]
 menu = "main"
+banner = "img/banners/setting-up-clojure.jpg"
 +++
 
 ## Before We Begin
@@ -72,3 +73,7 @@ You should receive an output similar to mine below (depending on your Java versi
 ```bash
 > Leiningen 2.7.0 on Java 1.7.0_80 Java HotSpot(TM) 64-Bit Server VM
 ```
+
+## Next Steps
+
+Now that you have Leiningen installed and the Clojure compiler downloaded, why don't you start [your first Clojure REPL]({{< ref "blog/first-clojure-repl.md" >}})?

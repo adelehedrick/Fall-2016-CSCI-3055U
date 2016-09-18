@@ -12,18 +12,22 @@
   </url>
   
   <url>
-    <loc>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/clojure/first-clojure-repl/</loc>
-    <lastmod>2016-09-19T00:00:00+00:00</lastmod>
+    <loc>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/clojure/</loc>
+    <lastmod>2016-09-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/clojure/setting-up-clojure/</loc>
+    <loc>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/18/setting-up-clojure/</loc>
     <lastmod>2016-09-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/about/</loc>
     <lastmod>2014-04-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/contact/</loc>
   </url>
   
 </urlset>
