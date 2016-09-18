@@ -4,83 +4,71 @@ description = ""
 tags = [
     "clojure",
     "set-up",
+	"java",
+	"leiningen"
 ]
-date = "2016-09-17"
+date = "2016-09-18"
 categories = [
     "Clojure",
 ]
 menu = "main"
 +++
 
-## Step 1. Install Hugo
+## Before We Begin
 
-Goto [hugo releases](https://github.com/spf13/hugo/releases) and download the
-appropriate version for your os and architecture.
+This guide will be for setting up your environment in a Linux OS, I'm currently using Ubuntu. You will need Java version 1.6 or later, which is recommended by everything that I have read so far.
 
-Save it somewhere specific as we will be using it in the next step.
+To check your Java version just open up a terminal and type:
+```bash
+java -version
+```
 
-More complete instructions are available at [installing hugo](/overview/installing/)
+Now you are probably thinking "why do we need Java? I thought we are programming in Clojure?" To answer your unasked question, the Clojure code you write will be compiled by the Clojure *compiler* to create Java Virtual Machine (JVM) bytecode. The Clojure compiler--that we will get to later on--is actually an executable JAR file, hence the need for Java.
 
-## Step 2. Build the Docs
+## Install Leiningen
 
-Hugo has its own example site which happens to also be the documentation site
-you are reading right now.
+To quote their [website](http://leiningen.org/); Leiningen is "for automating Clojure projects without setting your hair on fire." Leiningen will be helping us get Clojure running as well as manage any dependencies we use. Instructions are on their [website](http://leiningen.org/) for installing Leiningen, but they are not detailed enough for my liking, so I have made very thorough instructions. 
 
-Follow the following steps:
+### Step 1. Open a terminal and download the lein script
 
- 1. Clone the [hugo repository](http://github.com/spf13/hugo)
- 2. Go into the repo
- 3. Run hugo in server mode and build the docs
- 4. Open your browser to http://localhost:1313
+Download the script right from the source listed on the Leiningen [website](http://leiningen.org/) 
+```bash
+wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+```
 
-Corresponding pseudo commands:
+### Step 2. Change ownership
 
-    git clone https://github.com/spf13/hugo
-    cd hugo
-    /path/to/where/you/installed/hugo server --source=./docs
-    > 29 pages created
-    > 0 tags index created
-    > in 27 ms
-    > Web Server is available at http://localhost:1313
-    > Press ctrl+c to stop
+Use chmod to change the *ownership* of the lein bash file you just downloaded to allow for anyone to execute the file.
 
-Once you've gotten here, follow along the rest of this page on your local build.
+```bash
+chmod a+x lein
+```
 
-## Step 3. Change the docs site
+### Step 3. Move lein
 
-Stop the Hugo process by hitting ctrl+c.
+Now move lein--with super user privileges--to your system's executable path.
 
-Now we are going to run hugo again, but this time with hugo in watch mode.
+```bash
+sudo mv lein /usr/bin
+```
+If you are prompted to enter your password, do so and carry on.
 
-    /path/to/hugo/from/step/1/hugo server --source=./docs --watch
-    > 29 pages created
-    > 0 tags index created
-    > in 27 ms
-    > Web Server is available at http://localhost:1313
-    > Watching for changes in /Users/spf13/Code/hugo/docs/content
-    > Press ctrl+c to stop
+### Step 4. Run it
 
+Now you will simply run *lein* and it will download the self-install package. If you try to run lein without super user privileges, it might yell at you about firewall junk. Be sure to press `ENTER` when it asks you to confirm this action.
 
-Open your [favorite editor](http://vim.spf13.com) and change one of the source
-content pages. How about changing this very file to *fix the typo*. How about changing this very file to *fix the typo*.
+```bash
+sudo lein
+```
+### Step 5. Confirm all is well
 
-Content files are found in `docs/content/`. Unless otherwise specified, files
-are located at the same relative location as the url, in our case
-`docs/content/overview/quickstart.md`.
+Just to make sure everything is good, let's check the version of lein.
 
-Change and save this file.. Notice what happened in your terminal.
+```bash
+lein -v
+```
+You should receive an output similar to mine below (depending on your Java version).
 
-    > Change detected, rebuilding site
-
-    > 29 pages created
-    > 0 tags index created
-    > in 26 ms
-
-Refresh the browser and observe that the typo is now fixed.
-
-Notice how quick that was. Try to refresh the site before it's finished building.. I double dare you.
-Having nearly instant feedback enables you to have your creativity flow without waiting for long builds.
-
-## Step 4. Have fun
-
-The best way to learn something is to play with it.
+```bash
+> Leiningen 2.7.0 on Java 1.7.0_80 Java HotSpot(TM) 64-Bit Server VM
+```
