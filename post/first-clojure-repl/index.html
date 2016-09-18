@@ -1,15 +1,13 @@
-
 <!DOCTYPE html>
 
 
 <html lang="en">
 	<head>
-	<meta name="generator" content="Hugo 0.16" />
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="alternate" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/index.xml" type="application/rss+xml" title="Adele Hedrick - CSCI-3055U">
 		<link rel="icon" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/favicon.ico">
-		<title>Adele Hedrick - CSCI-3055U</title>
+		<title>Your First Clojure REPL - Adele Hedrick - CSCI-3055U</title>
 		
 		<link rel="stylesheet" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/css/highlight/default.css">
 		<link rel="stylesheet" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/css/bootstrap.min.css">
@@ -34,7 +32,7 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/">Home</a></li>
+					<li ><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/">Home</a></li>
 			
 				
 					<li class="dropdown">
@@ -55,50 +53,102 @@
 <div class="container">
 
 
-<main role="main">
-
 <div class="row">
+	<div class="col-sm-8 doc-main">
+		<main role="main">
+			<article>
+				<a id="title"></a>
+				<h1 class="doc-entry-title">Your First Clojure REPL</h1>
+				<div class="doc-entry-meta">
+					<span><time datetime="2016-09-19">September 19, 2016</time></span>
+				</div>
+				<section>
+					
+
+<h2 id="before-we-begin">Before We Begin</h2>
+
+<p>Have you installed Leiningen? It is a requirement of running the lein repl! If you have no idea what I am saying you can head on over to the Setting Up Clojure page</p>
+
+<h2 id="your-first-repl">Your First REPL</h2>
+
+<p>I like to think of the read-eval-print loop (REPL) as the <em>interactive programming</em> mode of a language. The first time you create a REPL through lein, it will download any extra files it needs.</p>
+
+<p>Open up one now in your terminal window with:</p>
+
+<pre><code class="language-bash">lein repl
+</code></pre>
+
+<p>You will now see that you have a new prompt that looks like:</p>
+
+<pre><code class="language-bash">user=&gt;
+</code></pre>
+
+<p>You are now ready to get your Clojure on! When starting a new language, it is good luck to do the typical &ldquo;Hello World&rdquo;. To do this, we will use the <code>println</code> function.</p>
+
+<p>Type the following Clojure command to bring yourself lots of good luck with Clojure:</p>
+
+<pre><code class="language-clojure">(println &quot;Hello World&quot;)
+</code></pre>
+
+<p>To leave the REPL, you just need to use <code>CTRL + D</code></p>
+
+				</section>
+			</article>
+		</main>
+	</div> 
+
 	
-	<div class="jumbotron">
-		<h1>Adele Hedrick - CSCI-3055U</h1>
-		<p>TA blog for Fall 2016 CSCI-3055U Programming Languages</p>
+
+<div class="col-sm-3 col-sm-offset-1 doc-sidebar">
+	<div id="sidebar">
+	<div class="sidebar-module">
+		<div class="sidebar-toc">
+			<h4 class="sidebar-heading">Table of Contents</h4>
+			<ul>
+				<li><strong><a href="#title">Your First Clojure REPL</a></strong></li>
+			</ul>
+			<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-we-begin">Before We Begin</a></li>
+<li><a href="#your-first-repl">Your First REPL</a></li>
+</ul></li>
+</ul>
+</nav>
+		</div>
 	</div>
-</div>
-
-
-
-<div class="row doc-category">
-	<h2>Pages in Categories</h2>
-	<div>
-		<ul class="doc-list-category">
+	<div class="sidebar-module">
+		<h4 class="sidebar-heading">Pages in Categories</h4>
+		<ul class="sidebar-category-list">
 		
 			<li>
 				<a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/categories/clojure">
 					<span class="doc-list-category">Clojure</span>
 				</a>
 				<ul>
-					<li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/post/first-clojure-repl/">
-						<span>Your First Clojure REPL</span>
-						<span class="doc-entry-meta">(<time datetime="2016-09-19">September 19, 2016</time>)
-					</span>
-				</a></li>
+					<li>
+						<span class="active">Your First Clojure REPL</span>
+						</li>
 				
-					<li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/post/setting-up-clojure/">
-						<span>Setting Up Clojure</span>
-						<span class="doc-entry-meta">(<time datetime="2016-09-18">September 18, 2016</time>)
-					</span>
-				</a></li>
+					<li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/post/setting-up-clojure/">Setting Up Clojure</a>
+					</li>
 				
 				</ul>
 			</li>
 		
 		</ul>
 	</div>
+	<div class="sidebar-module">
+		<h4 class="sidebar-heading">Tags</h4>
+		<div class="tag-box">
+		
+		</div>
+	</div>
+	</div>
 </div>
 
-
-
-</main>
+</div> 
 
 
 <hr />

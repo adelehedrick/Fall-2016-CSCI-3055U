@@ -60,87 +60,67 @@
 				<a id="title"></a>
 				<h1 class="doc-entry-title">Setting Up Clojure</h1>
 				<div class="doc-entry-meta">
-					<span><time datetime="2016-09-17">September 17, 2016</time></span>
+					<span><time datetime="2016-09-18">September 18, 2016</time></span>
 				</div>
 				<section>
 					
 
-<h2 id="step-1-install-hugo">Step 1. Install Hugo</h2>
+<h2 id="before-we-begin">Before We Begin</h2>
 
-<p>Goto <a href="https://github.com/spf13/hugo/releases">hugo releases</a> and download the
-appropriate version for your os and architecture.</p>
+<p>This guide will be for setting up your environment in a Linux OS, I&rsquo;m currently using Ubuntu. You will need Java version 1.6 or later, which is recommended by everything that I have read so far.</p>
 
-<p>Save it somewhere specific as we will be using it in the next step.</p>
+<p>To check your Java version just open up a terminal and type:</p>
 
-<p>More complete instructions are available at <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/overview/installing/">installing hugo</a></p>
-
-<h2 id="step-2-build-the-docs">Step 2. Build the Docs</h2>
-
-<p>Hugo has its own example site which happens to also be the documentation site
-you are reading right now.</p>
-
-<p>Follow the following steps:</p>
-
-<ol>
-<li>Clone the <a href="http://github.com/spf13/hugo">hugo repository</a></li>
-<li>Go into the repo</li>
-<li>Run hugo in server mode and build the docs</li>
-<li>Open your browser to <a href="http://localhost:1313">http://localhost:1313</a></li>
-</ol>
-
-<p>Corresponding pseudo commands:</p>
-
-<pre><code>git clone https://github.com/spf13/hugo
-cd hugo
-/path/to/where/you/installed/hugo server --source=./docs
-&gt; 29 pages created
-&gt; 0 tags index created
-&gt; in 27 ms
-&gt; Web Server is available at http://localhost:1313
-&gt; Press ctrl+c to stop
+<pre><code class="language-bash">java -version
 </code></pre>
 
-<p>Once you&rsquo;ve gotten here, follow along the rest of this page on your local build.</p>
+<p>Now you are probably thinking &ldquo;why do we need Java? I thought we are programming in Clojure?&rdquo; To answer your unasked question, the Clojure code you write will be compiled by the Clojure <em>compiler</em> to create Java Virtual Machine (JVM) bytecode. The Clojure compiler&ndash;that we will get to later on&ndash;is actually an executable JAR file, hence the need for Java.</p>
 
-<h2 id="step-3-change-the-docs-site">Step 3. Change the docs site</h2>
+<h2 id="install-leiningen">Install Leiningen</h2>
 
-<p>Stop the Hugo process by hitting ctrl+c.</p>
+<p>To quote their <a href="http://leiningen.org/">website</a>; Leiningen is &ldquo;for automating Clojure projects without setting your hair on fire.&rdquo; Leiningen will be helping us get Clojure running as well as manage any dependencies we use. Instructions are on their <a href="http://leiningen.org/">website</a> for installing Leiningen, but they are not detailed enough for my liking, so I have made very thorough instructions.</p>
 
-<p>Now we are going to run hugo again, but this time with hugo in watch mode.</p>
+<h3 id="step-1-open-a-terminal-and-download-the-lein-script">Step 1. Open a terminal and download the lein script</h3>
 
-<pre><code>/path/to/hugo/from/step/1/hugo server --source=./docs --watch
-&gt; 29 pages created
-&gt; 0 tags index created
-&gt; in 27 ms
-&gt; Web Server is available at http://localhost:1313
-&gt; Watching for changes in /Users/spf13/Code/hugo/docs/content
-&gt; Press ctrl+c to stop
+<p>Download the script right from the source listed on the Leiningen <a href="http://leiningen.org/">website</a></p>
+
+<pre><code class="language-bash">wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
 </code></pre>
 
-<p>Open your <a href="http://vim.spf13.com">favorite editor</a> and change one of the source
-content pages. How about changing this very file to <em>fix the typo</em>. How about changing this very file to <em>fix the typo</em>.</p>
+<h3 id="step-2-change-ownership">Step 2. Change ownership</h3>
 
-<p>Content files are found in <code>docs/content/</code>. Unless otherwise specified, files
-are located at the same relative location as the url, in our case
-<code>docs/content/overview/quickstart.md</code>.</p>
+<p>Use chmod to change the <em>ownership</em> of the lein bash file you just downloaded to allow for anyone to execute the file.</p>
 
-<p>Change and save this file.. Notice what happened in your terminal.</p>
-
-<pre><code>&gt; Change detected, rebuilding site
-
-&gt; 29 pages created
-&gt; 0 tags index created
-&gt; in 26 ms
+<pre><code class="language-bash">chmod a+x lein
 </code></pre>
 
-<p>Refresh the browser and observe that the typo is now fixed.</p>
+<h3 id="step-3-move-lein">Step 3. Move lein</h3>
 
-<p>Notice how quick that was. Try to refresh the site before it&rsquo;s finished building.. I double dare you.
-Having nearly instant feedback enables you to have your creativity flow without waiting for long builds.</p>
+<p>Now move lein&ndash;with super user privileges&ndash;to your system&rsquo;s executable path.</p>
 
-<h2 id="step-4-have-fun">Step 4. Have fun</h2>
+<pre><code class="language-bash">sudo mv lein /usr/bin
+</code></pre>
 
-<p>The best way to learn something is to play with it.</p>
+<p>If you are prompted to enter your password, do so and carry on.</p>
+
+<h3 id="step-4-run-it">Step 4. Run it</h3>
+
+<p>Now you will simply run <em>lein</em> and it will download the self-install package. If you try to run lein without super user privileges, it might yell at you about firewall junk. Be sure to press <code>ENTER</code> when it asks you to confirm this action.</p>
+
+<pre><code class="language-bash">sudo lein
+</code></pre>
+
+<h3 id="step-5-confirm-all-is-well">Step 5. Confirm all is well</h3>
+
+<p>Just to make sure everything is good, let&rsquo;s check the version of lein.</p>
+
+<pre><code class="language-bash">lein -v
+</code></pre>
+
+<p>You should receive an output similar to mine below (depending on your Java version).</p>
+
+<pre><code class="language-bash">&gt; Leiningen 2.7.0 on Java 1.7.0_80 Java HotSpot(TM) 64-Bit Server VM
+</code></pre>
 
 				</section>
 			</article>
@@ -161,10 +141,15 @@ Having nearly instant feedback enables you to have your creativity flow without 
 <ul>
 <li>
 <ul>
-<li><a href="#step-1-install-hugo">Step 1. Install Hugo</a></li>
-<li><a href="#step-2-build-the-docs">Step 2. Build the Docs</a></li>
-<li><a href="#step-3-change-the-docs-site">Step 3. Change the docs site</a></li>
-<li><a href="#step-4-have-fun">Step 4. Have fun</a></li>
+<li><a href="#before-we-begin">Before We Begin</a></li>
+<li><a href="#install-leiningen">Install Leiningen</a>
+<ul>
+<li><a href="#step-1-open-a-terminal-and-download-the-lein-script">Step 1. Open a terminal and download the lein script</a></li>
+<li><a href="#step-2-change-ownership">Step 2. Change ownership</a></li>
+<li><a href="#step-3-move-lein">Step 3. Move lein</a></li>
+<li><a href="#step-4-run-it">Step 4. Run it</a></li>
+<li><a href="#step-5-confirm-all-is-well">Step 5. Confirm all is well</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -179,6 +164,9 @@ Having nearly instant feedback enables you to have your creativity flow without 
 					<span class="doc-list-category">Clojure</span>
 				</a>
 				<ul>
+					<li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/post/first-clojure-repl/">Your First Clojure REPL</a>
+					</li>
+				
 					<li>
 						<span class="active">Setting Up Clojure</span>
 						</li>
