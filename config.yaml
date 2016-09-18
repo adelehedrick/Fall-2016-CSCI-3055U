@@ -4,7 +4,7 @@ layoutdir: "layouts"
 publishdir: "public"
 indexes:
   category: "categories"
-baseurl: "http://adelehedrick.github.io/Fall-2016-CSCI-3055U"
+baseurl: "https://adelehedrick.github.io/Fall-2016-CSCI-3055U"
 title: "Adele Hedrick - CSCI-3055U"
 canonifyurls: true
 params:

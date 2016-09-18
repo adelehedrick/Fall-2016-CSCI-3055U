@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Adele Hedrick - CSCI-3055U</title>
-    <link>http://adelehedrick.github.io/Fall-2016-CSCI-3055U/post/</link>
+    <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/post/</link>
     <description>Recent content in Posts on Adele Hedrick - CSCI-3055U</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 17 Sep 2016 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://adelehedrick.github.io/Fall-2016-CSCI-3055U/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Setting Up Clojure</title>
-      <link>http://adelehedrick.github.io/Fall-2016-CSCI-3055U/post/setting-up-clojure/</link>
+      <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/post/setting-up-clojure/</link>
       <pubDate>Sat, 17 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://adelehedrick.github.io/Fall-2016-CSCI-3055U/post/setting-up-clojure/</guid>
+      <guid>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/post/setting-up-clojure/</guid>
       <description>
 
 &lt;h2 id=&#34;step-1-install-hugo&#34;&gt;Step 1. Install Hugo&lt;/h2&gt;
@@ -23,7 +23,7 @@ appropriate version for your os and architecture.&lt;/p&gt;
 
 &lt;p&gt;Save it somewhere specific as we will be using it in the next step.&lt;/p&gt;
 
-&lt;p&gt;More complete instructions are available at &lt;a href=&#34;http://adelehedrick.github.io/Fall-2016-CSCI-3055U/overview/installing/&#34;&gt;installing hugo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;More complete instructions are available at &lt;a href=&#34;https://adelehedrick.github.io/Fall-2016-CSCI-3055U/overview/installing/&#34;&gt;installing hugo&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;step-2-build-the-docs&#34;&gt;Step 2. Build the Docs&lt;/h2&gt;
 
