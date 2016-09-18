@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="alternate" href="/index.xml" type="application/rss+xml" title="Adele the TA">
+		<link rel="icon" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/favicon.ico">
+		<title>Setting Up Clojure - Adele the TA</title>
+		
+		<link rel="stylesheet" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/css/highlight/default.css">
+		<link rel="stylesheet" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/css/theme.css">
+		<link rel="stylesheet" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/css/bootie-docs.css">
+	</head>
+
+<body role="document">
+
+	
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/">Adele the TA</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li ><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/">Home</a></li>
+			
+				
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories<span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+						
+							<li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/categories/clojure">Clojure</a></li>
+						
+						</ul>
+					</li>
+				
+				</ul>
+				
+			</div>
+		</div>
+	</nav>
+
+<div class="container">
+
+
+<div class="row">
+	<div class="col-sm-8 doc-main">
+		<main role="main">
+			<article>
+				<a id="title"></a>
+				<h1 class="doc-entry-title">Setting Up Clojure</h1>
+				<div class="doc-entry-meta">
+					<span><time datetime="2016-09-18">September 18, 2016</time></span>
+				</div>
+				<section>
+					
+
+<h2 id="before-we-begin">Before We Begin</h2>
+
+<p>This guide will be for setting up your environment in a Linux OS, I&rsquo;m currently using Ubuntu. You will need Java version 1.6 or later, which is recommended by everything that I have read so far.</p>
+
+<p>To check your Java version just open up a terminal and type:</p>
+
+<pre><code class="language-bash">java -version
+</code></pre>
+
+<p>Now you are probably thinking &ldquo;why do we need Java? I thought we are programming in Clojure?&rdquo; To answer your unasked question, the Clojure code you write will be compiled by the Clojure <em>compiler</em> to create Java Virtual Machine (JVM) bytecode. The Clojure compiler&ndash;that we will get to later on&ndash;is actually an executable JAR file, hence the need for Java.</p>
+
+<h2 id="install-leiningen">Install Leiningen</h2>
+
+<p>To quote their <a href="http://leiningen.org/">website</a>; Leiningen is &ldquo;for automating Clojure projects without setting your hair on fire.&rdquo; Leiningen will be helping us get Clojure running as well as manage any dependencies we use. Instructions are on their <a href="http://leiningen.org/">website</a> for installing Leiningen, but they are not detailed enough for my liking, so I have made very thorough instructions.</p>
+
+<h3 id="step-1-open-a-terminal-and-download-the-lein-script">Step 1. Open a terminal and download the lein script</h3>
+
+<p>Download the script right from the source listed on the Leiningen <a href="http://leiningen.org/">website</a></p>
+
+<pre><code class="language-bash">wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+</code></pre>
+
+<h3 id="step-2-change-ownership">Step 2. Change ownership</h3>
+
+<p>Use chmod to change the <em>ownership</em> of the lein bash file you just downloaded to allow for anyone to execute the file.</p>
+
+<pre><code class="language-bash">chmod a+x lein
+</code></pre>
+
+<h3 id="step-3-move-lein">Step 3. Move lein</h3>
+
+<p>Now move lein&ndash;with super user privileges&ndash;to your system&rsquo;s executable path.</p>
+
+<pre><code class="language-bash">sudo mv lein /usr/bin
+</code></pre>
+
+<p>If you are prompted to enter your password, do so and carry on.</p>
+
+<h3 id="step-4-run-it">Step 4. Run it</h3>
+
+<p>Now you will simply run <em>lein</em> and it will download the self-install package. If you try to run lein without super user privileges, it might yell at you about firewall junk. Be sure to press <code>ENTER</code> when it asks you to confirm this action.</p>
+
+<pre><code class="language-bash">sudo lein
+</code></pre>
+
+<h3 id="step-5-confirm-all-is-well">Step 5. Confirm all is well</h3>
+
+<p>Just to make sure everything is good, let&rsquo;s check the version of lein.</p>
+
+<pre><code class="language-bash">lein -v
+</code></pre>
+
+<p>You should receive an output similar to mine below (depending on your Java version).</p>
+
+<pre><code class="language-bash">&gt; Leiningen 2.7.0 on Java 1.7.0_80 Java HotSpot(TM) 64-Bit Server VM
+</code></pre>
+
+				</section>
+			</article>
+		</main>
+	</div> 
+
+	
+
+<div class="col-sm-3 col-sm-offset-1 doc-sidebar">
+	<div id="sidebar">
+	<div class="sidebar-module">
+		<div class="sidebar-toc">
+			<h4 class="sidebar-heading">Table of Contents</h4>
+			<ul>
+				<li><strong><a href="#title">Setting Up Clojure</a></strong></li>
+			</ul>
+			<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#before-we-begin">Before We Begin</a></li>
+<li><a href="#install-leiningen">Install Leiningen</a>
+<ul>
+<li><a href="#step-1-open-a-terminal-and-download-the-lein-script">Step 1. Open a terminal and download the lein script</a></li>
+<li><a href="#step-2-change-ownership">Step 2. Change ownership</a></li>
+<li><a href="#step-3-move-lein">Step 3. Move lein</a></li>
+<li><a href="#step-4-run-it">Step 4. Run it</a></li>
+<li><a href="#step-5-confirm-all-is-well">Step 5. Confirm all is well</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+		</div>
+	</div>
+	<div class="sidebar-module">
+		<h4 class="sidebar-heading">Pages in Categories</h4>
+		<ul class="sidebar-category-list">
+		
+			<li>
+				<a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/categories/clojure">
+					<span class="doc-list-category">Clojure</span>
+				</a>
+				<ul>
+					<li><a href="/Fall-2016-CSCI-3055U/blog/2016/09/19/first-clojure-repl/">Your First Clojure REPL</a>
+					</li>
+				
+					<li><a href="/Fall-2016-CSCI-3055U/clojure/first-clojure-repl/">Your First Clojure REPL</a>
+					</li>
+				
+					<li>
+						<span class="active">Setting Up Clojure</span>
+						</li>
+				
+					<li><a href="/Fall-2016-CSCI-3055U/clojure/setting-up-clojure/">Setting Up Clojure</a>
+					</li>
+				
+				</ul>
+			</li>
+		
+		</ul>
+	</div>
+	<div class="sidebar-module">
+		<h4 class="sidebar-heading">Tags</h4>
+		<div class="tag-box">
+		
+			<a class="tag-item" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/clojure">clojure</a>
+		
+			<a class="tag-item" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/java">java</a>
+		
+			<a class="tag-item" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/leiningen">leiningen</a>
+		
+			<a class="tag-item" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/set-up">set-up</a>
+		
+		</div>
+	</div>
+	</div>
+</div>
+
+</div> 
+
+
+<hr />
+
+<div class="row">
+	<div class="col-sm-8">
+		<p class="doc-footer-em"><a href="#" onclick="resetSidebarPos()">Back to TOP</a></p>
+	</div>
+</div>
+
+</div> 
+
+<footer class="doc-footer">
+	
+	
+	<p>Powered by <strong><a href="https://github.com/key-amb/hugo-theme-bootie-docs">Bootie Docs</a></strong> - theme for <a href="http://gohugo.io/">Hugo</a> by <a href="https://github.com/key-amb/">key-amb</a>.</p>
+</footer>
+
+
+
+<script src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/js/jquery.min.js"></script>
+<script src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/js/bootstrap.min.js"></script>
+
+<script src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/js/bootie-docs.js"></script>
+
+</body>
+</html>
