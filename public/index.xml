@@ -19,7 +19,7 @@
 
 &lt;h2 id=&#34;before-we-begin&#34;&gt;Before We Begin&lt;/h2&gt;
 
-&lt;p&gt;Have you installed Leiningen? It is a requirement of running the lein repl! If you have no idea what I am saying you can head on over to the Setting Up Clojure page&lt;/p&gt;
+&lt;p&gt;Have you installed Leiningen? It is a requirement of running the lein repl! If you have no idea what I am saying you can head on over to the &lt;a href=&#34;https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/18/setting-up-clojure/&#34;&gt;Setting Up Clojure&lt;/a&gt; post&lt;/p&gt;
 
 &lt;h2 id=&#34;your-first-repl&#34;&gt;Your First REPL&lt;/h2&gt;
 

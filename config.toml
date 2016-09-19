@@ -3,7 +3,7 @@ title = "Programming Languages"
 theme = "hugo-universal-theme"
 relativeURLs = true
 languageCode = "en-us"
-disqusShortname = "adelehedrick"
+disqusShortname = "adele-hedrick-csci-3055u"
 googleAnalytics = ""
 
 # Define the number of posts per page

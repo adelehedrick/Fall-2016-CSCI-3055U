@@ -17,7 +17,7 @@ banner = "img/banners/first-clojure-repl.jpg"
 
 ## Before We Begin
 
-Have you installed Leiningen? It is a requirement of running the lein repl! If you have no idea what I am saying you can head on over to the Setting Up Clojure page
+Have you installed Leiningen? It is a requirement of running the lein repl! If you have no idea what I am saying you can head on over to the [Setting Up Clojure]({{< ref "blog/setting-up-clojure.md" >}}) post
 
 ## Your First REPL
 
