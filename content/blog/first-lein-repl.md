@@ -1,10 +1,11 @@
 +++
-title = "Your First Clojure REPL"
+title = "Your First Leiningen REPL"
 description = ""
 tags = [
     "clojure",
     "set-up",
-	"java"
+	"java",
+	"leiningen"
 ]
 date = "2016-09-19"
 categories = [
@@ -16,22 +17,17 @@ banner = "img/banners/first-clojure-repl.jpg"
 
 ## Before We Begin
 
-Do you have the Clojure JAR? If not check out the [Setting Up Clojure]({{< ref "blog/getting-started-clojure.md" >}}) post
+Have you installed Leiningen? It is a requirement of running the lein repl! If you have no idea what I am saying you can head on over to the [Setting Up Leiningen]({{< ref "blog/setting-up-lein.md" >}}) post
 
-## Your First Clojure REPL
+## Your First lein REPL
 
-I like to think of the read-eval-print loop (REPL) as the *interactive programming* mode of a language. 
+I like to think of the read-eval-print loop (REPL) as the *interactive programming* mode of a language. The first time you create a REPL through lein, it will download any extra files it needs. 
 
-### Step 1. Find your Clojure JAR
-
-First open a terminal window and navigate to where your Clojure JAR is located.
-
-### Step 2. Run the main method!
+Open up one now in your terminal window with:
  
 ```bash
-java -cp clojure-1.8.0.jar clojure.main
+lein repl
 ```
-
 You will now see that you have a new prompt that looks like:
 
 ```bash
