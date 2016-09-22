@@ -169,22 +169,30 @@
 
 <h3 id="step-1-download-clojure-zip">Step 1. Download Clojure Zip</h3>
 
-<p>Download the zip folder from the <a href="http://clojure.org/">Clojure website</a> by clicking on the big green &ldquo;Download Clojure 1.8.0&rdquo; button, or click on this <a href="http://repo1.maven.org/maven2/org/clojure/clojure/1.8.0/clojure-1.8.0.zip">link to the zip folder</a>.</p>
+<p>Let&rsquo;s start off by opening up a terminal, and navigating to a location you want the JAR. Once there use the <code>wget</code> command to download the zip folder:</p>
 
-<h3 id="step-2-find-the-jar">Step 2. Find the JAR</h3>
+<pre><code class="language-bash">wget http://repo1.maven.org/maven2/org/clojure/clojure/1.8.0/clojure-1.8.0.zip
+</code></pre>
 
-<p>Extract the zip folder and open the resulting folder. Inside you will find the &ldquo;clojure-1.8.0.jar&rdquo;</p>
+<h3 id="step-2-unzip">Step 2. Unzip</h3>
 
-<h3 id="step-3-find-a-home-for-the-jar">Step 3. Find a home for the JAR</h3>
+<p>Unzip the folder to current directory.</p>
 
-<p>Find a nice home for your JAR where you wont forget it! Perhaps create a folder called &ldquo;Clojure&rdquo; in your home directory and then put it there?</p>
+<pre><code class="language-bash">unzip clojure-1.8.0.zip
+</code></pre>
+
+<h3 id="step-3-move-the-jar-into-the-current-directory">Step 3. Move the JAR into the Current Directory</h3>
+
+<p>If you enter <code>ls</code> you will find your new &lsquo;clojure-1.8.0&rsquo; folder, and inside it is the &lsquo;clojure-1.8.0.jar&rsquo; that we want. Let&rsquo;s pull that JAR out of its directory and bring it into the current directory.</p>
+
+<pre><code class="language-bash">mv clojure-1.8.0/clojure-1.8.0.jar ./
+</code></pre>
 
 <h3 id="step-4-test-with-a-repl">Step 4. Test with a REPL</h3>
 
 <p>I go into more detail about the REPL in this <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/19/first-clojure-repl/">post</a>, but for now just do these short steps:</p>
 
 <ol>
-<li>Open terminal window and navigate to your Clojure JAR</li>
 <li>Enter <code>java -cp clojure-1.8.0.jar clojure.main</code></li>
 <li>You are now in the Clojure REPL. Try <code>(+ 1 3)</code> and see if you get 4</li>
 <li>Exit out of the REPL by typing <code>CTRL + D</code></li>
@@ -197,24 +205,67 @@
 <ol>
 <li>Still in the same terminal window create a new Clojure file with <code>gedit hello.clj</code></li>
 <li>In the file enter <code>(println &quot;Hello World!&quot;)</code> then save and close the file</li>
-<li>Back in your terminal window you are going to run the same command as you did to start the Clojure REPL, but now you are going to provide it with a command line argument of the filename of the script you just wrote: <code>java -cp clojure-1.8.0.jar clojure.main ./hello.clj</code></li>
+<li>Back in your terminal window you are going to run the same command as you did to start the Clojure REPL, but now you are going to provide it with a command line argument of the file name of the script you just wrote: <code>java -cp clojure-1.8.0.jar clojure.main hello.clj</code>. If you didn&rsquo;t get the expected output of <code>Hello World!</code> then something went wrong!</li>
 </ol>
 
-<h3 id="step-5-confirm-all-is-well">Step 5. Confirm all is well</h3>
+<h3 id="step-5-break-the-script">Step 5. Break the Script</h3>
 
-<p>Just to make sure everything is good, let&rsquo;s check the version of lein.</p>
+<p>Let&rsquo;s take a quick look at what happens when there is a bug in your Clojure code. Being able to read/write code is very important, but so is being able to read <em>errors</em>!</p>
 
-<pre><code class="language-bash">lein -v
+<ol>
+<li>Open up the hello.clj again with <code>gedit hello.clj</code></li>
+<li>Change <code>println</code> to something else (e.g. <code>printlny</code>)</li>
+<li>Now run the script again! <code>java -cp clojure-1.8.0.jar clojure.main hello.clj</code></li>
+</ol>
+
+<p>Errors!!</p>
+
+<pre><code class="language-bash">Exception in thread &quot;main&quot; java.lang.RuntimeException: Unable to resolve symbol: printlny in this context, compiling:(/home/delio/clojure_play/hello.clj:1:1)
+	at clojure.lang.Compiler.analyze(Compiler.java:6688)
+	at clojure.lang.Compiler.analyze(Compiler.java:6625)
+	at clojure.lang.Compiler$InvokeExpr.parse(Compiler.java:3766)
+	at clojure.lang.Compiler.analyzeSeq(Compiler.java:6870)
+	at clojure.lang.Compiler.analyze(Compiler.java:6669)
+	at clojure.lang.Compiler.analyze(Compiler.java:6625)
+	at clojure.lang.Compiler$BodyExpr$Parser.parse(Compiler.java:6001)
+	at clojure.lang.Compiler$FnMethod.parse(Compiler.java:5380)
+	at clojure.lang.Compiler$FnExpr.parse(Compiler.java:3972)
+	at clojure.lang.Compiler.analyzeSeq(Compiler.java:6866)
+	at clojure.lang.Compiler.analyze(Compiler.java:6669)
+	at clojure.lang.Compiler.eval(Compiler.java:6924)
+	at clojure.lang.Compiler.load(Compiler.java:7379)
+	at clojure.lang.Compiler.loadFile(Compiler.java:7317)
+	at clojure.main$load_script.invokeStatic(main.clj:275)
+	at clojure.main$script_opt.invokeStatic(main.clj:335)
+	at clojure.main$script_opt.invoke(main.clj:330)
+	at clojure.main$main.invokeStatic(main.clj:421)
+	at clojure.main$main.doInvoke(main.clj:384)
+	at clojure.lang.RestFn.invoke(RestFn.java:408)
+	at clojure.lang.Var.invoke(Var.java:379)
+	at clojure.lang.AFn.applyToHelper(AFn.java:154)
+	at clojure.lang.Var.applyTo(Var.java:700)
+	at clojure.main.main(main.java:37)
+Caused by: java.lang.RuntimeException: Unable to resolve symbol: printlny in this context
+	at clojure.lang.Util.runtimeException(Util.java:221)
+	at clojure.lang.Compiler.resolveIn(Compiler.java:7164)
+	at clojure.lang.Compiler.resolve(Compiler.java:7108)
+	at clojure.lang.Compiler.analyzeSymbol(Compiler.java:7069)
+	at clojure.lang.Compiler.analyze(Compiler.java:6648)
+	... 23 more
 </code></pre>
 
-<p>You should receive an output similar to mine below (depending on your Java version).</p>
+<p>This is an epic output! This stack trace shows you exactly where in the Clojure compiler JAR everything broke down, but most importantly it tells you where in your Clojure script it broke!</p>
 
-<pre><code class="language-bash">&gt; Leiningen 2.7.0 on Java 1.7.0_80 Java HotSpot(TM) 64-Bit Server VM
+<p>Look at the first line a little more closely:</p>
+
+<pre><code class="language-bash">Exception in thread &quot;main&quot; java.lang.RuntimeException: Unable to resolve symbol: printlny in this context, compiling:(/home/delio/clojure_play/hello.clj:1:1)
 </code></pre>
 
-<h2 id="next-steps">Next Steps</h2>
+<p>This tells me a lot! <code>Unable to resolve symbol: printly</code> tells me that the compiler encountered  something&ndash;in this case &lsquo;printly&rsquo;&ndash;that is completely unknown, and therefore it can&rsquo;t be translated to JVM bytecode! The error then tells me where it encountered the problem by showing the file name, line number and column; <code>(/home/delio/clojure_play/hello.clj:1:1)</code>. Just to be clear, the first &lsquo;1&rsquo; is the line number, and the second is the column number.</p>
 
-<p>Now that you have Leiningen installed and the Clojure compiler downloaded, why don&rsquo;t you start <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/19/first-clojure-repl/">your first Clojure REPL</a>?</p>
+<h2 id="moving-forward">Moving Forward</h2>
+
+<p>Ready for more? Why don&rsquo;t you head over to the <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/21/little-io-clojure/">post on input/output in Clojure</a>!</p>
 
                         </div>
                         
@@ -223,9 +274,9 @@
                             <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'adele-hedrick-csci-3055u';
-    var disqus_identifier = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/09\/18\/setting-up-clojure\/';
+    var disqus_identifier = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/09\/18\/getting-started-clojure\/';
     var disqus_title = 'Getting Started with Clojure';
-    var disqus_url = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/09\/18\/setting-up-clojure\/';
+    var disqus_url = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/09\/18\/getting-started-clojure\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Input on Programming Languages</title>
+    <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/input/</link>
+    <description>Recent content in Input on Programming Languages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 21 Sep 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/input/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>A Little I/O in Clojure</title>
+      <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/21/little-io-clojure/</link>
+      <pubDate>Wed, 21 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/21/little-io-clojure/</guid>
+      <description>
+
+&lt;h2 id=&#34;before-we-begin&#34;&gt;Before We Begin&lt;/h2&gt;
+
+&lt;p&gt;Make sure that you have the Clojure JAR handy and know how to use it! If you don&amp;rsquo;t remember, then check out this &lt;a href=&#34;https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/18/getting-started-clojure/&#34;&gt;post&lt;/a&gt; to get yourself started!&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m assuming you understand variable assignment and basic functions in Clojure by now, but anything I do here I will be sure to explain in detail to help reinforce your understanding.&lt;/p&gt;
+
+&lt;p&gt;Dr. Ken Pu has graciously provided some extremely relevant data for everyone to play with. So relevant that it might change your undergraduate lives at this very moment. He has provided&amp;ndash;&lt;em&gt;drum roll please&lt;/em&gt;&amp;ndash;&lt;strong&gt;the current listing of classes and rooms for this semester!&lt;/strong&gt; The relevance might elude you, but after your first assignment, you will see the value in this data!&lt;/p&gt;
+
+&lt;h3 id=&#34;step-1-find-a-happy-place&#34;&gt;Step 1. Find a Happy Place&lt;/h3&gt;
+
+&lt;p&gt;Find a happy place to put the files for this activity and make sure you know the path from the current directory to your Clojure JAR file. Better yet, why don&amp;rsquo;t you copy that JAR file into your current directory.&lt;/p&gt;
+
+&lt;h3 id=&#34;step-2-download-the-data&#34;&gt;Step 2. Download the Data&lt;/h3&gt;
+
+&lt;p&gt;Open up a terminal window for your current directory and download the file with a &lt;code&gt;wget&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;wget
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
