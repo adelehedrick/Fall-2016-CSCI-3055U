@@ -7,7 +7,7 @@
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Setting Up Leiningen</title>
+  <title>Doing the Splits in Clojure</title>
 
   <meta name="author" content="" />
   <meta name="keywords" content="">
@@ -45,7 +45,7 @@
   <link rel="alternate" href="https://adelehedrick.github.io/index.xml" type="application/rss+xml" title="Programming Languages">
 
   
-  <meta property="og:title" content="Setting Up Leiningen" />
+  <meta property="og:title" content="Doing the Splits in Clojure" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/" />
   <meta property="og:image" content="img/logo.png" />
@@ -66,9 +66,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/">
-                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo.png" alt="Setting Up Leiningen logo" class="hidden-xs hidden-sm">
-                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo-small.png" alt="Setting Up Leiningen logo" class="visible-xs visible-sm">
-                    <span class="sr-only">Setting Up Leiningen - go to homepage</span>
+                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo.png" alt="Doing the Splits in Clojure logo" class="hidden-xs hidden-sm">
+                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo-small.png" alt="Doing the Splits in Clojure logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Doing the Splits in Clojure - go to homepage</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -133,7 +133,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Setting Up Leiningen</h1>
+                <h1>Doing the Splits in Clojure</h1>
             </div>
         </div>
     </div>
@@ -149,69 +149,71 @@
 
                     <div class="col-md-9" id="blog-post">
 
-                        <p class="text-muted text-uppercase mb-small text-right">September 18, 2016</p>
+                        <p class="text-muted text-uppercase mb-small text-right">September 21, 2016</p>
 
                         <div id="post-content">
                           
 
 <h2 id="before-we-begin">Before We Begin</h2>
 
-<p>This guide will be for setting up your environment in a Linux OS, I&rsquo;m currently using Ubuntu. You will need Java version 1.6 or later, which is recommended by everything that I have read so far.</p>
+<p>This is going to be a quick tutorial about the <a href="https://clojuredocs.org/clojure.string/split">split</a> function in Clojure.</p>
 
-<p>To check your Java version just open up a terminal and type:</p>
+<p>You will need to have a REPL up and running. If you forgot how to do that visit <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/19/first-clojure-repl/">this post</a>. I will tell you exactly when to enter statements into the REPL, and those statements will be preceded by the <code>user=&gt;</code> prompt.</p>
 
-<pre><code class="language-bash">java -version
+<h3 id="load-the-split">Load the Split</h3>
+
+<pre><code class="language-bash">user=&gt; (use '[clojure.string :only (split)])
 </code></pre>
 
-<p>To quote their <a href="http://leiningen.org/">website</a>; Leiningen is &ldquo;for automating Clojure projects without setting your hair on fire.&rdquo; Leiningen will be helping us get Clojure running as well as manage any dependencies we use. Instructions are on their <a href="http://leiningen.org/">website</a> for installing Leiningen, but they are not detailed enough for my liking, so I have made very thorough instructions.</p>
+<p>Output:</p>
 
-<h2 id="install-leiningen">Install Leiningen</h2>
-
-<h3 id="step-1-open-a-terminal-and-download-the-lein-script">Step 1. Open a terminal and download the lein script</h3>
-
-<p>Download the script right from the source listed on the Leiningen <a href="http://leiningen.org/">website</a></p>
-
-<pre><code class="language-bash">wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+<pre><code class="language-bash">nil
 </code></pre>
 
-<h3 id="step-2-change-ownership">Step 2. Change ownership</h3>
+<p>Using this doesn&rsquo;t return a value, so we get a nil.</p>
 
-<p>Use chmod to change the <em>ownership</em> of the lein bash file you just downloaded to allow for anyone to execute the file.</p>
+<h3 id="let-s-be-friends">Let&rsquo;s Be Friends</h3>
 
-<pre><code class="language-bash">chmod a+x lein
+<p>I am going to start off by using a <a href="https://clojuredocs.org/clojure.core/let">let</a> special form to bind some values to symbols in a cozy local scope. Please note that <code>&lt;...&gt;</code> are placeholders.</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">&lt;symbols</span> <span style="color: #000000">values&gt;</span><span style="color: #000000; font-weight: bold">]</span>
+    <span style="color: #000000">&lt;body&gt;</span><span style="color: #000000; font-weight: bold">)</span>
+</pre></div>
+
+
+<p>The <a href="https://clojuredocs.org/clojure.string/split">split</a> function that I will be demoing, has two required arguments, and a third optional argument. Respectively they are; the string you are splitting, the regular expression you are using to split with, and the optional limit.</p>
+
+<p>So let&rsquo;s create the symbol <code>s</code> for the string &lsquo;I like pumpkin spice lattes and am proud of it&rsquo;, and the symbol <code>re</code> for the regular expression of a space.</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">s</span> <span style="color: #4e9a06">&quot;I like pumpkin spice lattes and am proud of it&quot;</span>
+      <span style="color: #000000">re</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;\s&quot;</span><span style="color: #000000; font-weight: bold">]</span>
+    <span style="color: #000000">&lt;body&gt;</span><span style="color: #000000; font-weight: bold">)</span>
+</pre></div>
+
+
+<h4 id="going-on-a-hashtag-tangent">Going on a Hashtag Tangent</h4>
+
+<p>Some of you may be wondering what is going on with the # in front of the string containing our regular expression for a space. To address your wondering, it is a reader macro that will make the pattern within the quotes be compiled at read-time. See more in the <a href="http://clojure.org/reference/other_functions">docs</a>.</p>
+
+<h3 id="split">Split!</h3>
+
+<p>Time to replace the body placeholder with the <a href="https://clojuredocs.org/clojure.string/split">split</a> function.</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">s</span> <span style="color: #4e9a06">&quot;I like pumpkin spice lattes and am proud of it&quot;</span>
+      <span style="color: #000000">re</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;\s&quot;</span><span style="color: #000000; font-weight: bold">]</span>
+    <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000">s</span> <span style="color: #000000">re</span><span style="color: #000000; font-weight: bold">))</span>
+</pre></div>
+
+
+<pre><code class="language-bash">user=&gt; (let [s &quot;I like pumpkin spice lattes and am proud of it&quot; re #&quot;\s&quot;](split s re))
 </code></pre>
 
-<h3 id="step-3-move-lein">Step 3. Move lein</h3>
+<p>Output:</p>
 
-<p>Now move lein&ndash;with super user privileges&ndash;to your system&rsquo;s executable path.</p>
-
-<pre><code class="language-bash">sudo mv lein /usr/bin
+<pre><code class="language-bash">[&quot;I&quot; &quot;like&quot; &quot;pumpkin&quot; &quot;spice&quot; &quot;lattes&quot; &quot;and&quot; &quot;am&quot; &quot;proud&quot; &quot;of&quot; &quot;it&quot;]
 </code></pre>
 
-<p>If you are prompted to enter your password, do so and carry on.</p>
-
-<h3 id="step-4-run-it">Step 4. Run it</h3>
-
-<p>Now you will simply run <em>lein</em> and it will download the self-install package. If you try to run lein without super user privileges, it might yell at you about firewall junk. Be sure to press <code>ENTER</code> when it asks you to confirm this action.</p>
-
-<pre><code class="language-bash">sudo lein
-</code></pre>
-
-<h3 id="step-5-confirm-all-is-well">Step 5. Confirm all is well</h3>
-
-<p>Just to make sure everything is good, let&rsquo;s check the version of lein.</p>
-
-<pre><code class="language-bash">lein -v
-</code></pre>
-
-<p>You should receive an output similar to mine below (depending on your Java version).</p>
-
-<pre><code class="language-bash">&gt; Leiningen 2.7.0 on Java 1.7.0_80 Java HotSpot(TM) 64-Bit Server VM
-</code></pre>
-
-<h2 id="next-steps">Next Steps</h2>
-
-<p>Now that you have Leiningen installed and the Clojure compiler downloaded, why don&rsquo;t you start <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/19/first-lein-repl/">your first Leiningen REPL</a>?</p>
+<p>You now have a vector of strings!</p>
 
                         </div>
                         
@@ -220,9 +222,9 @@
                             <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'adele-hedrick-csci-3055u';
-    var disqus_identifier = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/09\/18\/setting-up-lein\/';
-    var disqus_title = 'Setting Up Leiningen';
-    var disqus_url = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/09\/18\/setting-up-lein\/';
+    var disqus_identifier = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/09\/21\/split-clojure\/';
+    var disqus_title = 'Doing the Splits in Clojure';
+    var disqus_url = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/09\/21\/split-clojure\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

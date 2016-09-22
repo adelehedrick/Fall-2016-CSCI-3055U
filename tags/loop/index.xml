@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Input on Programming Languages</title>
-    <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/input/</link>
-    <description>Recent content in Input on Programming Languages</description>
+    <title>Loop on Programming Languages</title>
+    <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/loop/</link>
+    <description>Recent content in Loop on Programming Languages</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 21 Sep 2016 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/input/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/loop/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>A Little Input in Clojure</title>

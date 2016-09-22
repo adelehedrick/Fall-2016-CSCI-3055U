@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>String on Programming Languages</title>
+    <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/string/</link>
+    <description>Recent content in String on Programming Languages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 21 Sep 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/string/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Doing the Splits in Clojure</title>
+      <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/21/split-clojure/</link>
+      <pubDate>Wed, 21 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/21/split-clojure/</guid>
+      <description>
+
+&lt;h2 id=&#34;before-we-begin&#34;&gt;Before We Begin&lt;/h2&gt;
+
+&lt;p&gt;This is going to be a quick tutorial about the &lt;a href=&#34;https://clojuredocs.org/clojure.string/split&#34;&gt;split&lt;/a&gt; function in Clojure.&lt;/p&gt;
+
+&lt;p&gt;You will need to have a REPL up and running. If you forgot how to do that visit &lt;a href=&#34;https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/19/first-clojure-repl/&#34;&gt;this post&lt;/a&gt;. I will tell you exactly when to enter statements into the REPL, and those statements will be preceded by the &lt;code&gt;user=&amp;gt;&lt;/code&gt; prompt.&lt;/p&gt;
+
+&lt;h3 id=&#34;load-the-split&#34;&gt;Load the Split&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;user=&amp;gt; (use &#39;[clojure.string :only (split)])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Output:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;nil
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Using this doesn&amp;rsquo;t return a value, so we get a nil.&lt;/p&gt;
+
+&lt;h3 id=&#34;let-s-be-friends&#34;&gt;Let&amp;rsquo;s Be Friends&lt;/h3&gt;
+
+&lt;p&gt;I am going to start off by using a &lt;a href=&#34;https://clojuredocs.org/clojure.core/let&#34;&gt;let&lt;/a&gt; special form to bind some values to symbols in a cozy local scope. Please note that &lt;code&gt;&amp;lt;...&amp;gt;&lt;/code&gt; are placeholders.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87; font-weight: bold&#34;&gt;let &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;&amp;lt;symbols&lt;/span&gt; &lt;span style=&#34;color: #000000&#34;&gt;values&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;]&lt;/span&gt;
+    &lt;span style=&#34;color: #000000&#34;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;a href=&#34;https://clojuredocs.org/clojure.string/split&#34;&gt;split&lt;/a&gt; function that I will be demoing, has two required arguments, and a third optional argument. Respectively they are; the string you are splitting, the regular expression you are using to split with, and the optional limit.&lt;/p&gt;
+
+&lt;p&gt;So let&amp;rsquo;s create the symbol &lt;code&gt;s&lt;/code&gt; for the string &amp;lsquo;I like pumpkin spice lattes and am proud of it&amp;rsquo;, and the symbol &lt;code&gt;re&lt;/code&gt; for the regular expression of a space.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87; font-weight: bold&#34;&gt;let &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;s&lt;/span&gt; &lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;I like pumpkin spice lattes and am proud of it&amp;quot;&lt;/span&gt;
+      &lt;span style=&#34;color: #000000&#34;&gt;re&lt;/span&gt; &lt;span style=&#34;color: #ce5c00; font-weight: bold&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;\s&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;]&lt;/span&gt;
+    &lt;span style=&#34;color: #000000&#34;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id=&#34;going-on-a-hashtag-tangent&#34;&gt;Going on a Hashtag Tangent&lt;/h4&gt;
+
+&lt;p&gt;Some of you may be wondering what is going on with the # in front of the string containing our regular expression for a space. To address your wondering, it is a reader macro that will make the pattern within the quotes be compiled at read-time. See more in the &lt;a href=&#34;http://clojure.org/reference/other_functions&#34;&gt;docs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;split&#34;&gt;Split!&lt;/h3&gt;
+
+&lt;p&gt;Time to replace the body placeholder with the &lt;a href=&#34;https://clojuredocs.org/clojure.string/split&#34;&gt;split&lt;/a&gt; function.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87; font-weight: bold&#34;&gt;let &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;s&lt;/span&gt; &lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;I like pumpkin spice lattes and am proud of it&amp;quot;&lt;/span&gt;
+      &lt;span style=&#34;color: #000000&#34;&gt;re&lt;/span&gt; &lt;span style=&#34;color: #ce5c00; font-weight: bold&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;\s&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;]&lt;/span&gt;
+    &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;split&lt;/span&gt; &lt;span style=&#34;color: #000000&#34;&gt;s&lt;/span&gt; &lt;span style=&#34;color: #000000&#34;&gt;re&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;user=&amp;gt; (let [s &amp;quot;I like pumpkin spice lattes and am proud of it&amp;quot; re #&amp;quot;\s&amp;quot;](split s re))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Output:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;[&amp;quot;I&amp;quot; &amp;quot;like&amp;quot; &amp;quot;pumpkin&amp;quot; &amp;quot;spice&amp;quot; &amp;quot;lattes&amp;quot; &amp;quot;and&amp;quot; &amp;quot;am&amp;quot; &amp;quot;proud&amp;quot; &amp;quot;of&amp;quot; &amp;quot;it&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You now have a vector of strings!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
