@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>A Little Input in Clojure</title>
+
+  <meta name="author" content="" />
+  <meta name="keywords" content="">
+
+  
+
+  <meta name="generator" content="Hugo 0.16" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+  
+  <link href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/css/animate.css" rel="stylesheet">
+
+  
+  <link href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+
+  
+  <link href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/css/custom.css" rel="stylesheet">
+
+  
+    
+
+  
+  <link rel="shortcut icon" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/apple-touch-icon.png" />
+  
+
+  <link href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/css/owl.carousel.css" rel="stylesheet">
+  <link href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://adelehedrick.github.io/index.xml" type="application/rss+xml" title="Programming Languages">
+
+  
+  <meta property="og:title" content="A Little Input in Clojure" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/" />
+  <meta property="og:image" content="img/logo.png" />
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/">
+                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo.png" alt="A Little Input in Clojure logo" class="hidden-xs hidden-sm">
+                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo-small.png" alt="A Little Input in Clojure logo" class="visible-xs visible-sm">
+                    <span class="sr-only">A Little Input in Clojure - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li class="dropdown">
+                        <a href="../../../../../">Home</a>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="../../../../../clojure/">Clojure</a>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="../../../../../blog/">Blog</a>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="../../../../../contact/">Contact</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>A Little Input in Clojure</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">September 21, 2016</p>
+
+                        <div id="post-content">
+                          
+
+<h2 id="before-we-begin">Before We Begin</h2>
+
+<p>Make sure that you have the Clojure JAR handy and know how to use it! If you don&rsquo;t remember, then check out this <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/18/getting-started-clojure/">post</a> to get yourself started!</p>
+
+<p>I&rsquo;m assuming you understand binding, loops and basic functions in Clojure by now, but anything I do here I will be sure to explain in detail to help reinforce your understanding.</p>
+
+<p>Dr. Ken Pu has graciously provided some extremely relevant data for everyone to play with. So relevant that it might change your undergraduate lives at this very moment. He has provided&ndash;<em>drum roll please</em>&ndash;<strong>the current listing of classes and rooms for this semester!</strong> The relevance might elude you, but after your first assignment, you will see the value in this data!</p>
+
+<h3 id="step-1-find-a-happy-place">Step 1. Find a Happy Place</h3>
+
+<p>Find a happy place to put the files for this activity and make sure you know the path from the current directory to your Clojure JAR file. Better yet, why don&rsquo;t you copy that JAR file into your current directory.</p>
+
+<h3 id="step-2-download-the-data">Step 2. Download the Data</h3>
+
+<p>Open up a terminal window for your current directory and download the file with a <code>wget</code>.</p>
+
+<pre><code class="language-bash">wget https://adelehedrick.github.io/Fall-2016-CSCI-3055U/files/csci3055u-a1.txt
+</code></pre>
+
+<h3 id="step-3-create-a-clojure-file">Step 3. Create a Clojure File</h3>
+
+<pre><code class="language-bash">gedit read_file.clj
+</code></pre>
+
+<p>The next few steps will be from within this file you just created and opened.</p>
+
+<h3 id="step-4-use-the-clojure-java-i-o-library">Step 4. &ldquo;Use&rdquo; the Clojure Java I/O Library</h3>
+
+<p>Start by telling Clojure that you want to use the io library</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #4e9a06">&#39;clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+</pre></div>
+
+
+<h3 id="step-5-with-open-goodness">Step 5. With-Open Goodness</h3>
+
+<p>As you know I/O comes with many risks. What if we lose connection to the file? What if the file is too big and we run out of memory? What if there is no file? That is why when doing I/O, you typically have to surround the block of code with a try-catch. You also need to <em>close</em> the file when you are done with it! So many things to worry about with I/O.</p>
+
+<p>Thankfully, Clojure has provided us with the <a href="https://clojuredocs.org/clojure.core/with-open">with-open</a> function which looks like this:</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #4e9a06">&#39;clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">&lt;file&gt;</span><span style="color: #000000; font-weight: bold">]</span>
+    <span style="color: #000000">&lt;body&gt;</span><span style="color: #000000; font-weight: bold">)</span>
+</pre></div>
+
+
+<p><em>Note that I will use &lt;&hellip;&gt; as placeholders for awesomeness to come</em></p>
+
+<p><a href="https://clojuredocs.org/clojure.core/with-open">with-open</a> will open the file and surround it as well as the body of the function in a try-catch for us, as well as <em>close</em> the file when we are finished the body of the function!</p>
+
+<h3 id="step-6-let-s-bind-a-file-to-something-short-and-sweet">Step 6. Let&rsquo;s Bind a File to Something Short and Sweet</h3>
+
+<p>In Clojure we don&rsquo;t assign values to variables, we are too cool for that now. Instead, we <em>bind</em> values to <em>symbols</em>. The <code>[ ]</code> that we had beside the <code>with-open</code>, is what holds our bindings, which in this case will be a single symbol and value to be bound to it.</p>
+
+<p>We are going to use the <a href="https://clojuredocs.org/clojure.java.io/reader">reader</a> function within the io library which takes a single argument&ndash;the file path/name&ndash;and bind it to something short like <code>r</code> for reader.</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #4e9a06">&#39;clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #4e9a06">&quot;csci3055u-a1.txt&quot;</span><span style="color: #000000; font-weight: bold">)]</span>
+    <span style="color: #000000">&lt;body&gt;</span><span style="color: #000000; font-weight: bold">)</span>
+</pre></div>
+
+
+<h3 id="step-7-read-print">Step 7. Read &amp; Print</h3>
+
+<p>Let&rsquo;s just jump ahead a bunch of steps and start printing <em>something</em>! We are going to use the <code>println</code> function to print something that we read from the reader <code>r</code>.</p>
+
+<p>In read_file.clj:</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #4e9a06">&#39;clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #4e9a06">&quot;csci3055u-a1.txt&quot;</span><span style="color: #000000; font-weight: bold">)]</span>
+	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">.read</span> <span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)))</span>
+</pre></div>
+
+
+<p>In terminal:</p>
+
+<pre><code class="language-bash">java -cp clojure-1.8.0.jar clojure.main read_file.clj
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code class="language-bash">50
+</code></pre>
+
+<p>No errors! But let&rsquo;s just double check what&rsquo;s going on. The first line of the text file you have is actually :</p>
+
+<pre><code>201609|Foun.of Ditgl Teach &amp; Lrn Tech|AEDT 1120U|12|M|10|13|0|Virtual ONLINE11
+</code></pre>
+
+<p>Where did the 50 come from? Turns out we read in a char, and printed the raw value of it rather than the char it represents. Let&rsquo;s fix that by telling the println to print the char that we read in.</p>
+
+<p>In read_file.clj:
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #4e9a06">&#39;clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #4e9a06">&quot;csci3055u-a1.txt&quot;</span><span style="color: #000000; font-weight: bold">)]</span>
+	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">char </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">.read</span> <span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">))))</span>
+</pre></div>
+</p>
+
+<p>In terminal:</p>
+
+<pre><code class="language-bash">java -cp clojure-1.8.0.jar clojure.main read_file.clj
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code class="language-bash">2
+</code></pre>
+
+<p>Success! We have read something in from the file and printed it to the console!</p>
+
+<h3 id="step-8-keep-reading-till-the-end">Step 8. Keep Reading Till the End</h3>
+
+<p>We want to read-print-read-print&hellip;, so in other words we need to repeat a set of instructions. I&rsquo;m sure you are all familiar with <em>for</em> loops and <em>while</em> loops, but again I will say that we are too cool for that now, because in Clojure we use recursion to loop over things!</p>
+
+<p>In this next snippet, I had to refactor some things. The value read in by <code>.read r</code> is now bound to the symbol <code>c</code> during the initialization of the <a href="https://clojuredocs.org/clojure.core/loop">loop</a>.</p>
+
+<p>We check to see if <code>c</code> is anything but the end of the file (which is represented by <code>-1</code>). This <code>if</code> statement will actually become our stopping condition for the loop.</p>
+
+<p>Since we want to do two instructions concurrently we need to wrap the two statements in a <a href="https://clojuredocs.org/clojure.core/do">do</a> function which allows us to evaluate the statements in order.</p>
+
+<p>The first statement in our <a href="https://clojuredocs.org/clojure.core/do">do</a> function prints the character that the <code>c</code> symbol represents. The second statement has the <a href="https://clojuredocs.org/clojure.core/loop">recur</a> function which actually returns us to the beginning of our <a href="https://clojuredocs.org/clojure.core/loop">loop</a>, passing along the new value to be assigned to <code>c</code>. The value that we pass along is the next character read in from our reader <code>r</code>.</p>
+
+<p>In read_file.clj:
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #4e9a06">&#39;clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #4e9a06">&quot;csci3055u-a1.txt&quot;</span><span style="color: #000000; font-weight: bold">)]</span>
+    <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">loop </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">c</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">.read</span> <span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)]</span> 
+    	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">if </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">not= </span><span style="color: #000000">c</span> <span style="color: #0000cf; font-weight: bold">-1</span><span style="color: #000000; font-weight: bold">)</span>
+    	   <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">do</span>
+    	       <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">print </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">char </span><span style="color: #000000">c</span><span style="color: #000000; font-weight: bold">))</span>
+    	       <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">recur</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">.read</span> <span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">))))))</span>
+</pre></div>
+</p>
+
+<p>In terminal:</p>
+
+<pre><code class="language-bash">java -cp clojure-1.8.0.jar clojure.main read_file.clj
+</code></pre>
+
+<p>We have  now printed the entire file to the console, but in the worst possible way! So don&rsquo;t hand anything like this in.</p>
+
+<h3 id="step-9-do-better-with-sequences">Step 9. Do Better With Sequences</h3>
+
+<p>Sequences are powerful! Essentially, they let us take one item from a list/vector/array like collection without worrying about how big the collection it came from. We just deal with the items one at a time, and it is glorious and fast!</p>
+
+<p>In the next snippet, the reader <code>r</code> is now going to become the input to the <a href="https://clojuredocs.org/clojure.core/line-seq">line-seq</a>, which as you can guess is a <em>sequence of lines</em> (isn&rsquo;t that exactly what a text file is anyway?).</p>
+
+<p>The <a href="https://clojuredocs.org/clojure.core/doseq">doseq</a> is similar to a &lsquo;for each&rsquo; loop in other languages. To really hammer this home, what this statement is saying is that we want to &lsquo;do the body of the loop, to every line in the line sequence <code>ls</code>&lsquo;</p>
+
+<p>In read_file.clj:
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #4e9a06">&#39;clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #4e9a06">&quot;csci3055u-a1.txt&quot;</span><span style="color: #000000; font-weight: bold">)]</span>
+	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">doseq </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">ls</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">line-seq </span><span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)]</span>
+		<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)))</span>
+</pre></div>
+</p>
+
+<h2 id="moving-forward">Moving Forward</h2>
+
+<p>Want to see how we can extract specific values from the lines we read in? Head on over to the post on <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/21/split-clojure/">doing the splits in Clojure</a>.</p>
+
+                        </div>
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'adele-hedrick-csci-3055u';
+    var disqus_identifier = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/09\/21\/little-input-clojure\/';
+    var disqus_title = 'A Little Input in Clojure';
+    var disqus_url = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/09\/21\/little-input-clojure\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+        <h3 class="panel-title">Search</h3>
+    </div>
+
+    <div class="panel-body">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" role="search">
+            <div class="input-group">
+                <input type="search" name="q" results="0" class="form-control" placeholder="Search">
+                <input type="hidden" name="q" value="site:https://adelehedrick.github.io/Fall-2016-CSCI-3055U/">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+        <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/categories/clojure">clojure (6)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/clojure"><i class="fa fa-tags"></i> clojure</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/if-statement"><i class="fa fa-tags"></i> if-statement</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/input"><i class="fa fa-tags"></i> input</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/java"><i class="fa fa-tags"></i> java</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/leiningen"><i class="fa fa-tags"></i> leiningen</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/let"><i class="fa fa-tags"></i> let</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/loop"><i class="fa fa-tags"></i> loop</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/recur"><i class="fa fa-tags"></i> recur</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/set-up"><i class="fa fa-tags"></i> set-up</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/split"><i class="fa fa-tags"></i> split</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/string"><i class="fa fa-tags"></i> string</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>About Me</h4>
+
+            <p>I'm a very enthusiastic programmer, happy to be a graduate student at UOIT.</p>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+            <h4>Recent posts</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/21/little-input-clojure/">
+                          
+                            <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/banners/first-clojure-repl.jpg" class="img-responsive" alt="">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/21/little-input-clojure/">A Little Input in Clojure</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/21/split-clojure/">
+                          
+                            <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/banners/first-clojure-repl.jpg" class="img-responsive" alt="">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/21/split-clojure/">Doing the Splits in Clojure</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/19/first-clojure-repl/">
+                          
+                            <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/banners/first-clojure-repl.jpg" class="img-responsive" alt="">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/19/first-clojure-repl/">Your First Clojure REPL</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+
+        </div>
+        
+
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2016, Adele Hedrick; all rights reserved.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<script src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/js/jquery.cookie.js"></script>
+<script src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/js/waypoints.min.js"></script>
+<script src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/js/jquery.counterup.min.js"></script>
+<script src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/js/jquery.parallax-1.1.3.js"></script>
+<script src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/js/front.js"></script>
+
+
+<script src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>

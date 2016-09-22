@@ -5,6 +5,7 @@ relativeURLs = true
 languageCode = "en-us"
 disqusShortname = "adele-hedrick-csci-3055u"
 googleAnalytics = ""
+pygmentsStyle = "tango"
 
 # Define the number of posts per page
 paginate = 10

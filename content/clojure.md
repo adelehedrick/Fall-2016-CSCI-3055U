@@ -9,7 +9,16 @@ menu = "main"
 Let me help you through the wonderful world of the Lisp like language *Clojure* by providing you--in order--the blog posts dedicated to the topic.
 
 1. [Getting Started with Clojure]({{< ref "blog/getting-started-clojure.md" >}})
-2. [A Little I/O in Clojure]({{< ref "blog/little-io-clojure.md" >}})
+    
+    How to download and use the clojure.jar
+    
+2. [A Little Input in Clojure]({{< ref "blog/little-input-clojure.md" >}})
+
+    How to read text from a file. Also includes if statements and loops.
+    
+3. [Doing the Splits in Clojure]({{< ref "blog/split-clojure.md" >}})
+
+    How to split a string on a character.
 
 ## Resources
 
