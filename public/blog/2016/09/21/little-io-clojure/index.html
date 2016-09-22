@@ -7,7 +7,7 @@
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Getting Started with Clojure</title>
+  <title>A Little I/O in Clojure</title>
 
   <meta name="author" content="" />
   <meta name="keywords" content="">
@@ -45,7 +45,7 @@
   <link rel="alternate" href="https://adelehedrick.github.io/index.xml" type="application/rss+xml" title="Programming Languages">
 
   
-  <meta property="og:title" content="Getting Started with Clojure" />
+  <meta property="og:title" content="A Little I/O in Clojure" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/" />
   <meta property="og:image" content="img/logo.png" />
@@ -66,9 +66,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/">
-                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo.png" alt="Getting Started with Clojure logo" class="hidden-xs hidden-sm">
-                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo-small.png" alt="Getting Started with Clojure logo" class="visible-xs visible-sm">
-                    <span class="sr-only">Getting Started with Clojure - go to homepage</span>
+                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo.png" alt="A Little I/O in Clojure logo" class="hidden-xs hidden-sm">
+                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo-small.png" alt="A Little I/O in Clojure logo" class="visible-xs visible-sm">
+                    <span class="sr-only">A Little I/O in Clojure - go to homepage</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -133,7 +133,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Getting Started with Clojure</h1>
+                <h1>A Little I/O in Clojure</h1>
             </div>
         </div>
     </div>
@@ -149,72 +149,29 @@
 
                     <div class="col-md-9" id="blog-post">
 
-                        <p class="text-muted text-uppercase mb-small text-right">September 18, 2016</p>
+                        <p class="text-muted text-uppercase mb-small text-right">September 21, 2016</p>
 
                         <div id="post-content">
                           
 
 <h2 id="before-we-begin">Before We Begin</h2>
 
-<p>This guide will be for setting up your environment in a Linux OS, I&rsquo;m currently using Ubuntu. You will need Java version 1.6 or later, which is recommended by everything that I have read so far.</p>
+<p>Make sure that you have the Clojure JAR handy and know how to use it! If you don&rsquo;t remember, then check out this <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/18/getting-started-clojure/">post</a> to get yourself started!</p>
 
-<p>To check your Java version just open up a terminal and type:</p>
+<p>I&rsquo;m assuming you understand variable assignment and basic functions in Clojure by now, but anything I do here I will be sure to explain in detail to help reinforce your understanding.</p>
 
-<pre><code class="language-bash">java -version
+<p>Dr. Ken Pu has graciously provided some extremely relevant data for everyone to play with. So relevant that it might change your undergraduate lives at this very moment. He has provided&ndash;<em>drum roll please</em>&ndash;<strong>the current listing of classes and rooms for this semester!</strong> The relevance might elude you, but after your first assignment, you will see the value in this data!</p>
+
+<h3 id="step-1-find-a-happy-place">Step 1. Find a Happy Place</h3>
+
+<p>Find a happy place to put the files for this activity and make sure you know the path from the current directory to your Clojure JAR file. Better yet, why don&rsquo;t you copy that JAR file into your current directory.</p>
+
+<h3 id="step-2-download-the-data">Step 2. Download the Data</h3>
+
+<p>Open up a terminal window for your current directory and download the file with a <code>wget</code>.</p>
+
+<pre><code class="language-bash">wget
 </code></pre>
-
-<p>Now you are probably thinking &ldquo;why do we need Java? I thought we are programming in Clojure?&rdquo; To answer your unasked question, the Clojure code you write will be compiled by the Clojure <em>compiler</em> to create Java Virtual Machine (JVM) bytecode. The Clojure compiler&ndash;that we will get to later on&ndash;is actually an executable JAR file, hence the need for Java.</p>
-
-<h2 id="get-clojure-up-running">Get Clojure Up &amp; Running</h2>
-
-<h3 id="step-1-download-clojure-zip">Step 1. Download Clojure Zip</h3>
-
-<p>Download the zip folder from the <a href="http://clojure.org/">Clojure website</a> by clicking on the big green &ldquo;Download Clojure 1.8.0&rdquo; button, or click on this <a href="http://repo1.maven.org/maven2/org/clojure/clojure/1.8.0/clojure-1.8.0.zip">link to the zip folder</a>.</p>
-
-<h3 id="step-2-find-the-jar">Step 2. Find the JAR</h3>
-
-<p>Extract the zip folder and open the resulting folder. Inside you will find the &ldquo;clojure-1.8.0.jar&rdquo;</p>
-
-<h3 id="step-3-find-a-home-for-the-jar">Step 3. Find a home for the JAR</h3>
-
-<p>Find a nice home for your JAR where you wont forget it! Perhaps create a folder called &ldquo;Clojure&rdquo; in your home directory and then put it there?</p>
-
-<h3 id="step-4-test-with-a-repl">Step 4. Test with a REPL</h3>
-
-<p>I go into more detail about the REPL in this <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/19/first-clojure-repl/">post</a>, but for now just do these short steps:</p>
-
-<ol>
-<li>Open terminal window and navigate to your Clojure JAR</li>
-<li>Enter <code>java -cp clojure-1.8.0.jar clojure.main</code></li>
-<li>You are now in the Clojure REPL. Try <code>(+ 1 3)</code> and see if you get 4</li>
-<li>Exit out of the REPL by typing <code>CTRL + D</code></li>
-</ol>
-
-<h3 id="step-4-run-a-clojure-script">Step 4. Run a Clojure Script</h3>
-
-<p>REPLs are nice, but but what if you want to code offline and then run it? Let&rsquo;s quickly do that!</p>
-
-<ol>
-<li>Still in the same terminal window create a new Clojure file with <code>gedit hello.clj</code></li>
-<li>In the file enter <code>(println &quot;Hello World!&quot;)</code> then save and close the file</li>
-<li>Back in your terminal window you are going to run the same command as you did to start the Clojure REPL, but now you are going to provide it with a command line argument of the filename of the script you just wrote: <code>java -cp clojure-1.8.0.jar clojure.main ./hello.clj</code></li>
-</ol>
-
-<h3 id="step-5-confirm-all-is-well">Step 5. Confirm all is well</h3>
-
-<p>Just to make sure everything is good, let&rsquo;s check the version of lein.</p>
-
-<pre><code class="language-bash">lein -v
-</code></pre>
-
-<p>You should receive an output similar to mine below (depending on your Java version).</p>
-
-<pre><code class="language-bash">&gt; Leiningen 2.7.0 on Java 1.7.0_80 Java HotSpot(TM) 64-Bit Server VM
-</code></pre>
-
-<h2 id="next-steps">Next Steps</h2>
-
-<p>Now that you have Leiningen installed and the Clojure compiler downloaded, why don&rsquo;t you start <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/19/first-clojure-repl/">your first Clojure REPL</a>?</p>
 
                         </div>
                         
@@ -223,9 +180,9 @@
                             <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'adele-hedrick-csci-3055u';
-    var disqus_identifier = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/09\/18\/setting-up-clojure\/';
-    var disqus_title = 'Getting Started with Clojure';
-    var disqus_url = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/09\/18\/setting-up-clojure\/';
+    var disqus_identifier = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/09\/21\/little-io-clojure\/';
+    var disqus_title = 'A Little I\/O in Clojure';
+    var disqus_url = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/09\/21\/little-io-clojure\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

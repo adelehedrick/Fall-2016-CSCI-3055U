@@ -8,8 +8,8 @@ menu = "main"
 
 Let me help you through the wonderful world of the Lisp like language *Clojure* by providing you--in order--the blog posts dedicated to the topic.
 
-1. [Setting Up Clojure]({{< ref "blog/setting-up-clojure.md" >}})
-2. [Your First Clojure REPL]({{< ref "blog/first-clojure-repl.md" >}})
+1. [Getting Started with Clojure]({{< ref "blog/getting-started-clojure.md" >}})
+2. [A Little I/O in Clojure]({{< ref "blog/little-io-clojure.md" >}})
 
 ## Resources
 

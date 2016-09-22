@@ -10,18 +10,18 @@
     <atom:link href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/leiningen/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Your First Clojure REPL</title>
-      <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/19/first-clojure-repl/</link>
+      <title>Your First Leiningen REPL</title>
+      <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/19/first-lein-repl/</link>
       <pubDate>Mon, 19 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/19/first-clojure-repl/</guid>
+      <guid>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/19/first-lein-repl/</guid>
       <description>
 
 &lt;h2 id=&#34;before-we-begin&#34;&gt;Before We Begin&lt;/h2&gt;
 
-&lt;p&gt;Have you installed Leiningen? It is a requirement of running the lein repl! If you have no idea what I am saying you can head on over to the &lt;a href=&#34;https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/18/setting-up-clojure/&#34;&gt;Setting Up Clojure&lt;/a&gt; post&lt;/p&gt;
+&lt;p&gt;Have you installed Leiningen? It is a requirement of running the lein repl! If you have no idea what I am saying you can head on over to the &lt;a href=&#34;https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/18/setting-up-lein/&#34;&gt;Setting Up Leiningen&lt;/a&gt; post&lt;/p&gt;
 
-&lt;h2 id=&#34;your-first-repl&#34;&gt;Your First REPL&lt;/h2&gt;
+&lt;h2 id=&#34;your-first-lein-repl&#34;&gt;Your First lein REPL&lt;/h2&gt;
 
 &lt;p&gt;I like to think of the read-eval-print loop (REPL) as the &lt;em&gt;interactive programming&lt;/em&gt; mode of a language. The first time you create a REPL through lein, it will download any extra files it needs.&lt;/p&gt;
 
@@ -47,11 +47,11 @@
     </item>
     
     <item>
-      <title>Setting Up Clojure</title>
-      <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/18/setting-up-clojure/</link>
+      <title>Setting Up Leiningen</title>
+      <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/18/setting-up-lein/</link>
       <pubDate>Sun, 18 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/18/setting-up-clojure/</guid>
+      <guid>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/18/setting-up-lein/</guid>
       <description>
 
 &lt;h2 id=&#34;before-we-begin&#34;&gt;Before We Begin&lt;/h2&gt;
@@ -63,11 +63,9 @@
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;java -version
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Now you are probably thinking &amp;ldquo;why do we need Java? I thought we are programming in Clojure?&amp;rdquo; To answer your unasked question, the Clojure code you write will be compiled by the Clojure &lt;em&gt;compiler&lt;/em&gt; to create Java Virtual Machine (JVM) bytecode. The Clojure compiler&amp;ndash;that we will get to later on&amp;ndash;is actually an executable JAR file, hence the need for Java.&lt;/p&gt;
+&lt;p&gt;To quote their &lt;a href=&#34;http://leiningen.org/&#34;&gt;website&lt;/a&gt;; Leiningen is &amp;ldquo;for automating Clojure projects without setting your hair on fire.&amp;rdquo; Leiningen will be helping us get Clojure running as well as manage any dependencies we use. Instructions are on their &lt;a href=&#34;http://leiningen.org/&#34;&gt;website&lt;/a&gt; for installing Leiningen, but they are not detailed enough for my liking, so I have made very thorough instructions.&lt;/p&gt;
 
 &lt;h2 id=&#34;install-leiningen&#34;&gt;Install Leiningen&lt;/h2&gt;
-
-&lt;p&gt;To quote their &lt;a href=&#34;http://leiningen.org/&#34;&gt;website&lt;/a&gt;; Leiningen is &amp;ldquo;for automating Clojure projects without setting your hair on fire.&amp;rdquo; Leiningen will be helping us get Clojure running as well as manage any dependencies we use. Instructions are on their &lt;a href=&#34;http://leiningen.org/&#34;&gt;website&lt;/a&gt; for installing Leiningen, but they are not detailed enough for my liking, so I have made very thorough instructions.&lt;/p&gt;
 
 &lt;h3 id=&#34;step-1-open-a-terminal-and-download-the-lein-script&#34;&gt;Step 1. Open a terminal and download the lein script&lt;/h3&gt;
 
@@ -113,7 +111,7 @@
 
 &lt;h2 id=&#34;next-steps&#34;&gt;Next Steps&lt;/h2&gt;
 
-&lt;p&gt;Now that you have Leiningen installed and the Clojure compiler downloaded, why don&amp;rsquo;t you start &lt;a href=&#34;https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/19/first-clojure-repl/&#34;&gt;your first Clojure REPL&lt;/a&gt;?&lt;/p&gt;
+&lt;p&gt;Now that you have Leiningen installed and the Clojure compiler downloaded, why don&amp;rsquo;t you start &lt;a href=&#34;https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/19/first-lein-repl/&#34;&gt;your first Leiningen REPL&lt;/a&gt;?&lt;/p&gt;
 </description>
     </item>
     
