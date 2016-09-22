@@ -11,7 +11,7 @@ date = "2016-09-21"
 categories = [
     "Clojure",
 ]
-banner = "img/banners/first-clojure-repl.jpg"
+banner = "img/banners/splits-clojure.jpg"
 +++
 
 ## Before We Begin
