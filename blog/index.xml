@@ -47,8 +47,8 @@
 
 &lt;p&gt;Start by telling Clojure that you want to use the io library&lt;/p&gt;
 
-
-(use &#39;clojure.java.io)
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;#39;clojure.java.io&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3 id=&#34;step-5-with-open-goodness&#34;&gt;Step 5. With-Open Goodness&lt;/h3&gt;
@@ -57,11 +57,11 @@
 
 &lt;p&gt;Thankfully, Clojure has provided us with the &lt;a href=&#34;https://clojuredocs.org/clojure.core/with-open&#34;&gt;with-open&lt;/a&gt; function which looks like this:&lt;/p&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;#39;clojure.java.io&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)&lt;/span&gt;
 
-(use &#39;clojure.java.io)
-
-(with-open [&lt;file&gt;]
-    &lt;body&gt;)
+&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;with-open &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;&amp;lt;file&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;]&lt;/span&gt;
+    &lt;span style=&#34;color: #000000&#34;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;em&gt;Note that I will use &amp;lt;&amp;hellip;&amp;gt; as placeholders for awesomeness to come&lt;/em&gt;&lt;/p&gt;
@@ -74,11 +74,11 @@
 
 &lt;p&gt;We are going to use the &lt;a href=&#34;https://clojuredocs.org/clojure.java.io/reader&#34;&gt;reader&lt;/a&gt; function within the io library which takes a single argument&amp;ndash;the file path/name&amp;ndash;and bind it to something short like &lt;code&gt;r&lt;/code&gt; for reader.&lt;/p&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;#39;clojure.java.io&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)&lt;/span&gt;
 
-(use &#39;clojure.java.io)
-
-(with-open [r (reader &#34;csci3055u-a1.txt&#34;)]
-    &lt;body&gt;)
+&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;with-open &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;r&lt;/span&gt; &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;reader&lt;/span&gt; &lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;csci3055u-a1.txt&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)]&lt;/span&gt;
+    &lt;span style=&#34;color: #000000&#34;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3 id=&#34;step-7-read-print&#34;&gt;Step 7. Read &amp;amp; Print&lt;/h3&gt;
@@ -87,10 +87,10 @@
 
 &lt;p&gt;In read_file.clj:&lt;/p&gt;
 
-
-(use &#39;clojure.java.io)
-(with-open [r (reader &#34;csci3055u-a1.txt&#34;)]
-	(println (.read r)))
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;#39;clojure.java.io&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;with-open &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;r&lt;/span&gt; &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;reader&lt;/span&gt; &lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;csci3055u-a1.txt&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)]&lt;/span&gt;
+	&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;println &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;.read&lt;/span&gt; &lt;span style=&#34;color: #000000&#34;&gt;r&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;In terminal:&lt;/p&gt;
@@ -111,10 +111,10 @@
 &lt;p&gt;Where did the 50 come from? Turns out we read in a char, and printed the raw value of it rather than the char it represents. Let&amp;rsquo;s fix that by telling the println to print the char that we read in.&lt;/p&gt;
 
 &lt;p&gt;In read_file.clj:
-
-(use &#39;clojure.java.io)
-(with-open [r (reader &#34;csci3055u-a1.txt&#34;)]
-	(println (char (.read r))))
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;#39;clojure.java.io&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;with-open &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;r&lt;/span&gt; &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;reader&lt;/span&gt; &lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;csci3055u-a1.txt&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)]&lt;/span&gt;
+	&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;println &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;char &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;.read&lt;/span&gt; &lt;span style=&#34;color: #000000&#34;&gt;r&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;))))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;
 
 &lt;p&gt;In terminal:&lt;/p&gt;
@@ -142,14 +142,14 @@
 &lt;p&gt;The first statement in our &lt;a href=&#34;https://clojuredocs.org/clojure.core/do&#34;&gt;do&lt;/a&gt; function prints the character that the &lt;code&gt;c&lt;/code&gt; symbol represents. The second statement has the &lt;a href=&#34;https://clojuredocs.org/clojure.core/loop&#34;&gt;recur&lt;/a&gt; function which actually returns us to the beginning of our &lt;a href=&#34;https://clojuredocs.org/clojure.core/loop&#34;&gt;loop&lt;/a&gt;, passing along the new value to be assigned to &lt;code&gt;c&lt;/code&gt;. The value that we pass along is the next character read in from our reader &lt;code&gt;r&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;In read_file.clj:
-
-(use &#39;clojure.java.io)
-(with-open [r (reader &#34;csci3055u-a1.txt&#34;)]
-    (loop [c (.read r)] 
-    	(if (not= c -1)
-    	   (do
-    	       (print (char c))
-    	       (recur (.read r))))))
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;#39;clojure.java.io&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;with-open &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;r&lt;/span&gt; &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;reader&lt;/span&gt; &lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;csci3055u-a1.txt&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)]&lt;/span&gt;
+    &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87; font-weight: bold&#34;&gt;loop &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;c&lt;/span&gt; &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;.read&lt;/span&gt; &lt;span style=&#34;color: #000000&#34;&gt;r&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)]&lt;/span&gt; 
+    	&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87; font-weight: bold&#34;&gt;if &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;not= &lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;c&lt;/span&gt; &lt;span style=&#34;color: #0000cf; font-weight: bold&#34;&gt;-1&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)&lt;/span&gt;
+    	   &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;do&lt;/span&gt;
+    	       &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;print &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;char &lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;c&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;))&lt;/span&gt;
+    	       &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;recur&lt;/span&gt; &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;.read&lt;/span&gt; &lt;span style=&#34;color: #000000&#34;&gt;r&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;))))))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;
 
 &lt;p&gt;In terminal:&lt;/p&gt;
@@ -168,11 +168,11 @@
 &lt;p&gt;The &lt;a href=&#34;https://clojuredocs.org/clojure.core/doseq&#34;&gt;doseq&lt;/a&gt; is similar to a &amp;lsquo;for each&amp;rsquo; loop in other languages. To really hammer this home, what this statement is saying is that we want to &amp;lsquo;do the body of the loop, to every line in the line sequence &lt;code&gt;ls&lt;/code&gt;&amp;lsquo;&lt;/p&gt;
 
 &lt;p&gt;In read_file.clj:
-
-(use &#39;clojure.java.io)
-(with-open [r (reader &#34;csci3055u-a1.txt&#34;)]
-	(doseq [ls (line-seq r)]
-		(println ls)))
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;#39;clojure.java.io&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;with-open &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;r&lt;/span&gt; &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;reader&lt;/span&gt; &lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;csci3055u-a1.txt&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)]&lt;/span&gt;
+	&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;doseq &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;ls&lt;/span&gt; &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;line-seq &lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;r&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)]&lt;/span&gt;
+		&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;println &lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;ls&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;
 
 &lt;h2 id=&#34;moving-forward&#34;&gt;Moving Forward&lt;/h2&gt;
@@ -211,19 +211,19 @@
 
 &lt;p&gt;I am going to start off by using a &lt;a href=&#34;https://clojuredocs.org/clojure.core/let&#34;&gt;let&lt;/a&gt; special form to bind some values to symbols in a cozy local scope. Please note that &lt;code&gt;&amp;lt;...&amp;gt;&lt;/code&gt; are placeholders.&lt;/p&gt;
 
-
-(let [&lt;symbols values&gt;]
-    &lt;body&gt;)
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87; font-weight: bold&#34;&gt;let &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;&amp;lt;symbols&lt;/span&gt; &lt;span style=&#34;color: #000000&#34;&gt;values&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;]&lt;/span&gt;
+    &lt;span style=&#34;color: #000000&#34;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The &lt;a href=&#34;https://clojuredocs.org/clojure.string/split&#34;&gt;split&lt;/a&gt; function that I will be demoing, has two required arguments, and a third optional argument. Respectively they are; the string you are splitting, the regular expression you are using to split with, and the optional limit.&lt;/p&gt;
 
 &lt;p&gt;So let&amp;rsquo;s create the symbol &lt;code&gt;s&lt;/code&gt; for the string &amp;lsquo;I like pumpkin spice lattes and am proud of it&amp;rsquo;, and the symbol &lt;code&gt;re&lt;/code&gt; for the regular expression of a space.&lt;/p&gt;
 
-
-(let [s &#34;I like pumpkin spice lattes and am proud of it&#34;
-      re #&#34;\s&#34;]
-    &lt;body&gt;)
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87; font-weight: bold&#34;&gt;let &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;s&lt;/span&gt; &lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;I like pumpkin spice lattes and am proud of it&amp;quot;&lt;/span&gt;
+      &lt;span style=&#34;color: #000000&#34;&gt;re&lt;/span&gt; &lt;span style=&#34;color: #ce5c00; font-weight: bold&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;\s&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;]&lt;/span&gt;
+    &lt;span style=&#34;color: #000000&#34;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4 id=&#34;going-on-a-hashtag-tangent&#34;&gt;Going on a Hashtag Tangent&lt;/h4&gt;
@@ -234,10 +234,10 @@
 
 &lt;p&gt;Time to replace the body placeholder with the &lt;a href=&#34;https://clojuredocs.org/clojure.string/split&#34;&gt;split&lt;/a&gt; function.&lt;/p&gt;
 
-
-(let [s &#34;I like pumpkin spice lattes and am proud of it&#34;
-      re #&#34;\s&#34;]
-    (split s re))
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87; font-weight: bold&#34;&gt;let &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;s&lt;/span&gt; &lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;I like pumpkin spice lattes and am proud of it&amp;quot;&lt;/span&gt;
+      &lt;span style=&#34;color: #000000&#34;&gt;re&lt;/span&gt; &lt;span style=&#34;color: #ce5c00; font-weight: bold&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;\s&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;]&lt;/span&gt;
+    &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;split&lt;/span&gt; &lt;span style=&#34;color: #000000&#34;&gt;s&lt;/span&gt; &lt;span style=&#34;color: #000000&#34;&gt;re&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;user=&amp;gt; (let [s &amp;quot;I like pumpkin spice lattes and am proud of it&amp;quot; re #&amp;quot;\s&amp;quot;](split s re))

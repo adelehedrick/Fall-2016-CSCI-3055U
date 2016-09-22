@@ -176,19 +176,19 @@
 
 <p>I am going to start off by using a <a href="https://clojuredocs.org/clojure.core/let">let</a> special form to bind some values to symbols in a cozy local scope. Please note that <code>&lt;...&gt;</code> are placeholders.</p>
 
-
-(let [<symbols values>]
-    <body>)
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">&lt;symbols</span> <span style="color: #000000">values&gt;</span><span style="color: #000000; font-weight: bold">]</span>
+    <span style="color: #000000">&lt;body&gt;</span><span style="color: #000000; font-weight: bold">)</span>
+</pre></div>
 
 
 <p>The <a href="https://clojuredocs.org/clojure.string/split">split</a> function that I will be demoing, has two required arguments, and a third optional argument. Respectively they are; the string you are splitting, the regular expression you are using to split with, and the optional limit.</p>
 
 <p>So let&rsquo;s create the symbol <code>s</code> for the string &lsquo;I like pumpkin spice lattes and am proud of it&rsquo;, and the symbol <code>re</code> for the regular expression of a space.</p>
 
-
-(let [s "I like pumpkin spice lattes and am proud of it"
-      re #"\s"]
-    <body>)
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">s</span> <span style="color: #4e9a06">&quot;I like pumpkin spice lattes and am proud of it&quot;</span>
+      <span style="color: #000000">re</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;\s&quot;</span><span style="color: #000000; font-weight: bold">]</span>
+    <span style="color: #000000">&lt;body&gt;</span><span style="color: #000000; font-weight: bold">)</span>
+</pre></div>
 
 
 <h4 id="going-on-a-hashtag-tangent">Going on a Hashtag Tangent</h4>
@@ -199,10 +199,10 @@
 
 <p>Time to replace the body placeholder with the <a href="https://clojuredocs.org/clojure.string/split">split</a> function.</p>
 
-
-(let [s "I like pumpkin spice lattes and am proud of it"
-      re #"\s"]
-    (split s re))
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">s</span> <span style="color: #4e9a06">&quot;I like pumpkin spice lattes and am proud of it&quot;</span>
+      <span style="color: #000000">re</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;\s&quot;</span><span style="color: #000000; font-weight: bold">]</span>
+    <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000">s</span> <span style="color: #000000">re</span><span style="color: #000000; font-weight: bold">))</span>
+</pre></div>
 
 
 <pre><code class="language-bash">user=&gt; (let [s &quot;I like pumpkin spice lattes and am proud of it&quot; re #&quot;\s&quot;](split s re))
@@ -388,7 +388,7 @@
                     <div class="image same-height-always">
                         <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/21/little-input-clojure/">
                           
-                            <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/banners/first-clojure-repl.jpg" class="img-responsive" alt="">
+                            <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/banners/clojure-input.jpg" class="img-responsive" alt="">
                           
                         </a>
                     </div>
