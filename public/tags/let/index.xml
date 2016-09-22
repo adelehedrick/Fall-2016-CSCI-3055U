@@ -39,19 +39,19 @@
 
 &lt;p&gt;I am going to start off by using a &lt;a href=&#34;https://clojuredocs.org/clojure.core/let&#34;&gt;let&lt;/a&gt; special form to bind some values to symbols in a cozy local scope. Please note that &lt;code&gt;&amp;lt;...&amp;gt;&lt;/code&gt; are placeholders.&lt;/p&gt;
 
-
-(let [&lt;symbols values&gt;]
-    &lt;body&gt;)
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87; font-weight: bold&#34;&gt;let &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;&amp;lt;symbols&lt;/span&gt; &lt;span style=&#34;color: #000000&#34;&gt;values&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;]&lt;/span&gt;
+    &lt;span style=&#34;color: #000000&#34;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The &lt;a href=&#34;https://clojuredocs.org/clojure.string/split&#34;&gt;split&lt;/a&gt; function that I will be demoing, has two required arguments, and a third optional argument. Respectively they are; the string you are splitting, the regular expression you are using to split with, and the optional limit.&lt;/p&gt;
 
 &lt;p&gt;So let&amp;rsquo;s create the symbol &lt;code&gt;s&lt;/code&gt; for the string &amp;lsquo;I like pumpkin spice lattes and am proud of it&amp;rsquo;, and the symbol &lt;code&gt;re&lt;/code&gt; for the regular expression of a space.&lt;/p&gt;
 
-
-(let [s &#34;I like pumpkin spice lattes and am proud of it&#34;
-      re #&#34;\s&#34;]
-    &lt;body&gt;)
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87; font-weight: bold&#34;&gt;let &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;s&lt;/span&gt; &lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;I like pumpkin spice lattes and am proud of it&amp;quot;&lt;/span&gt;
+      &lt;span style=&#34;color: #000000&#34;&gt;re&lt;/span&gt; &lt;span style=&#34;color: #ce5c00; font-weight: bold&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;\s&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;]&lt;/span&gt;
+    &lt;span style=&#34;color: #000000&#34;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4 id=&#34;going-on-a-hashtag-tangent&#34;&gt;Going on a Hashtag Tangent&lt;/h4&gt;
@@ -62,10 +62,10 @@
 
 &lt;p&gt;Time to replace the body placeholder with the &lt;a href=&#34;https://clojuredocs.org/clojure.string/split&#34;&gt;split&lt;/a&gt; function.&lt;/p&gt;
 
-
-(let [s &#34;I like pumpkin spice lattes and am proud of it&#34;
-      re #&#34;\s&#34;]
-    (split s re))
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87; font-weight: bold&#34;&gt;let &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;s&lt;/span&gt; &lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;I like pumpkin spice lattes and am proud of it&amp;quot;&lt;/span&gt;
+      &lt;span style=&#34;color: #000000&#34;&gt;re&lt;/span&gt; &lt;span style=&#34;color: #ce5c00; font-weight: bold&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;\s&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;]&lt;/span&gt;
+    &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;split&lt;/span&gt; &lt;span style=&#34;color: #000000&#34;&gt;s&lt;/span&gt; &lt;span style=&#34;color: #000000&#34;&gt;re&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;user=&amp;gt; (let [s &amp;quot;I like pumpkin spice lattes and am proud of it&amp;quot; re #&amp;quot;\s&amp;quot;](split s re))

@@ -12,7 +12,7 @@ date = "2016-09-21"
 categories = [
     "Clojure",
 ]
-banner = "img/banners/first-clojure-repl.jpg"
+banner = "img/banners/clojure-input.jpg"
 +++
 
 ## Before We Begin
