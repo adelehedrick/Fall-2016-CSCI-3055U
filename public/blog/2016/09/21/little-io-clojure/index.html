@@ -168,9 +168,9 @@
 
 <h3 id="step-2-download-the-data">Step 2. Download the Data</h3>
 
-<p>Open up a terminal window for your current directory and download the file with a <code>wget</code>.</p>
+<p>Open up a terminal window for your current directory and download the file with a <code>wget</code>./{{ .Get 0 }}</p>
 
-<pre><code class="language-bash">wget
+<pre><code class="language-bash">wget {{ .Site.BaseURL }}/files/csci3055u-a1.txt
 </code></pre>
 
                         </div>

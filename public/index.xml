@@ -31,9 +31,9 @@
 
 &lt;h3 id=&#34;step-2-download-the-data&#34;&gt;Step 2. Download the Data&lt;/h3&gt;
 
-&lt;p&gt;Open up a terminal window for your current directory and download the file with a &lt;code&gt;wget&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Open up a terminal window for your current directory and download the file with a &lt;code&gt;wget&lt;/code&gt;./{{ .Get 0 }}&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;wget
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;wget {{ .Site.BaseURL }}/files/csci3055u-a1.txt
 &lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>

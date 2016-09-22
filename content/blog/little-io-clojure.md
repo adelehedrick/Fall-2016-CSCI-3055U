@@ -27,8 +27,8 @@ Find a happy place to put the files for this activity and make sure you know the
 
 ### Step 2. Download the Data
 
-Open up a terminal window for your current directory and download the file with a `wget`.
+Open up a terminal window for your current directory and download the file with a `wget`./{{ .Get 0 }}
 
 ```bash
-wget
+wget {{ .Site.BaseURL }}/files/csci3055u-a1.txt
 ```
