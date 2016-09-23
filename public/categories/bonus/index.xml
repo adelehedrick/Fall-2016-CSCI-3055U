@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bonus on Programming Languages</title>
+    <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/categories/bonus/</link>
+    <description>Recent content in Bonus on Programming Languages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 22 Sep 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/categories/bonus/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Taking Advantage of Bash Aliases for Clojure</title>
+      <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/clojure-bash-aliases/</link>
+      <pubDate>Thu, 22 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/clojure-bash-aliases/</guid>
+      <description>
+
+&lt;h2 id=&#34;too-much-typing&#34;&gt;Too much typing!&lt;/h2&gt;
+
+&lt;p&gt;I don&amp;rsquo;t know about you, but I am exhausted from typing in terminal all the characters I need to start a REPL, or execute Clojure class files.&lt;/p&gt;
+
+&lt;p&gt;A little birdy asked me how Ken has short forms for within terminal, and my response was &amp;ldquo;I don&amp;rsquo;t know, we should Google that!&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;I think I have some pretty snazzy aliases (that&amp;rsquo;s what Google said their called) now and I am willing to share them with you.&lt;/p&gt;
+
+&lt;h2 id=&#34;home-for-the-clojure-jar&#34;&gt;Home for the Clojure JAR&lt;/h2&gt;
+
+&lt;p&gt;For my aliases to work for you, you need to put your &amp;lsquo;clojure-1.8.0.jar&amp;rsquo; into your home folder.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-magical-bash-aliases&#34;&gt;The magical .bash_aliases&lt;/h2&gt;
+
+&lt;p&gt;In terminal:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo gedit ~/.bash_aliases
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Will open the file where all your aliases have been stored. Do &lt;em&gt;not&lt;/em&gt; remove anything that is already there (don&amp;rsquo;t be scared if the file is empty), but you can append some more to the bottom.&lt;/p&gt;
+
+&lt;p&gt;Append the following to your .bash_aliases&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;alias cljrepl=&#39;rlwrap java -cp ~/clojure-1.8.0.jar:. clojure.main &#39;
+alias clj=&#39;java -cp ~/clojure-1.8.0.jar:. clojure.main &#39;
+alias cljclass=&#39;java -cp ~/clojure-1.8.0.jar:./classes &#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Save and close.&lt;/p&gt;
+
+&lt;p&gt;The first alias &lt;code&gt;cljrepl&lt;/code&gt; starts a REPL from your current directory with the rlwrap. The second alias &lt;code&gt;clj&lt;/code&gt; is your basic REPL or execution. Finally the third alias &lt;code&gt;cljclass&lt;/code&gt; is to be used from within your project folder one level up from your &amp;lsquo;classes&amp;rsquo; folder.&lt;/p&gt;
+
+&lt;h2 id=&#34;try-it-out&#34;&gt;Try it out&lt;/h2&gt;
+
+&lt;p&gt;If you still have the hello.clj from the &lt;a href=&#34;https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/command-line-arguments-clojure/&#34;&gt;command line arguments post&lt;/a&gt;, feel free to try out these tasks from a terminal in the project directory:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Start a REPL with &lt;code&gt;cljrepl&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;In the REPL: &lt;code&gt;(compile &#39;hello)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;CTRL + C&lt;/code&gt; to exit the REPL&lt;/li&gt;
+&lt;li&gt;Execute the class with &lt;code&gt;cljclass hello Adele Hedrick Mrs I really appreciate you typing all this out!&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Output: &lt;code&gt;Hello Mrs. Adele Hedrick! I really appreciate you typing all this out!&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Hope this makes your life easier!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

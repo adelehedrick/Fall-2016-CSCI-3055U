@@ -29,7 +29,7 @@ First open a terminal window and navigate to where your Clojure JAR is located.
 ### Step 2. Run the main method!
  
 ```bash
-java -cp clojure-1.8.0.jar clojure.main
+rlwrap java -cp clojure-1.8.0.jar clojure.main
 ```
 
 You will now see that you have a new prompt that looks like:

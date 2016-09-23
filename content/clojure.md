@@ -8,17 +8,31 @@ menu = "main"
 
 Let me help you through the wonderful world of the Lisp like language *Clojure* by providing you--in order--the blog posts dedicated to the topic.
 
-1. [Getting Started with Clojure]({{< ref "blog/getting-started-clojure.md" >}})
+ 1. [Getting Started with Clojure]({{< ref "blog/getting-started-clojure.md" >}})
     
     How to download and use the clojure.jar
     
-2. [A Little Input in Clojure]({{< ref "blog/little-input-clojure.md" >}})
+ 2. [Making Classes From Clojure]({{< ref "blog/clojure-classes.md" >}})
+
+    How to compile Clojure files into class files, and execute them!
+    
+ 3. [Basics of Command Line Arguments in Clojure]({{< ref "blog/command-line-arguments-clojure.md" >}})
+ 
+    Ready to pass a value to your program? How about two? Three? Or an undefined amount? 
+    
+ 4. [A Little Input in Clojure]({{< ref "blog/little-input-clojure.md" >}})
 
     How to read text from a file. Also includes if statements and loops.
     
-3. [Doing the Splits in Clojure]({{< ref "blog/split-clojure.md" >}})
+ 3. [Doing the Splits in Clojure]({{< ref "blog/split-clojure.md" >}})
 
     How to split a string on a character.
+    
+## Bonus
+
+If you express interest in learning something a little extra, I will try my best to accomodate, even if I have no idea how to do it!
+
+* [Taking Advantage of Bash Aliases for Clojure]({{< ref "blog/clojure-bash-aliases.md" >}})
 
 ## Resources
 

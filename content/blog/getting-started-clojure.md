@@ -55,9 +55,11 @@ mv clojure-1.8.0/clojure-1.8.0.jar ./
 
 I go into more detail about the REPL in this [post]({{< ref "blog/first-clojure-repl.md" >}}), but for now just do these short steps:
 
- 1. Enter `java -cp clojure-1.8.0.jar clojure.main` 
+ 1. Enter `rlwrap java -cp clojure-1.8.0.jar clojure.main` 
  2. You are now in the Clojure REPL. Try `(+ 1 3)` and see if you get 4
  3. Exit out of the REPL by typing `CTRL + D`
+ 
+*Note that if rlwrap doesn't work, then do a `sudo apt-get install rlwrap`*
 
 ### Step 4. Run a Clojure Script
 
