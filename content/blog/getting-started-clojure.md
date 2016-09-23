@@ -125,4 +125,4 @@ This tells me a lot! `Unable to resolve symbol: printly` tells me that the compi
 
 ## Moving Forward
 
-Ready for more? Why don't you head over to the [post on file input in Clojure]({{< ref "blog/little-input-clojure.md" >}})!
+Ready for more? Why don't you head over to the [post on making classes from Clojure files]({{< ref "blog/clojure-classes.md" >}})!
