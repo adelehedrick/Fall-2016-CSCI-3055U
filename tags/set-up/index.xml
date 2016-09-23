@@ -6,8 +6,369 @@
     <description>Recent content in Set Up on Programming Languages</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 19 Sep 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 22 Sep 2016 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/set-up/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Basics of Command Line Arguments in Clojure</title>
+      <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/command-line-arguments-clojure/</link>
+      <pubDate>Thu, 22 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/command-line-arguments-clojure/</guid>
+      <description>
+
+&lt;h2 id=&#34;before-we-begin&#34;&gt;Before We Begin&lt;/h2&gt;
+
+&lt;p&gt;This post is a continuation of the &lt;a href=&#34;https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/clojure-classes/&#34;&gt;classes post&lt;/a&gt;. So if it you&amp;rsquo;re confused head on over there!&lt;/p&gt;
+
+&lt;h3 id=&#34;step-1-open-and-edit-hello-clj&#34;&gt;Step 1. Open and edit hello.clj&lt;/h3&gt;
+
+&lt;p&gt;In the project we made previously, open up the &amp;lsquo;hello.clj&amp;rsquo; by entering &lt;code&gt;gedit hello.clj&lt;/code&gt; in terminal.&lt;/p&gt;
+
+&lt;p&gt;We are now going to put a symbol in the parameter area of the main method declaration.&lt;/p&gt;
+
+&lt;p&gt;We are also going to change the output to include the name entered rather than &amp;ldquo;World&amp;rdquo;.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87; font-weight: bold&#34;&gt;ns &lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;hello&lt;/span&gt;
+    &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #4e9a06&#34;&gt;:gen-class&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;))&lt;/span&gt;
+
+&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87; font-weight: bold&#34;&gt;defn &lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;-main&lt;/span&gt; &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;]&lt;/span&gt;
+  &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;println &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;str &lt;/span&gt;&lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;Hello &amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #204a87&#34;&gt;name &lt;/span&gt;&lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;!&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Save and close the file.&lt;/p&gt;
+
+&lt;h3 id=&#34;step-2-open-a-repl-and-compile&#34;&gt;Step 2. Open a REPL and compile&lt;/h3&gt;
+
+&lt;p&gt;In terminal:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rlwrap java -cp ~/clojure-1.8.0.jar:. clojure.main
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In REPL:
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;compile&lt;/span&gt; &lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;#39;hello&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Output:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;hello
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Success! Now you can exit the REPL with &lt;code&gt;CTRL + C&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;step-3-execute-the-class-file&#34;&gt;Step 3. Execute the class file&lt;/h3&gt;
+
+&lt;p&gt;In terminal:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;java -cp ~/clojure-1.8.0.jar:./classes hello
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Output:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;Exception in thread &amp;quot;main&amp;quot; clojure.lang.ArityException: Wrong number of args (0) passed to: hello/-main
+	at clojure.lang.AFn.throwArity(AFn.java:429)
+	at clojure.lang.AFn.invoke(AFn.java:28)
+	at clojure.lang.AFn.applyToHelper(AFn.java:152)
+	at clojure.lang.AFn.applyTo(AFn.java:144)
+	at hello.main(Unknown Source)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Whoops! Forgot the actual command line arguments! Let&amp;rsquo;s give a shout out to our very own varsity member! #Power10!&lt;/p&gt;
+
+&lt;p&gt;In terminal:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;java -cp ~/clojure-1.8.0.jar:./classes hello Christien
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Output:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;Hello Christien!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Success! I am so full of campus pride right now!&lt;/p&gt;
+
+&lt;h3 id=&#34;step-4-more-arguments&#34;&gt;Step 4. More arguments&lt;/h3&gt;
+
+&lt;p&gt;Let&amp;rsquo;s open up the &amp;lsquo;hello.clj&amp;rsquo; file once again and change the arguments to two arguments; first and last.&lt;/p&gt;
+
+&lt;p&gt;In terminal:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;gedit hello.clj
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In hello.clj:
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87; font-weight: bold&#34;&gt;ns &lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;hello&lt;/span&gt;
+    &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #4e9a06&#34;&gt;:gen-class&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;))&lt;/span&gt;
+
+&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87; font-weight: bold&#34;&gt;defn &lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;-main&lt;/span&gt; &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;first &lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;last&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;]&lt;/span&gt;
+  &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;println &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;str &lt;/span&gt;&lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;Hello &amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #204a87&#34;&gt;last &lt;/span&gt;&lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;, &amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #204a87&#34;&gt;first &lt;/span&gt;&lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;!&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Save and close the file.&lt;/p&gt;
+
+&lt;h3 id=&#34;step-5-recompile&#34;&gt;Step 5. Recompile&lt;/h3&gt;
+
+&lt;p&gt;You should have the line to open up the REPL still in your history, so press the up arrow till you find:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rlwrap java -cp ~/clojure-1.8.0.jar:. clojure.main
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In REPL:
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;compile&lt;/span&gt; &lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;#39;hello&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Output:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;hello
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;step-6-say-hello-to-our-professor&#34;&gt;Step 6. Say &amp;lsquo;hello&amp;rsquo; to our professor&lt;/h3&gt;
+
+&lt;p&gt;Again you should be able to press the up arrow till you find the write command, but don&amp;rsquo;t forget to change the command line arguments.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;java -cp ~/clojure-1.8.0.jar:./classes hello Ken Pu
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Output:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;Hello Pu, Ken!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;step-7-way-more-arguments-to-be-less-rude-ironic&#34;&gt;Step 7. Way more arguments to be less rude (ironic?)&lt;/h3&gt;
+
+&lt;p&gt;Open up your &amp;lsquo;hello.clj&amp;rsquo; again and this time we are going to get fancy.&lt;/p&gt;
+
+&lt;p&gt;In hello.clj:
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87; font-weight: bold&#34;&gt;ns &lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;hello&lt;/span&gt;
+	&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;clojure.string&lt;/span&gt; &lt;span style=&#34;color: #4e9a06&#34;&gt;:only&lt;/span&gt; &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;join&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)])&lt;/span&gt;
+  &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #4e9a06&#34;&gt;:gen-class&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;))&lt;/span&gt;
+
+&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87; font-weight: bold&#34;&gt;defn &lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;-main&lt;/span&gt; &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;first last &lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;prefix&lt;/span&gt; &lt;span style=&#34;color: #ce5c00; font-weight: bold&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #000000&#34;&gt;msg&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;]&lt;/span&gt;
+  &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;println &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;str &lt;/span&gt;&lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;Hello &amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #000000&#34;&gt;prefix&lt;/span&gt; &lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;. &amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #204a87&#34;&gt;first &lt;/span&gt;&lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot; &amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #204a87&#34;&gt;last &lt;/span&gt;&lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;! &amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;join &lt;/span&gt;&lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot; &amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #000000&#34;&gt;msg&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;))))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Now I require that three arguments are provided; first, last and prefix. If there are any other arguments passed, the &lt;code&gt;&amp;amp;&lt;/code&gt; is going to put the &lt;em&gt;rest&lt;/em&gt; of them into the symbol &lt;code&gt;msg&lt;/code&gt; as a list.&lt;/p&gt;
+
+&lt;p&gt;Since I want to actually output the rest of the arguments as a sentence, we need to take the list of words in &lt;code&gt;msg&lt;/code&gt; and concatenate them together, in order, and separated by spaces. To use the join function, we will need to use the &lt;code&gt;clojure.string&lt;/code&gt; library and &lt;em&gt;only&lt;/em&gt; pull out the &lt;code&gt;join&lt;/code&gt; function.&lt;/p&gt;
+
+&lt;p&gt;Save and close the file.&lt;/p&gt;
+
+&lt;h3 id=&#34;step-8-recompile&#34;&gt;Step 8. Recompile&lt;/h3&gt;
+
+&lt;p&gt;You should have the line to open up the REPL still in your history, so press the up arrow till you find:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rlwrap java -cp ~/clojure-1.8.0.jar:. clojure.main
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In REPL:
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;compile&lt;/span&gt; &lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;#39;hello&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Output:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;hello
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sounds repetative, because it is. Thank you copy-paste!&lt;/p&gt;
+
+&lt;h3 id=&#34;step-9-give-a-good-greeting-to-our-professor&#34;&gt;Step 9. Give a good greeting to our professor&lt;/h3&gt;
+
+&lt;p&gt;In terminal:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;java -cp ~/clojure-1.8.0.jar:./classes hello Ken Pu Dr Seen anything interesting on Hacker News lately?
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Output:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;Hello Dr. Ken Pu! Seen anything interesting on Hacker News lately?
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You all should be argumenting pros now!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Making Classes From Clojure</title>
+      <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/clojure-classes/</link>
+      <pubDate>Thu, 22 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/clojure-classes/</guid>
+      <description>
+
+&lt;h2 id=&#34;before-we-begin&#34;&gt;Before We Begin&lt;/h2&gt;
+
+&lt;p&gt;I&amp;rsquo;m assuming you have the Clojure JAR and know how to run a basic script and a REPL. If you need a reminder head on to &lt;a href=&#34;https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/18/getting-started-clojure/&#34;&gt;Getting Started with Clojure&lt;/a&gt; to get yourself caught up.&lt;/p&gt;
+
+&lt;p&gt;This post is also assuming that you are running Ubuntu or some other Linux flavor.&lt;/p&gt;
+
+&lt;h2 id=&#34;project-setup&#34;&gt;Project Setup&lt;/h2&gt;
+
+&lt;h3 id=&#34;step-1-move-the-jar-to-your-home-sweet-home&#34;&gt;Step 1. Move the JAR to your home-sweet-home&lt;/h3&gt;
+
+&lt;p&gt;For simplicity sake, I&amp;rsquo;m going to ask that you put your &amp;lsquo;clojure-1.8.0.jar&amp;rsquo; file into your home directory so it is accessible via &amp;lsquo;~/clojure-1.8.0.jar&amp;rsquo;.&lt;/p&gt;
+
+&lt;h3 id=&#34;step-2-create-a-project-folder&#34;&gt;Step 2. Create a project folder&lt;/h3&gt;
+
+&lt;p&gt;Create a project folder somewhere other than your home folder. Perhaps in a place you normally put your projects?&lt;/p&gt;
+
+&lt;h3 id=&#34;step-3-create-a-classes-folder&#34;&gt;Step 3. Create a classes folder&lt;/h3&gt;
+
+&lt;p&gt;At this point you can open up a terminal for your project folder. A cheap way to open a terminal for a window of a directory is to right click on the window, and select &amp;lsquo;Open in Terminal&amp;rsquo;.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m now going to switch to doing most commands in terminal so we all can get cozy in this environment.&lt;/p&gt;
+
+&lt;p&gt;Make the &amp;lsquo;classes&amp;rsquo; folder with &lt;code&gt;mkdir classes&lt;/code&gt; (this name is non-negotiable)&lt;/p&gt;
+
+&lt;p&gt;Confirm the folder by checking what&amp;rsquo;s currently in the directory with &lt;code&gt;ls&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;step-4-create-a-hello-clj&#34;&gt;Step 4. Create a hello.clj&lt;/h3&gt;
+
+&lt;p&gt;I&amp;rsquo;m just using gedit for everything since I&amp;rsquo;m lazy, so go ahead and create a &amp;lsquo;hello.clj&amp;rsquo; file by entering &lt;code&gt;gedit hello.clj&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;In the hello.clj file I want you to enter:
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87; font-weight: bold&#34;&gt;ns &lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;hello&lt;/span&gt;
+    &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #4e9a06&#34;&gt;:gen-class&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;))&lt;/span&gt;
+
+&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87; font-weight: bold&#34;&gt;defn &lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;-main&lt;/span&gt; &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;[]&lt;/span&gt;
+  &lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;println &lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #204a87&#34;&gt;str &lt;/span&gt;&lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;quot;Hello World!&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;It is important to note that the &lt;a href=&#34;http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns&#34;&gt;ns&lt;/a&gt; macro we called in the first line cooresponds to the name of our file. Supplying the &lt;code&gt;:gen-class&lt;/code&gt; keyword will allow this file to compile into a class file of the same name as the namespace and the class is expected to have a main function.&lt;/p&gt;
+
+&lt;p&gt;Speaking of main functions, we declared one! Since we don&amp;rsquo;t want any command line arguments (yet) we can just leave the parameter area blank.&lt;/p&gt;
+
+&lt;p&gt;You may now save and close this file.&lt;/p&gt;
+
+&lt;h3 id=&#34;step-5-start-a-repl&#34;&gt;Step 5. Start a REPL&lt;/h3&gt;
+
+&lt;p&gt;In terminal:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rlwrap java -cp ~/clojure-1.8.0.jar clojure.main
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice the &lt;code&gt;~/&lt;/code&gt; which points to the home folder no matter what directory you are currently in!&lt;/p&gt;
+
+&lt;h3 id=&#34;step-6-compile-in-the-repl&#34;&gt;Step 6. Compile in the REPL&lt;/h3&gt;
+
+&lt;p&gt;In REPL:
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #000000&#34;&gt;compile&lt;/span&gt; &lt;span style=&#34;color: #4e9a06&#34;&gt;&amp;#39;hello&lt;/span&gt;&lt;span style=&#34;color: #000000; font-weight: bold&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Output:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;hello
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sweet! It spit out the name of our namespace!&lt;/p&gt;
+
+&lt;p&gt;Now enter &lt;code&gt;CTRL + C&lt;/code&gt; to exit the REPL&lt;/p&gt;
+
+&lt;h3 id=&#34;step-7-take-a-peek-at-the-classes&#34;&gt;Step 7. Take a peek at the classes&lt;/h3&gt;
+
+&lt;p&gt;Remember how I said it was important to create that &amp;lsquo;classes&amp;rsquo; folder? Well it is because the Clojure compiler expects it to exist, and places all your class files in there.&lt;/p&gt;
+
+&lt;p&gt;In Terminal:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd classes
+ls
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Output:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;hello.class        hello__init.class                     hello$_main.class
+hello$fn__5.class  hello$loading__5569__auto____3.class
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Look at all those fancy classes! Now return back to your project folder.&lt;/p&gt;
+
+&lt;p&gt;In Terminal:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd ..
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;step-8-execute-the-classes&#34;&gt;Step 8. Execute the classes&lt;/h3&gt;
+
+&lt;p&gt;In Terminal:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;java -cp ~/clojure-1.8.0.jar:./classes hello
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Output:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;Hello World!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that we had to include the &amp;lsquo;classes&amp;rsquo; folder in the classpath.&lt;/p&gt;
+
+&lt;h3 id=&#34;moving-forward&#34;&gt;Moving forward&lt;/h3&gt;
+
+&lt;p&gt;My &lt;a href=&#34;https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/command-line-arguments-clojure/&#34;&gt;next post&lt;/a&gt; will extend this post by adding command line arguments!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Taking Advantage of Bash Aliases for Clojure</title>
+      <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/clojure-bash-aliases/</link>
+      <pubDate>Thu, 22 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/clojure-bash-aliases/</guid>
+      <description>
+
+&lt;h2 id=&#34;too-much-typing&#34;&gt;Too much typing!&lt;/h2&gt;
+
+&lt;p&gt;I don&amp;rsquo;t know about you, but I am exhausted from typing in terminal all the characters I need to start a REPL, or execute Clojure class files.&lt;/p&gt;
+
+&lt;p&gt;A little birdy asked me how Ken has short forms for within terminal, and my response was &amp;ldquo;I don&amp;rsquo;t know, we should Google that!&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;I think I have some pretty snazzy aliases (that&amp;rsquo;s what Google said their called) now and I am willing to share them with you.&lt;/p&gt;
+
+&lt;h2 id=&#34;home-for-the-clojure-jar&#34;&gt;Home for the Clojure JAR&lt;/h2&gt;
+
+&lt;p&gt;For my aliases to work for you, you need to put your &amp;lsquo;clojure-1.8.0.jar&amp;rsquo; into your home folder.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-magical-bash-aliases&#34;&gt;The magical .bash_aliases&lt;/h2&gt;
+
+&lt;p&gt;In terminal:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo gedit ~/.bash_aliases
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Will open the file where all your aliases have been stored. Do &lt;em&gt;not&lt;/em&gt; remove anything that is already there (don&amp;rsquo;t be scared if the file is empty), but you can append some more to the bottom.&lt;/p&gt;
+
+&lt;p&gt;Append the following to your .bash_aliases&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;alias cljrepl=&#39;rlwrap java -cp ~/clojure-1.8.0.jar:. clojure.main &#39;
+alias clj=&#39;java -cp ~/clojure-1.8.0.jar:. clojure.main &#39;
+alias cljclass=&#39;java -cp ~/clojure-1.8.0.jar:./classes &#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Save and close.&lt;/p&gt;
+
+&lt;p&gt;The first alias &lt;code&gt;cljrepl&lt;/code&gt; starts a REPL from your current directory with the rlwrap. The second alias &lt;code&gt;clj&lt;/code&gt; is your basic REPL or execution. Finally the third alias &lt;code&gt;cljclass&lt;/code&gt; is to be used from within your project folder one level up from your &amp;lsquo;classes&amp;rsquo; folder.&lt;/p&gt;
+
+&lt;h2 id=&#34;try-it-out&#34;&gt;Try it out&lt;/h2&gt;
+
+&lt;p&gt;If you still have the hello.clj from the &lt;a href=&#34;https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/command-line-arguments-clojure/&#34;&gt;command line arguments post&lt;/a&gt;, feel free to try out these tasks from a terminal in the project directory:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Start a REPL with &lt;code&gt;cljrepl&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;In the REPL: &lt;code&gt;(compile &#39;hello)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;CTRL + C&lt;/code&gt; to exit the REPL&lt;/li&gt;
+&lt;li&gt;Execute the class with &lt;code&gt;cljclass hello Adele Hedrick Mrs I really appreciate you typing all this out!&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Output: &lt;code&gt;Hello Mrs. Adele Hedrick! I really appreciate you typing all this out!&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Hope this makes your life easier!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Your First Clojure REPL</title>
@@ -31,7 +392,7 @@
 
 &lt;h3 id=&#34;step-2-run-the-main-method&#34;&gt;Step 2. Run the main method!&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;java -cp clojure-1.8.0.jar clojure.main
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rlwrap java -cp clojure-1.8.0.jar clojure.main
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;You will now see that you have a new prompt that looks like:&lt;/p&gt;
@@ -134,10 +495,12 @@
 &lt;p&gt;I go into more detail about the REPL in this &lt;a href=&#34;https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/19/first-clojure-repl/&#34;&gt;post&lt;/a&gt;, but for now just do these short steps:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;Enter &lt;code&gt;java -cp clojure-1.8.0.jar clojure.main&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Enter &lt;code&gt;rlwrap java -cp clojure-1.8.0.jar clojure.main&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;You are now in the Clojure REPL. Try &lt;code&gt;(+ 1 3)&lt;/code&gt; and see if you get 4&lt;/li&gt;
 &lt;li&gt;Exit out of the REPL by typing &lt;code&gt;CTRL + D&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;Note that if rlwrap doesn&amp;rsquo;t work, then do a &lt;code&gt;sudo apt-get install rlwrap&lt;/code&gt;&lt;/em&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;step-4-run-a-clojure-script&#34;&gt;Step 4. Run a Clojure Script&lt;/h3&gt;
 
@@ -162,37 +525,37 @@
 &lt;p&gt;Errors!!&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;Exception in thread &amp;quot;main&amp;quot; java.lang.RuntimeException: Unable to resolve symbol: printlny in this context, compiling:(/home/delio/clojure_play/hello.clj:1:1)
-    at clojure.lang.Compiler.analyze(Compiler.java:6688)
-    at clojure.lang.Compiler.analyze(Compiler.java:6625)
-    at clojure.lang.Compiler$InvokeExpr.parse(Compiler.java:3766)
-    at clojure.lang.Compiler.analyzeSeq(Compiler.java:6870)
-    at clojure.lang.Compiler.analyze(Compiler.java:6669)
-    at clojure.lang.Compiler.analyze(Compiler.java:6625)
-    at clojure.lang.Compiler$BodyExpr$Parser.parse(Compiler.java:6001)
-    at clojure.lang.Compiler$FnMethod.parse(Compiler.java:5380)
-    at clojure.lang.Compiler$FnExpr.parse(Compiler.java:3972)
-    at clojure.lang.Compiler.analyzeSeq(Compiler.java:6866)
-    at clojure.lang.Compiler.analyze(Compiler.java:6669)
-    at clojure.lang.Compiler.eval(Compiler.java:6924)
-    at clojure.lang.Compiler.load(Compiler.java:7379)
-    at clojure.lang.Compiler.loadFile(Compiler.java:7317)
-    at clojure.main$load_script.invokeStatic(main.clj:275)
-    at clojure.main$script_opt.invokeStatic(main.clj:335)
-    at clojure.main$script_opt.invoke(main.clj:330)
-    at clojure.main$main.invokeStatic(main.clj:421)
-    at clojure.main$main.doInvoke(main.clj:384)
-    at clojure.lang.RestFn.invoke(RestFn.java:408)
-    at clojure.lang.Var.invoke(Var.java:379)
-    at clojure.lang.AFn.applyToHelper(AFn.java:154)
-    at clojure.lang.Var.applyTo(Var.java:700)
-    at clojure.main.main(main.java:37)
+	at clojure.lang.Compiler.analyze(Compiler.java:6688)
+	at clojure.lang.Compiler.analyze(Compiler.java:6625)
+	at clojure.lang.Compiler$InvokeExpr.parse(Compiler.java:3766)
+	at clojure.lang.Compiler.analyzeSeq(Compiler.java:6870)
+	at clojure.lang.Compiler.analyze(Compiler.java:6669)
+	at clojure.lang.Compiler.analyze(Compiler.java:6625)
+	at clojure.lang.Compiler$BodyExpr$Parser.parse(Compiler.java:6001)
+	at clojure.lang.Compiler$FnMethod.parse(Compiler.java:5380)
+	at clojure.lang.Compiler$FnExpr.parse(Compiler.java:3972)
+	at clojure.lang.Compiler.analyzeSeq(Compiler.java:6866)
+	at clojure.lang.Compiler.analyze(Compiler.java:6669)
+	at clojure.lang.Compiler.eval(Compiler.java:6924)
+	at clojure.lang.Compiler.load(Compiler.java:7379)
+	at clojure.lang.Compiler.loadFile(Compiler.java:7317)
+	at clojure.main$load_script.invokeStatic(main.clj:275)
+	at clojure.main$script_opt.invokeStatic(main.clj:335)
+	at clojure.main$script_opt.invoke(main.clj:330)
+	at clojure.main$main.invokeStatic(main.clj:421)
+	at clojure.main$main.doInvoke(main.clj:384)
+	at clojure.lang.RestFn.invoke(RestFn.java:408)
+	at clojure.lang.Var.invoke(Var.java:379)
+	at clojure.lang.AFn.applyToHelper(AFn.java:154)
+	at clojure.lang.Var.applyTo(Var.java:700)
+	at clojure.main.main(main.java:37)
 Caused by: java.lang.RuntimeException: Unable to resolve symbol: printlny in this context
-    at clojure.lang.Util.runtimeException(Util.java:221)
-    at clojure.lang.Compiler.resolveIn(Compiler.java:7164)
-    at clojure.lang.Compiler.resolve(Compiler.java:7108)
-    at clojure.lang.Compiler.analyzeSymbol(Compiler.java:7069)
-    at clojure.lang.Compiler.analyze(Compiler.java:6648)
-    ... 23 more
+	at clojure.lang.Util.runtimeException(Util.java:221)
+	at clojure.lang.Compiler.resolveIn(Compiler.java:7164)
+	at clojure.lang.Compiler.resolve(Compiler.java:7108)
+	at clojure.lang.Compiler.analyzeSymbol(Compiler.java:7069)
+	at clojure.lang.Compiler.analyze(Compiler.java:6648)
+	... 23 more
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;This is an epic output! This stack trace shows you exactly where in the Clojure compiler JAR everything broke down, but most importantly it tells you where in your Clojure script it broke!&lt;/p&gt;

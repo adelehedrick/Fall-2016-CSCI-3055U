@@ -193,10 +193,12 @@
 <p>I go into more detail about the REPL in this <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/19/first-clojure-repl/">post</a>, but for now just do these short steps:</p>
 
 <ol>
-<li>Enter <code>java -cp clojure-1.8.0.jar clojure.main</code></li>
+<li>Enter <code>rlwrap java -cp clojure-1.8.0.jar clojure.main</code></li>
 <li>You are now in the Clojure REPL. Try <code>(+ 1 3)</code> and see if you get 4</li>
 <li>Exit out of the REPL by typing <code>CTRL + D</code></li>
 </ol>
+
+<p><em>Note that if rlwrap doesn&rsquo;t work, then do a <code>sudo apt-get install rlwrap</code></em></p>
 
 <h3 id="step-4-run-a-clojure-script">Step 4. Run a Clojure Script</h3>
 
@@ -221,37 +223,37 @@
 <p>Errors!!</p>
 
 <pre><code class="language-bash">Exception in thread &quot;main&quot; java.lang.RuntimeException: Unable to resolve symbol: printlny in this context, compiling:(/home/delio/clojure_play/hello.clj:1:1)
-    at clojure.lang.Compiler.analyze(Compiler.java:6688)
-    at clojure.lang.Compiler.analyze(Compiler.java:6625)
-    at clojure.lang.Compiler$InvokeExpr.parse(Compiler.java:3766)
-    at clojure.lang.Compiler.analyzeSeq(Compiler.java:6870)
-    at clojure.lang.Compiler.analyze(Compiler.java:6669)
-    at clojure.lang.Compiler.analyze(Compiler.java:6625)
-    at clojure.lang.Compiler$BodyExpr$Parser.parse(Compiler.java:6001)
-    at clojure.lang.Compiler$FnMethod.parse(Compiler.java:5380)
-    at clojure.lang.Compiler$FnExpr.parse(Compiler.java:3972)
-    at clojure.lang.Compiler.analyzeSeq(Compiler.java:6866)
-    at clojure.lang.Compiler.analyze(Compiler.java:6669)
-    at clojure.lang.Compiler.eval(Compiler.java:6924)
-    at clojure.lang.Compiler.load(Compiler.java:7379)
-    at clojure.lang.Compiler.loadFile(Compiler.java:7317)
-    at clojure.main$load_script.invokeStatic(main.clj:275)
-    at clojure.main$script_opt.invokeStatic(main.clj:335)
-    at clojure.main$script_opt.invoke(main.clj:330)
-    at clojure.main$main.invokeStatic(main.clj:421)
-    at clojure.main$main.doInvoke(main.clj:384)
-    at clojure.lang.RestFn.invoke(RestFn.java:408)
-    at clojure.lang.Var.invoke(Var.java:379)
-    at clojure.lang.AFn.applyToHelper(AFn.java:154)
-    at clojure.lang.Var.applyTo(Var.java:700)
-    at clojure.main.main(main.java:37)
+	at clojure.lang.Compiler.analyze(Compiler.java:6688)
+	at clojure.lang.Compiler.analyze(Compiler.java:6625)
+	at clojure.lang.Compiler$InvokeExpr.parse(Compiler.java:3766)
+	at clojure.lang.Compiler.analyzeSeq(Compiler.java:6870)
+	at clojure.lang.Compiler.analyze(Compiler.java:6669)
+	at clojure.lang.Compiler.analyze(Compiler.java:6625)
+	at clojure.lang.Compiler$BodyExpr$Parser.parse(Compiler.java:6001)
+	at clojure.lang.Compiler$FnMethod.parse(Compiler.java:5380)
+	at clojure.lang.Compiler$FnExpr.parse(Compiler.java:3972)
+	at clojure.lang.Compiler.analyzeSeq(Compiler.java:6866)
+	at clojure.lang.Compiler.analyze(Compiler.java:6669)
+	at clojure.lang.Compiler.eval(Compiler.java:6924)
+	at clojure.lang.Compiler.load(Compiler.java:7379)
+	at clojure.lang.Compiler.loadFile(Compiler.java:7317)
+	at clojure.main$load_script.invokeStatic(main.clj:275)
+	at clojure.main$script_opt.invokeStatic(main.clj:335)
+	at clojure.main$script_opt.invoke(main.clj:330)
+	at clojure.main$main.invokeStatic(main.clj:421)
+	at clojure.main$main.doInvoke(main.clj:384)
+	at clojure.lang.RestFn.invoke(RestFn.java:408)
+	at clojure.lang.Var.invoke(Var.java:379)
+	at clojure.lang.AFn.applyToHelper(AFn.java:154)
+	at clojure.lang.Var.applyTo(Var.java:700)
+	at clojure.main.main(main.java:37)
 Caused by: java.lang.RuntimeException: Unable to resolve symbol: printlny in this context
-    at clojure.lang.Util.runtimeException(Util.java:221)
-    at clojure.lang.Compiler.resolveIn(Compiler.java:7164)
-    at clojure.lang.Compiler.resolve(Compiler.java:7108)
-    at clojure.lang.Compiler.analyzeSymbol(Compiler.java:7069)
-    at clojure.lang.Compiler.analyze(Compiler.java:6648)
-    ... 23 more
+	at clojure.lang.Util.runtimeException(Util.java:221)
+	at clojure.lang.Compiler.resolveIn(Compiler.java:7164)
+	at clojure.lang.Compiler.resolve(Compiler.java:7108)
+	at clojure.lang.Compiler.analyzeSymbol(Compiler.java:7069)
+	at clojure.lang.Compiler.analyze(Compiler.java:6648)
+	... 23 more
 </code></pre>
 
 <p>This is an epic output! This stack trace shows you exactly where in the Clojure compiler JAR everything broke down, but most importantly it tells you where in your Clojure script it broke!</p>
@@ -336,7 +338,10 @@ Caused by: java.lang.RuntimeException: Unable to resolve symbol: printlny in thi
     <div class="panel-body">
         <ul class="nav nav-pills nav-stacked">
             
-            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/categories/clojure">clojure (6)</a>
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/categories/bonus">bonus (1)</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/categories/clojure">clojure (8)</a>
             </li>
             
         </ul>
@@ -357,6 +362,15 @@ Caused by: java.lang.RuntimeException: Unable to resolve symbol: printlny in thi
 
     <div class="panel-body">
         <ul class="tag-cloud">
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/aliases"><i class="fa fa-tags"></i> aliases</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/bash"><i class="fa fa-tags"></i> bash</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/classes"><i class="fa fa-tags"></i> classes</a>
+            </li>
             
             <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/clojure"><i class="fa fa-tags"></i> clojure</a>
             </li>
@@ -438,40 +452,40 @@ Caused by: java.lang.RuntimeException: Unable to resolve symbol: printlny in thi
                 
                 <div class="item same-height-row clearfix">
                     <div class="image same-height-always">
-                        <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/21/little-input-clojure/">
+                        <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/command-line-arguments-clojure/">
                           
-                            <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/banners/clojure-input.jpg" class="img-responsive" alt="">
+                            <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/banners/setting-up-clojure.jpg" class="img-responsive" alt="">
                           
                         </a>
                     </div>
                     <div class="name same-height-always">
-                        <h5><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/21/little-input-clojure/">A Little Input in Clojure</a></h5>
+                        <h5><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/command-line-arguments-clojure/">Basics of Command Line Arguments in Clojure</a></h5>
                     </div>
                 </div>
                 
                 <div class="item same-height-row clearfix">
                     <div class="image same-height-always">
-                        <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/21/split-clojure/">
+                        <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/clojure-classes/">
                           
-                            <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/banners/splits-clojure.jpg" class="img-responsive" alt="">
+                            <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/banners/setting-up-clojure.jpg" class="img-responsive" alt="">
                           
                         </a>
                     </div>
                     <div class="name same-height-always">
-                        <h5><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/21/split-clojure/">Doing the Splits in Clojure</a></h5>
+                        <h5><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/clojure-classes/">Making Classes From Clojure</a></h5>
                     </div>
                 </div>
                 
                 <div class="item same-height-row clearfix">
                     <div class="image same-height-always">
-                        <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/19/first-clojure-repl/">
+                        <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/clojure-bash-aliases/">
                           
-                            <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/banners/first-clojure-repl.jpg" class="img-responsive" alt="">
+                            <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/banners/setting-up-clojure.jpg" class="img-responsive" alt="">
                           
                         </a>
                     </div>
                     <div class="name same-height-always">
-                        <h5><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/19/first-clojure-repl/">Your First Clojure REPL</a></h5>
+                        <h5><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/clojure-bash-aliases/">Taking Advantage of Bash Aliases for Clojure</a></h5>
                     </div>
                 </div>
                 
