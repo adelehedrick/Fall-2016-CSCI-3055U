@@ -7,7 +7,7 @@
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Taking Advantage of Bash Aliases for Clojure</title>
+  <title>Syntax Highlighting for Clojure in gedit</title>
 
   <meta name="author" content="" />
   <meta name="keywords" content="">
@@ -45,7 +45,7 @@
   <link rel="alternate" href="https://adelehedrick.github.io/index.xml" type="application/rss+xml" title="Programming Languages">
 
   
-  <meta property="og:title" content="Taking Advantage of Bash Aliases for Clojure" />
+  <meta property="og:title" content="Syntax Highlighting for Clojure in gedit" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/" />
   <meta property="og:image" content="img/logo.png" />
@@ -66,9 +66,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/">
-                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo.png" alt="Taking Advantage of Bash Aliases for Clojure logo" class="hidden-xs hidden-sm">
-                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo-small.png" alt="Taking Advantage of Bash Aliases for Clojure logo" class="visible-xs visible-sm">
-                    <span class="sr-only">Taking Advantage of Bash Aliases for Clojure - go to homepage</span>
+                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo.png" alt="Syntax Highlighting for Clojure in gedit logo" class="hidden-xs hidden-sm">
+                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo-small.png" alt="Syntax Highlighting for Clojure in gedit logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Syntax Highlighting for Clojure in gedit - go to homepage</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -133,7 +133,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Taking Advantage of Bash Aliases for Clojure</h1>
+                <h1>Syntax Highlighting for Clojure in gedit</h1>
             </div>
         </div>
     </div>
@@ -149,56 +149,50 @@
 
                     <div class="col-md-9" id="blog-post">
 
-                        <p class="text-muted text-uppercase mb-small text-right">September 22, 2016</p>
+                        <p class="text-muted text-uppercase mb-small text-right">September 24, 2016</p>
 
                         <div id="post-content">
                           
 
-<h2 id="too-much-typing">Too much typing!</h2>
+<h2 id="making-gedit-pretty-again">Making gedit Pretty Again</h2>
 
-<p>I don&rsquo;t know about you, but I am exhausted from typing in terminal all the characters I need to start a REPL, or execute Clojure class files.</p>
+<p>I&rsquo;m assuming you are exhausted by now of the lack of syntax highlighting for Clojure in gedit (like I <em>was</em>) and that you have Git installed (you likely already have it).</p>
 
-<p>A little birdy asked me how Ken has short forms for within terminal, and my response was &ldquo;I don&rsquo;t know, we should Google that!&rdquo;</p>
+<p>A quick search provided me with enough information to get it working and I will share the stepts that I took with you now.</p>
 
-<p>I think I have some pretty snazzy aliases (that&rsquo;s what Google said their called) now and I am willing to share them with you.</p>
+<p>Make sure your gedit is closed before you begin.</p>
 
-<h2 id="home-for-the-clojure-jar">Home for the Clojure JAR</h2>
+<h3 id="step-1-open-terminal-and-download-repo">Step 1. Open terminal and download repo</h3>
 
-<p>For my aliases to work for you, you need to put your &lsquo;clojure-1.8.0.jar&rsquo; into your home folder.</p>
-
-<h2 id="the-magical-bash-aliases">The magical .bash_aliases</h2>
+<p>Make sure you are starting from the home directory so this whole thing will be a matter of copy/paste</p>
 
 <p>In terminal:</p>
 
-<pre><code class="language-bash">sudo gedit ~/.bash_aliases
+<pre><code class="language-bash">git clone https://github.com/mitko/clojure_for_gedit.git
+cd clojure_for_gedit/
 </code></pre>
 
-<p>Will open the file where all your aliases have been stored. Do <em>not</em> remove anything that is already there (don&rsquo;t be scared if the file is empty), but you can append some more to the bottom.</p>
+<h3 id="step-2-move-files-to-where-they-need-to-be">Step 2. Move files to where they need to be</h3>
 
-<p>Append the following to your .bash_aliases</p>
+<p>In terminal:</p>
 
-<pre><code>alias cljrepl='rlwrap java -cp ~/clojure-1.8.0.jar:. clojure.main '
-alias clj='java -cp ~/clojure-1.8.0.jar:. clojure.main '
-alias cljclass='java -cp ~/clojure-1.8.0.jar:./classes '
+<pre><code class="language-bash">sudo cp clojure.lang /usr/share/gtksourceview-3.0/language-specs/clojure.lang
+sudo cp clojure.xml /usr/share/mime/packages/clojure.xml
 </code></pre>
 
-<p>Save and close.</p>
+<h3 id="step-3-update-mime">Step 3. Update mime</h3>
 
-<p>The first alias <code>cljrepl</code> starts a REPL from your current directory with the rlwrap. The second alias <code>clj</code> is your basic REPL or execution. Finally the third alias <code>cljclass</code> is to be used from within your project folder one level up from your &lsquo;classes&rsquo; folder.</p>
+<p>In terminal:</p>
 
-<h2 id="try-it-out">Try it out</h2>
+<pre><code class="language-bash">cd ../usr/share
+sudo update-mime-database mime
+</code></pre>
 
-<p>If you still have the hello.clj from the <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/command-line-arguments-clojure/">command line arguments post</a>, feel free to try out these tasks from a terminal in the project directory:</p>
+<p>This last command might take a minute, and you will get no progress output, so just be patient. When you get your cursor back, it is completed (there will be no output).</p>
 
-<ol>
-<li>Start a REPL with <code>cljrepl</code></li>
-<li>In the REPL: <code>(compile 'hello)</code></li>
-<li><code>CTRL + C</code> to exit the REPL</li>
-<li>Execute the class with <code>cljclass hello Adele Hedrick Mrs I really appreciate you typing all this out!</code></li>
-<li>Output: <code>Hello Mrs. Adele Hedrick! I really appreciate you typing all this out!</code></li>
-</ol>
+<h3 id="step-4-open-up-a-clojure-file-to-confirm">Step 4. Open up a Clojure file to confirm</h3>
 
-<p>Hope this makes your life easier!</p>
+<p>You should have pretty syntax highlighting now!</p>
 
                         </div>
                         
@@ -207,9 +201,9 @@ alias cljclass='java -cp ~/clojure-1.8.0.jar:./classes '
                             <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'adele-hedrick-csci-3055u';
-    var disqus_identifier = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/09\/22\/clojure-bash-aliases\/';
-    var disqus_title = 'Taking Advantage of Bash Aliases for Clojure';
-    var disqus_url = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/09\/22\/clojure-bash-aliases\/';
+    var disqus_identifier = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/09\/24\/clojure-gedit-syntax-highlighting\/';
+    var disqus_title = 'Syntax Highlighting for Clojure in gedit';
+    var disqus_url = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/09\/24\/clojure-gedit-syntax-highlighting\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

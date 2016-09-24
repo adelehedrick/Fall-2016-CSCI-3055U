@@ -33,6 +33,7 @@ Let me help you through the wonderful world of the Lisp like language *Clojure* 
 If you express interest in learning something a little extra, I will try my best to accomodate, even if I have no idea how to do it!
 
 * [Taking Advantage of Bash Aliases for Clojure]({{< ref "blog/clojure-bash-aliases.md" >}})
+* [Syntax Highlighting for Clojure in gedit]({{< ref "blog/clojure-gedit-syntax-highlighting.md" >}})
 * [Setting Up Leiningen]({{< ref "blog/setting-up-lein.md" >}})
 * [Your First Leiningen REPL]({{< ref "blog/first-lein-repl.md" >}})
 

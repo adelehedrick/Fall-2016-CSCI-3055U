@@ -6,8 +6,58 @@
     <description>Recent content in Blogs on Programming Languages</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 22 Sep 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 24 Sep 2016 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Syntax Highlighting for Clojure in gedit</title>
+      <link>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/24/clojure-gedit-syntax-highlighting/</link>
+      <pubDate>Sat, 24 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/24/clojure-gedit-syntax-highlighting/</guid>
+      <description>
+
+&lt;h2 id=&#34;making-gedit-pretty-again&#34;&gt;Making gedit Pretty Again&lt;/h2&gt;
+
+&lt;p&gt;I&amp;rsquo;m assuming you are exhausted by now of the lack of syntax highlighting for Clojure in gedit (like I &lt;em&gt;was&lt;/em&gt;) and that you have Git installed (you likely already have it).&lt;/p&gt;
+
+&lt;p&gt;A quick search provided me with enough information to get it working and I will share the stepts that I took with you now.&lt;/p&gt;
+
+&lt;p&gt;Make sure your gedit is closed before you begin.&lt;/p&gt;
+
+&lt;h3 id=&#34;step-1-open-terminal-and-download-repo&#34;&gt;Step 1. Open terminal and download repo&lt;/h3&gt;
+
+&lt;p&gt;Make sure you are starting from the home directory so this whole thing will be a matter of copy/paste&lt;/p&gt;
+
+&lt;p&gt;In terminal:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git clone https://github.com/mitko/clojure_for_gedit.git
+cd clojure_for_gedit/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;step-2-move-files-to-where-they-need-to-be&#34;&gt;Step 2. Move files to where they need to be&lt;/h3&gt;
+
+&lt;p&gt;In terminal:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo cp clojure.lang /usr/share/gtksourceview-3.0/language-specs/clojure.lang
+sudo cp clojure.xml /usr/share/mime/packages/clojure.xml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;step-3-update-mime&#34;&gt;Step 3. Update mime&lt;/h3&gt;
+
+&lt;p&gt;In terminal:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd ../usr/share
+sudo update-mime-database mime
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This last command might take a minute, and you will get no progress output, so just be patient. When you get your cursor back, it is completed (there will be no output).&lt;/p&gt;
+
+&lt;h3 id=&#34;step-4-open-up-a-clojure-file-to-confirm&#34;&gt;Step 4. Open up a Clojure file to confirm&lt;/h3&gt;
+
+&lt;p&gt;You should have pretty syntax highlighting now!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Basics of Command Line Arguments in Clojure</title>
