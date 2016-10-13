@@ -24,9 +24,14 @@ Let me help you through the wonderful world of the Lisp like language *Clojure* 
 
     How to read text from a file. Also includes if statements and loops.
     
- 3. [Doing the Splits in Clojure]({{< ref "blog/split-clojure.md" >}})
+ 5. [Doing the Splits in Clojure]({{< ref "blog/split-clojure.md" >}})
 
     How to split a string on a character.
+    
+ 6. [Breaking Problems Down, Then Building Them Up in Clojure]({{< ref "blog/break-down-build-up-clojure.md" >}})
+ 
+    Adele's thought process when breaking down a problem, then building it up in Clojure.
+    
     
 ## Bonus
 
