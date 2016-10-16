@@ -176,7 +176,7 @@
 
 <p>I am going to start off by using a <a href="https://clojuredocs.org/clojure.core/let">let</a> special form to bind some values to symbols in a cozy local scope. Please note that <code>&lt;...&gt;</code> are placeholders.</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">&lt;symbols</span> <span style="color: #000000">values&gt;</span><span style="color: #000000; font-weight: bold">]</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">&lt;symbols</span> <span style="color: #000000">values&gt;</span><span style="color: #000000; font-weight: bold">]</span>
     <span style="color: #000000">&lt;body&gt;</span><span style="color: #000000; font-weight: bold">)</span>
 </pre></div>
 
@@ -185,7 +185,7 @@
 
 <p>So let&rsquo;s create the symbol <code>s</code> for the string &lsquo;I like pumpkin spice lattes and am proud of it&rsquo;, and the symbol <code>re</code> for the regular expression of a space.</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">s</span> <span style="color: #4e9a06">&quot;I like pumpkin spice lattes and am proud of it&quot;</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">s</span> <span style="color: #4e9a06">&quot;I like pumpkin spice lattes and am proud of it&quot;</span>
       <span style="color: #000000">re</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;\s&quot;</span><span style="color: #000000; font-weight: bold">]</span>
     <span style="color: #000000">&lt;body&gt;</span><span style="color: #000000; font-weight: bold">)</span>
 </pre></div>
@@ -199,7 +199,7 @@
 
 <p>Time to replace the body placeholder with the <a href="https://clojuredocs.org/clojure.string/split">split</a> function.</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">s</span> <span style="color: #4e9a06">&quot;I like pumpkin spice lattes and am proud of it&quot;</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">s</span> <span style="color: #4e9a06">&quot;I like pumpkin spice lattes and am proud of it&quot;</span>
       <span style="color: #000000">re</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;\s&quot;</span><span style="color: #000000; font-weight: bold">]</span>
     <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000">s</span> <span style="color: #000000">re</span><span style="color: #000000; font-weight: bold">))</span>
 </pre></div>
@@ -287,7 +287,7 @@
             <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/categories/bonus">bonus (1)</a>
             </li>
             
-            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/categories/clojure">clojure (9)</a>
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/categories/clojure">clojure (10)</a>
             </li>
             
         </ul>
@@ -404,6 +404,19 @@
                 
                 <div class="item same-height-row clearfix">
                     <div class="image same-height-always">
+                        <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/10/15/clojure-got-tutorial/">
+                          
+                            <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/banners/setting-up-clojure.jpg" class="img-responsive" alt="">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/10/15/clojure-got-tutorial/">Exploring Game of Thrones Dataset with Clojure</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
                         <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/24/clojure-gedit-syntax-highlighting/">
                           
                             <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/banners/setting-up-clojure.jpg" class="img-responsive" alt="">
@@ -425,19 +438,6 @@
                     </div>
                     <div class="name same-height-always">
                         <h5><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/command-line-arguments-clojure/">Basics of Command Line Arguments in Clojure</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="image same-height-always">
-                        <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/clojure-classes/">
-                          
-                            <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/banners/setting-up-clojure.jpg" class="img-responsive" alt="">
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/clojure-classes/">Making Classes From Clojure</a></h5>
                     </div>
                 </div>
                 

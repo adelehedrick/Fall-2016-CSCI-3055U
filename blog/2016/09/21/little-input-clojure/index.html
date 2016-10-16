@@ -184,7 +184,7 @@
 
 <p>Start by telling Clojure that you want to use the io library</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #4e9a06">&#39;clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #4e9a06">&#39;clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
 </pre></div>
 
 
@@ -194,7 +194,7 @@
 
 <p>Thankfully, Clojure has provided us with the <a href="https://clojuredocs.org/clojure.core/with-open">with-open</a> function which looks like this:</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #4e9a06">&#39;clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #4e9a06">&#39;clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
 
 <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">&lt;file&gt;</span><span style="color: #000000; font-weight: bold">]</span>
     <span style="color: #000000">&lt;body&gt;</span><span style="color: #000000; font-weight: bold">)</span>
@@ -211,7 +211,7 @@
 
 <p>We are going to use the <a href="https://clojuredocs.org/clojure.java.io/reader">reader</a> function within the io library which takes a single argument&ndash;the file path/name&ndash;and bind it to something short like <code>r</code> for reader.</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #4e9a06">&#39;clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #4e9a06">&#39;clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
 
 <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #4e9a06">&quot;csci3055u-a1.txt&quot;</span><span style="color: #000000; font-weight: bold">)]</span>
     <span style="color: #000000">&lt;body&gt;</span><span style="color: #000000; font-weight: bold">)</span>
@@ -224,7 +224,7 @@
 
 <p>In read_file.clj:</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #4e9a06">&#39;clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #4e9a06">&#39;clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
 <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #4e9a06">&quot;csci3055u-a1.txt&quot;</span><span style="color: #000000; font-weight: bold">)]</span>
 	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">.read</span> <span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)))</span>
 </pre></div>
@@ -248,7 +248,7 @@
 <p>Where did the 50 come from? Turns out we read in a char, and printed the raw value of it rather than the char it represents. Let&rsquo;s fix that by telling the println to print the char that we read in.</p>
 
 <p>In read_file.clj:
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #4e9a06">&#39;clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #4e9a06">&#39;clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
 <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #4e9a06">&quot;csci3055u-a1.txt&quot;</span><span style="color: #000000; font-weight: bold">)]</span>
 	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">char </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">.read</span> <span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">))))</span>
 </pre></div>
@@ -279,7 +279,7 @@
 <p>The first statement in our <a href="https://clojuredocs.org/clojure.core/do">do</a> function prints the character that the <code>c</code> symbol represents. The second statement has the <a href="https://clojuredocs.org/clojure.core/loop">recur</a> function which actually returns us to the beginning of our <a href="https://clojuredocs.org/clojure.core/loop">loop</a>, passing along the new value to be assigned to <code>c</code>. The value that we pass along is the next character read in from our reader <code>r</code>.</p>
 
 <p>In read_file.clj:
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #4e9a06">&#39;clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #4e9a06">&#39;clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
 <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #4e9a06">&quot;csci3055u-a1.txt&quot;</span><span style="color: #000000; font-weight: bold">)]</span>
     <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">loop </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">c</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">.read</span> <span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)]</span> 
     	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">if </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">not= </span><span style="color: #000000">c</span> <span style="color: #0000cf; font-weight: bold">-1</span><span style="color: #000000; font-weight: bold">)</span>
@@ -305,7 +305,7 @@
 <p>The <a href="https://clojuredocs.org/clojure.core/doseq">doseq</a> is similar to a &lsquo;for each&rsquo; loop in other languages. To really hammer this home, what this statement is saying is that we want to &lsquo;do the body of the loop, to every line in the line sequence <code>ls</code>&lsquo;</p>
 
 <p>In read_file.clj:
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #4e9a06">&#39;clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #4e9a06">&#39;clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
 <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #4e9a06">&quot;csci3055u-a1.txt&quot;</span><span style="color: #000000; font-weight: bold">)]</span>
 	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">doseq </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">ls</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">line-seq </span><span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)]</span>
 		<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)))</span>
@@ -388,7 +388,7 @@
             <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/categories/bonus">bonus (1)</a>
             </li>
             
-            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/categories/clojure">clojure (9)</a>
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/categories/clojure">clojure (10)</a>
             </li>
             
         </ul>
@@ -505,6 +505,19 @@
                 
                 <div class="item same-height-row clearfix">
                     <div class="image same-height-always">
+                        <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/10/15/clojure-got-tutorial/">
+                          
+                            <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/banners/setting-up-clojure.jpg" class="img-responsive" alt="">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/10/15/clojure-got-tutorial/">Exploring Game of Thrones Dataset with Clojure</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
                         <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/24/clojure-gedit-syntax-highlighting/">
                           
                             <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/banners/setting-up-clojure.jpg" class="img-responsive" alt="">
@@ -526,19 +539,6 @@
                     </div>
                     <div class="name same-height-always">
                         <h5><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/command-line-arguments-clojure/">Basics of Command Line Arguments in Clojure</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="image same-height-always">
-                        <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/clojure-classes/">
-                          
-                            <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/banners/setting-up-clojure.jpg" class="img-responsive" alt="">
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/clojure-classes/">Making Classes From Clojure</a></h5>
                     </div>
                 </div>
                 

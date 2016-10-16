@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Exploring Game of Thrones Dataset with Clojure</title>
+
+  <meta name="author" content="" />
+  <meta name="keywords" content="">
+
+  
+
+  <meta name="generator" content="Hugo 0.16" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+  
+  <link href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/css/animate.css" rel="stylesheet">
+
+  
+  <link href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+
+  
+  <link href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/css/custom.css" rel="stylesheet">
+
+  
+    
+
+  
+  <link rel="shortcut icon" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/apple-touch-icon.png" />
+  
+
+  <link href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/css/owl.carousel.css" rel="stylesheet">
+  <link href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://adelehedrick.github.io/index.xml" type="application/rss+xml" title="Programming Languages">
+
+  
+  <meta property="og:title" content="Exploring Game of Thrones Dataset with Clojure" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/" />
+  <meta property="og:image" content="img/logo.png" />
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/">
+                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo.png" alt="Exploring Game of Thrones Dataset with Clojure logo" class="hidden-xs hidden-sm">
+                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo-small.png" alt="Exploring Game of Thrones Dataset with Clojure logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Exploring Game of Thrones Dataset with Clojure - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li class="dropdown">
+                        <a href="../../../../../">Home</a>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="../../../../../clojure/">Clojure</a>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="../../../../../blog/">Blog</a>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="../../../../../contact/">Contact</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Exploring Game of Thrones Dataset with Clojure</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">October 15, 2016</p>
+
+                        <div id="post-content">
+                          
+
+<h2 id="before-we-begin">Before We Begin</h2>
+
+<p>I&rsquo;m assuming you have the Clojure JAR in your home directory (e.g. accessible via ~/.clojure-1.8.0.jar) and know how to run a basic script. If you need a reminder, head on to <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/18/getting-started-clojure/">Getting Started with Clojure</a> and <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/clojure-classes/">Making Classes From Clojure</a> to get yourself caught up.</p>
+
+<p>This post is also assuming that you are running Ubuntu or some other Linux flavor.</p>
+
+<p>The data set we are going to be using is the Game of Thrones dataset on Kaggle, so you will need to make an account so you can <a href="https://www.kaggle.com/mylesoneill/game-of-thrones">download the zip</a>.</p>
+
+<h2 id="setup-hello-world">Setup Hello World</h2>
+
+<p>You need to define a namespace, which is the same as the file path and name of this file in reference to where it will be executed from. Since we are just going to execute it in the current directory, we just need to define the namespace as the file name, without the extension.</p>
+
+<p>To make sure the realm knows we are here, let&rsquo;s say hello.</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">ns </span><span style="color: #000000">tutorial.got</span><span style="color: #000000; font-weight: bold">)</span>
+    
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">defn </span><span style="color: #000000">-main</span> <span style="color: #000000; font-weight: bold">[]</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #4e9a06">&quot;Hello Realm&quot;</span><span style="color: #000000; font-weight: bold">))</span>
+</pre></div>
+
+
+<pre><code class="language-bash">$java -cp ~/clojure-1.8.0.jar:. clojure.main -m tutorial.got
+Hello Realm
+</code></pre>
+
+<p>The realm knows we are here, so now let&rsquo;s start investigating the deaths!</p>
+
+<h2 id="print-out-deaths">Print Out Deaths</h2>
+
+<p>Let&rsquo;s start by reading in the <code>character-deaths.csv</code> and printing the contents out to the console. To do any input-output we need to use the <code>clojure.java.io</code> library, so be sure to add it to your namespace.</p>
+
+<p>We then need to add an argument to our main method to pass the name of the filename we wish to open.</p>
+
+<p>Lastly, we want to use a <code>with-open</code> to to open the file, create a reader object, and then print the <code>line-seq</code> created from the reader.</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">ns </span><span style="color: #000000">tutorial.got</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000">clojure.java.io</span><span style="color: #000000; font-weight: bold">))</span>
+    
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">defn </span><span style="color: #000000">-main</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">]</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">)]</span>
+  	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">line-seq </span><span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">))))</span>
+</pre></div>
+
+
+<p>Now when we run our script, we need to include the &ldquo;character-deaths.csv&rdquo; into the arguments passed to the Clojure main method.</p>
+
+<pre><code class="language-bash">$ java -cp ~/clojure-1.8.0.jar:. clojure.main -m tutorial.got character-deaths.csv
+(Name,Allegiances,Death Year,Book of Death,Death Chapter,Book Intro Chapter,Gender,Nobility,GoT,CoK,SoS,FfC,DwD Addam Marbrand,Lannister,,,,56,1,1,1,1,1,1,0 Aegon Frey (Jinglebell),None,299,3,51,49,1,1,0,0,1,0,0 Aegon Targaryen,House Targaryen,,,,5,1,1,0,0,0,0,1 Adrack Humble,House Greyjoy,300,5,20,20,1,1,0,0,0,0,1 Aemon Costayne,Lannister,,,,,1,1,0,0,1,0,0 Aemon Estermont,Baratheon,,,,,1,1,0,1,1,0,0 Aemon Targaryen (son of Maekar I),Night's Watch,300,4,35,21,1,1,1,0,1,1,0 Aenys Frey,None,300,5,,59,0,1,1,1,1,0,1 Aeron Greyjoy,House Greyjoy,,,,11,1,1,0,1,0,1,0 Aethan,Night's Watch,,,,0,1,0,0,0,1,0,0 Aggar,House Greyjoy,299,2,56,50,1,0,0,1,0,0,0 Aggo,House Targaryen,,,,54,1,0,1,1,1,0,1 Alan of Rosby,Night's Watch,300,5,4,18,1,1,0,1,1,0,1 Alayaya,None,,,,15,0,0,0,1,0,0,0 Albar Royce,Arryn,,,,38,1,1,1,0,0,1,0 Albett,Night's Watch,,,,26,1,0,1,0,0,0,0 Alebelly,House Stark,299,2,46,4,1,0,0,1,0,0,0 Alerie Hightower,House Tyrell,,,,6,0,1,0,0,1,1,0 Alesander Staedmon,Baratheon,,,,65,1,1,0,1,0,0,0 Alester Florent,Baratheon,300,4,,36,1,1,0,1,1,0,0 Alia of Braavos,None,,,,28,0,0,1
+...
+</code></pre>
+
+<h2 id="grabbing-the-headers-and-values">Grabbing the Headers and Values</h2>
+
+<p>Looking at the character-deaths.csv file, we see that the first line is actually the column headers. So what I would like to do is read in the first line, and for that line read in, to become the keys to the values afterwards.</p>
+
+<p>So essentially I want the file to be parsed as a sequence of maps!</p>
+
+<p>Now I need to do some restructuring, because I need to call on the <code>line-seq</code> once to get the keys, and then read in the rest as data. Since I need to call on the <code>line-seq</code> in two different spots, let&rsquo;s assign it to a symbol <code>ls</code> using <code>let</code>.</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">ns </span><span style="color: #000000">tutorial.got</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000">clojure.java.io</span><span style="color: #000000; font-weight: bold">))</span>
+    
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">defn </span><span style="color: #000000">-main</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">]</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">)]</span>
+  	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">ls</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">line-seq </span><span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)]</span>
+  		<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">))))</span>
+</pre></div>
+
+
+<pre><code class="language-bash">$ java -cp ~/clojure-1.8.0.jar:. clojure.main -m tutorial.got character-deaths.csv
+(Name,Allegiances,Death Year,Book of Death,Death Chapter,Book Intro Chapter,Gender,Nobility,GoT,CoK,SoS,FfC,DwD Addam Marbrand,Lannister,,,,56,1,1,1,1,1,1,0 Aegon Frey (Jinglebell),None,299,3,51,49,1,1,0,0,1,0,0 Aegon Targaryen,House Targaryen,,,,5,1,1,0,0,0,0,1 Adrack Humble,House Greyjoy,300,5,20,20,1,1,0,0,0,0,1 Aemon Costayne,Lannister,,,,,1,1,0,0,1,0,0 Aemon Estermont,Baratheon,,,,,1,1,0,1,1,0,0 Aemon Targaryen (son of Maekar I),Night's Watch,
+...
+</code></pre>
+
+<p>As you can see, there has been no change to our output, which is good!</p>
+
+<p>Now let&rsquo;s see if we can take the first line from the <code>line-seq</code> by using <code>first</code> and binding it to the symbol <code>headers</code>.</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">ns </span><span style="color: #000000">tutorial.got</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000">clojure.java.io</span><span style="color: #000000; font-weight: bold">))</span>
+    
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">defn </span><span style="color: #000000">-main</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">]</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">)]</span>
+    <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">ls</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">line-seq </span><span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">headers</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">first </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)]</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #4e9a06">&quot;headers: &quot;</span> <span style="color: #000000">headers</span><span style="color: #000000; font-weight: bold">)</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #4e9a06">&quot;values: &quot;</span> <span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">))))</span>
+</pre></div>
+
+
+<pre><code class="language-bash">$ java -cp ~/clojure-1.8.0.jar:. clojure.main -m tutorial.got character-deaths.csv
+headers:  Name,Allegiances,Death Year,Book of Death,Death Chapter,Book Intro Chapter,Gender,Nobility,GoT,CoK,SoS,FfC,DwD
+values:  (Name,Allegiances,Death Year,Book of Death,Death Chapter,Book Intro Chapter,Gender,Nobility,GoT,CoK,SoS,FfC,DwD Addam Marbrand,Lannister,,,,56,1,1,1,1,1,1,0 Aegon Frey (Jinglebell),None,299,3,51,49,1,1,0,0,1,0,0 Aegon Targaryen,House Targaryen,,,,5,1,1,0,0,0,0,1 Adrack Humble,House Greyjoy,300,5,20,20,1,1,0,0,0,0,1 Aemon Costayne,Lannister,,,,,1,1,0,0,1,0,0 Aemon Estermont,Baratheon,,,,,1,1,0,1,1,0,0 Aemon Targaryen (son of Maekar I),Night's Watch,300,4,35,21,1,1,1,0,1,1,0 Aenys Frey,None,300,5,,59,0,1,1,1,1,0,1 Aeron Greyjoy,House Greyjoy,,,,11,1,1,0,1,0,1,0 Aethan,Night's Watch,,,,0,1,0,0,0,1,0,0 Aggar,House Greyjo
+...
+</code></pre>
+
+<p>We have successfully grabbed the string containing the headers, but what we assumed was going to be the values is actually the entire <code>line-seq</code>. Let&rsquo;s now use the <code>rest</code> function (<a href="http://clojure.org/reference/sequences#__em_rest_em_coll">documentation</a>) which will take everything after the first element of a sequence, and bind it to the symbol <code>values</code>.</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">ns </span><span style="color: #000000">tutorial.got</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000">clojure.java.io</span><span style="color: #000000; font-weight: bold">))</span>
+    
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">defn </span><span style="color: #000000">-main</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">]</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">)]</span>
+    <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">ls</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">line-seq </span><span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">headers</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">first </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">values</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">rest </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)]</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #4e9a06">&quot;headers: &quot;</span> <span style="color: #000000">headers</span><span style="color: #000000; font-weight: bold">)</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #4e9a06">&quot;values: &quot;</span> <span style="color: #000000">values</span><span style="color: #000000; font-weight: bold">))))</span>
+</pre></div>
+
+
+<pre><code class="language-bash">$ java -cp ~/clojure-1.8.0.jar:. clojure.main -m tutorial.got character-deaths.csv
+headers:  Name,Allegiances,Death Year,Book of Death,Death Chapter,Book Intro Chapter,Gender,Nobility,GoT,CoK,SoS,FfC,DwD
+values:  (Addam Marbrand,Lannister,,,,56,1,1,1,1,1,1,0 Aegon Frey (Jinglebell),None,299,3,51,49,1,1,0,0,1,0,0 Aegon Targaryen,House Targaryen,,,,5,1,1,0,0,0,0,1 Adrack Humble,House Greyjoy,300,5,20,20,1,1,0,0,0,0,1 Aemon Costayne,Lannister,,,,,1,1,0,0,1,0,0 Aemon Estermont,Baratheon,,,,,1,1,0,1,1,0,0 Aemon Targaryen (son of Maekar I),Night's Watch,300,4,35,21,1,1,1,0,1,1,0 Aenys Frey,None,300,5,,59,0,1,1,1,1,0,1 Aeron Greyjoy,House Greyjoy,,,,11,1,1,0,1,0,1,0 Aethan,Night's Watch,,,,0,1,0,0,0,1,0,0 Aggar,House Greyjoy,299,2,56,50,1,0,0,1,0,0,0 
+...
+</code></pre>
+
+<p>We are now getting somewhere! We have now extracted the first line as the <code>headers</code> symbol and the rest of the file as the <code>values</code> symbol!</p>
+
+<h2 id="split-the-headers-up">Split the Headers Up!</h2>
+
+<p>Before we can do anything with the headers and values, we need to turn them into a collections rather than one long string. To do that we can do a <code>split</code> on the comma.</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">ns </span><span style="color: #000000">tutorial.got</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000">clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000">clojure.string</span><span style="color: #000000; font-weight: bold">))</span>
+    
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">defn </span><span style="color: #000000">-main</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">]</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">)]</span>
+    <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">ls</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">line-seq </span><span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">headers</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">first </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">values</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">rest </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)]</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #4e9a06">&quot;headers: &quot;</span> <span style="color: #000000">headers</span><span style="color: #000000; font-weight: bold">)</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #4e9a06">&quot;values: &quot;</span> <span style="color: #000000">values</span><span style="color: #000000; font-weight: bold">))))</span>
+</pre></div>
+
+
+<pre><code class="language-bash">$ java -cp ~/clojure-1.8.0.jar:. clojure.main -m tutorial.got character-deaths.csv
+WARNING: reverse already refers to: #'clojure.core/reverse in namespace: tutorial.got, being replaced by: #'clojure.string/reverse
+WARNING: replace already refers to: #'clojure.core/replace in namespace: tutorial.got, being replaced by: #'clojure.string/replace
+headers:  [Name Allegiances Death Year Book of Death Death Chapter Book Intro Chapter Gender Nobility GoT CoK SoS FfC DwD]
+values:  (Addam Marbrand,Lannister,,,,56,1,1,1,1,1,1,0 Aegon Frey (Jinglebell),None,299,3,51,49,1,1,0,0,1,0,0 Aegon Targaryen,House Targaryen,,,,5,1,1,0,0,0,0,1 Adrack Humble,House Greyjoy,300,5,20,20,1,1,0,0,0,0,1 Aemon Costayne,Lannister,,,,,1,1,0,0,1,0,0 Aemon Estermont,Baratheon,,,,,1,1,0,1,1,0,0 Aemon Targaryen (son of Maekar I),Night's Watch,300,4,35,21,1,1,1,0,1,1,0 Aenys Frey,None,300,5,,59,0,1,1,1,1,0,1 Aeron Greyjoy,House Greyjoy,,,,11,1,1,0,1,0,1,0 Aethan,Night's Watch,,,,0,1,0,0,0,1,0,0 Aggar,House Greyjoy,299,2,56,50,1,0,0,1,0,0,0 Aggo,House Targaryen,,,,54,1,0,1,1,1,0,1 Alan of Rosby,Night's Watch,30
+...
+</code></pre>
+
+<p>I&rsquo;m getting warnings because I&rsquo;m importing everything in the <code>string</code> library and there are some conflicting names. Since all I need is <code>split</code>, let&rsquo;s just use the <code>split</code> function in the string library, rather than the whole library.</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">ns </span><span style="color: #000000">tutorial.got</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000">clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">clojure.string</span> <span style="color: #4e9a06">:only</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span><span style="color: #000000; font-weight: bold">)]))</span>
+    
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">defn </span><span style="color: #000000">-main</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">]</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">)]</span>
+    <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">ls</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">line-seq </span><span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">headers</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">first </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">values</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">rest </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)]</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #4e9a06">&quot;headers: &quot;</span> <span style="color: #000000">headers</span><span style="color: #000000; font-weight: bold">)</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #4e9a06">&quot;values: &quot;</span> <span style="color: #000000">values</span><span style="color: #000000; font-weight: bold">))))</span>
+</pre></div>
+
+
+<pre><code class="language-bash">$ java -cp ~/clojure-1.8.0.jar:. clojure.main -m tutorial.got character-deaths.csv
+headers:  [Name Allegiances Death Year Book of Death Death Chapter Book Intro Chapter Gender Nobility GoT CoK SoS FfC DwD]
+values:  (Addam Marbrand,Lannister,,,,56,1,1,1,1,1,1,0 Aegon Frey (Jinglebell),None,299,3,51,49,1,1,0,0,1,0,0 Aegon Targaryen,House Targaryen,,,,5,1,1,0,0,0,0,1 Adrack Humble,House Greyjoy,300,5,20,20,1,1,0,0,0,0,1 Aemon Costayne,Lannister,,,,,1,1,0,0,1,0,0 Aemon Estermont,Baratheon,,,,,1,1,0,1,1,0,0 Aemon Targaryen (son of Maekar I),Night's Watch,300,4,35,21,1,1,1,0,1,1,0 Aenys Frey,None,300,5,,59,0,1,1,1,1,0,1 Aeron Greyjoy,House Greyjoy,,,,11,1,1,0,1,0,1,0 Aethan,Night's Watch,,,,0,1,0,0,0,1,0,0 Aggar,House Greyjoy,299,2,56,50,1,0,0,1,0,0,0 Aggo,House Targaryen,,,,54,1,0,1,1,1,0,1 Alan of Rosby,Night's Watch,300,5,4,18,1,1,0,1,1,0,1 Alayaya,None,,,,15,0,0,0,1,0,0,0 Albar Royce,Arryn,,,,38,1,1,1,0,0,1,0 Albett,Night's Watch,
+...
+</code></pre>
+
+<p>No more warnings! And we can clearly see that our <code>headers</code> symbol is now a vector! I can use that!</p>
+
+<h2 id="applying-functions-to-the-values">Applying Functions to the Values</h2>
+
+<p>I want to put those <code>headers</code> to good use now! So let&rsquo;s apply them to each line in the values, but unfortunately our <code>values</code> are still a sequence of strings. We need to iterate over the lines, splitting them and then mapping the items to the headers.</p>
+
+<p>In other words, I want to transform the sequence of strings, into a sequence of split strings, which means I want to <code>map</code> a function over a sequence to generate another collection. To do this I can use the <a href="https://clojuredocs.org/clojure.core/map">map</a> (do not get this confused with the map type collections of hash-map, sorted-map, struct-map). The <em>form</em> for <code>map</code> is <code>(map f coll)</code>, so let&rsquo;s quickly split up the strings using <code>split</code>.</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">ns </span><span style="color: #000000">tutorial.got</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000">clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">clojure.string</span> <span style="color: #4e9a06">:only</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span><span style="color: #000000; font-weight: bold">)]))</span>
+    
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">defn </span><span style="color: #000000">-main</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">]</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">)]</span>
+    <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">ls</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">line-seq </span><span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">headers</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">first </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">values</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000">%</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">rest </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">))]</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #4e9a06">&quot;headers: &quot;</span> <span style="color: #000000">headers</span><span style="color: #000000; font-weight: bold">)</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #4e9a06">&quot;values: &quot;</span> <span style="color: #000000">values</span><span style="color: #000000; font-weight: bold">))))</span>
+</pre></div>
+
+
+<pre><code class="language-bash">$ java -cp ~/clojure-1.8.0.jar:. clojure.main -m tutorial.got character-deaths.csv
+Exception in thread &quot;main&quot; java.lang.RuntimeException: Unable to resolve symbol: % in this context, compiling:(tutorial/got.clj:12:23)
+	at clojure.lang.Compiler.analyze(Compiler.java:6688)
+	at clojure.lang.Compiler.analyze(Compiler.java:6625)
+	at clojure.lang.Compiler$InvokeExpr.parse(Compiler.java:3834)
+	at clojure.lang.Compiler.analyzeSeq(Compiler.java:6870)
+	at clojure.lang.Compiler.analyze(Compiler.java:6669)
+...
+</code></pre>
+
+<p>Oh I made a mistake using the <code>map</code>! I remembered that I need to use the <code>%</code> as a placeholder for each string/element in the sequence, but I forgot that I need to explicit say that the <code>(split % #&quot;,&quot;)</code> is an anonymous function. There are two ways to define an anonymous function: <code>(fn ...)</code> and <code>#(...)</code>. I&rsquo;m going to use the shorter of the two.</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">ns </span><span style="color: #000000">tutorial.got</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000">clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">clojure.string</span> <span style="color: #4e9a06">:only</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span><span style="color: #000000; font-weight: bold">)]))</span>
+    
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">defn </span><span style="color: #000000">-main</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">]</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">)]</span>
+    <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">ls</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">line-seq </span><span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">headers</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">first </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">values</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000">%</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">rest </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">))]</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #4e9a06">&quot;headers: &quot;</span> <span style="color: #000000">headers</span><span style="color: #000000; font-weight: bold">)</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #4e9a06">&quot;values: &quot;</span> <span style="color: #000000">values</span><span style="color: #000000; font-weight: bold">))))</span>
+</pre></div>
+
+
+<pre><code class="language-bash">$ java -cp ~/clojure-1.8.0.jar:. clojure.main -m tutorial.got character-deaths.csv
+headers:  [Name Allegiances Death Year Book of Death Death Chapter Book Intro Chapter Gender Nobility GoT CoK SoS FfC DwD]
+values:  ([Addam Marbrand Lannister    56 1 1 1 1 1 1 0] [Aegon Frey (Jinglebell) None 299 3 51 49 1 1 0 0 1 0 0] [Aegon Targaryen House Targaryen    5 1 1 0 0 0 0 1] [Adrack Humble House Greyjoy 300 5 20 20 1 1 0 0 0 0 1] [Aemon Costayne Lannister     1 1 0 0 1 0 0] [Aemon Estermont Baratheon     1 1 0 1 1 0 0] [Aemon Targaryen (son of Maekar I) Night's Watch 300 4 35 21 1 1 1 0 1 1 0] [Aenys Frey None 300 5  59 0 1 1 1 1 0 1] [Aeron Greyjoy House Greyjoy    11 1 1 0 1 0 1 0] [Aethan Night's Watch    0 1 0 0 0 1 0 0] [Aggar House Greyjoy 299 2 56 50 1 0 0 1 0 0 0] [Aggo House Targaryen    54 1 0 1 1 1 0 1] [Alan of Rosby Night's Watch 300 5 4 18 1 1 0 1 1 0 1] [Alayaya None    15 0 0 0 1 0 0 0] [Albar Royce Arryn    38 1 1 1 0 0 1 0] [Albett Night's Watch    26 1 0 1 0 0 0 0] [Alebelly House Stark 299 2 46 4 1 0 0 1 0 0 0] [Alerie Hightower House Tyrell    6 0 1 0 0 1 1 0] [Alesander Staedmon Baratheon    65 1 1 0 1 0 0 0] [Alester Florent Baratheon 300 4...
+</code></pre>
+
+<p>Now that we are mapping experts, let&rsquo;s map the <code>zipmap</code> function (<a href="http://clojuredocs.org/clojure.core/zipmap">documentation</a>) which has the <em>form</em> <code>(zipmap keys vals)</code>. The keys are always going to be our headers, but the vals are going to be each vector returned by the split.</p>
+
+<p><em>Note: I took out the println for headers, since it&rsquo;s pointless now</em></p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">ns </span><span style="color: #000000">tutorial.got</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000">clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">clojure.string</span> <span style="color: #4e9a06">:only</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span><span style="color: #000000; font-weight: bold">)]))</span>
+    
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">defn </span><span style="color: #000000">-main</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">]</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">)]</span>
+    <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">ls</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">line-seq </span><span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">headers</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">first </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">values</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">zipmap </span><span style="color: #000000">headers</span> <span style="color: #000000">%</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000">%</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">rest </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)))]</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #4e9a06">&quot;values: &quot;</span> <span style="color: #000000">values</span><span style="color: #000000; font-weight: bold">))))</span>
+</pre></div>
+
+
+<pre><code class="language-bash">$ java -cp ~/clojure-1.8.0.jar:. clojure.main -m tutorial.got character-deaths.csv
+values:  ({SoS 1, DwD 0, Allegiances Lannister, Book Intro Chapter 56, Book of Death , Gender 1, FfC 1, GoT 1, CoK 1, Nobility 1, Death Chapter , Name Addam Marbrand, Death Year } {SoS 1, DwD 0, Allegiances None, Book Intro Chapter 49, Book of Death 3, Gender 1, FfC 0, GoT 0, CoK 0, Nobility 1, Death Chapter 51, Name Aegon Frey (Jinglebell), Death Year 299} {SoS 0, DwD 1, Allegiances House Targaryen, Book Intro Chapter 5, Book of Death , Gender 1, FfC 0, GoT 0, CoK 0, Nobility 1, Death Chapter , Name Aegon Targaryen, Death Year } {SoS 0, DwD 1, Allegiances House Greyjoy, Book Intro Chapter 20, Book of Death 5, Gender 1, FfC 0, GoT 0, CoK 0, Nobility 1, Death Chapter 20, Name Adrack Humble, Death Year 300} {SoS 1, DwD 0, Allegiances Lannister, Book Intro Chapter , Book of Death , Gender 1, FfC 0, GoT 0, CoK 0, Nobility 1, Death Chapter , Name Aemon Costayne, Death Year } {SoS 1, DwD 0, Allegiances Baratheon, Book Intro Chapter , Book of Death , Gender 1, FfC 0, GoT 0, CoK 1, Nobility 1, Death Chapter , Name Aemon Estermont, Death Year } {SoS 1, DwD 0, Allegiances Night's Watch, Book Intro Chapter 21, Book of Death 4, Gender 1, FfC 1, GoT 1, CoK 0, Nobility 1, Death Chapter 35, Name Aemon Targaryen (son of Maekar I), Death Year 300} {SoS 1, DwD 1, Allegiances None, Book Intro Chapter 59, Book of Death 5, Gender 0, FfC 0, GoT 1, CoK 1, Nobility 1, Death Chapter , Name Aenys Frey, Death Year 300}
+</code></pre>
+
+<h2 id="count-everything">Count Everything!</h2>
+
+<p>I want to start doing a little bit of analysis, so how about a quick count of the unique items in each column? Sounds simple but there is a lot that needs to go on.</p>
+
+<p>Here is my procedural plan:
+ 1. Loop over headers
+ 2. Iterate over values, grabbing the value associated to the current header
+ 3. Create unique set for each group of values
+ 4. Count the unique set of strings</p>
+
+<p>So first off, let&rsquo;s make sure we can loop over the headers within the let.</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">ns </span><span style="color: #000000">tutorial.got</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000">clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">clojure.string</span> <span style="color: #4e9a06">:only</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span><span style="color: #000000; font-weight: bold">)]))</span>
+    
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">defn </span><span style="color: #000000">-main</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">]</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">)]</span>
+    <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">ls</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">line-seq </span><span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">headers</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">first </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">values</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">zipmap </span><span style="color: #000000">headers</span> <span style="color: #000000">%</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000">%</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">rest </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)))]</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">doseq </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">h</span> <span style="color: #000000">headers</span><span style="color: #000000; font-weight: bold">]</span>
+      	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #000000">h</span><span style="color: #000000; font-weight: bold">)))))</span>
+</pre></div>
+
+
+<pre><code class="language-bash">$ java -cp ~/clojure-1.8.0.jar:. clojure.main -m tutorial.got character-deaths.csv
+Name
+Allegiances
+Death Year
+Book of Death
+Death Chapter
+Book Intro Chapter
+Gender
+Nobility
+GoT
+CoK
+SoS
+FfC
+DwD
+</code></pre>
+
+<p>Now my goal is to iterate over the values grabbing the value associated to the current header. To do this I am going to map the <code>get</code> function over the values, which will return a sequence of values!</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">ns </span><span style="color: #000000">tutorial.got</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000">clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">clojure.string</span> <span style="color: #4e9a06">:only</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span><span style="color: #000000; font-weight: bold">)]))</span>
+    
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">defn </span><span style="color: #000000">-main</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">]</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">)]</span>
+    <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">ls</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">line-seq </span><span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">headers</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">first </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">values</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">zipmap </span><span style="color: #000000">headers</span> <span style="color: #000000">%</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000">%</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">rest </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)))]</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">doseq </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">h</span> <span style="color: #000000">headers</span><span style="color: #000000; font-weight: bold">]</span>
+      	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #000000">h</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">get </span><span style="color: #000000">%</span> <span style="color: #000000">h</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000">values</span><span style="color: #000000; font-weight: bold">))))))</span>
+</pre></div>
+
+
+<pre><code class="language-bash">$ java -cp ~/clojure-1.8.0.jar:. clojure.main -m tutorial.got character-deaths.csv
+Name (Addam Marbrand Aegon Frey (Jinglebell) Aegon Targaryen Adrack Humble Aemon Costayne Aemon Estermont Aemon Targaryen (son of Maekar I) Aenys Frey Aeron Greyjoy Aethan Aggar Aggo Alan of Rosby Alayaya Albar Royce Albett Alebelly Alerie Hightower Alesander Staedmon Alester Florent Alia of Braavos Alla Tyrell Allard Seaworth Alliser Thorne Alyn Alyn Ambrose Alyn Estermont Alyn Stackspear Alys Karstark Alysane Mormont Alyx Frey Ambrode Amory Lorch Andar Royce Andrew Estermont Andrey Dalt Andrik Anguy Antario Jast Anvil Ryn Anya Waynwood Archibald Yronwood Ardrian Celtigar Areo Hotah Arianne Martell Arneld Arnolf Karstark Aron Santagar Arron Arron Qorgyle Arryk (Guard) Arson Arthor Karstark Arwyn Frey Arwyn Oakheart Arya Stark Arys O
+...
+</code></pre>
+
+<p>Now we just need to wrap that <code>map</code> function with a <code>set</code> to return only unique values!</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">ns </span><span style="color: #000000">tutorial.got</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000">clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">clojure.string</span> <span style="color: #4e9a06">:only</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span><span style="color: #000000; font-weight: bold">)]))</span>
+    
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">defn </span><span style="color: #000000">-main</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">]</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">)]</span>
+    <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">ls</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">line-seq </span><span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">headers</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">first </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">values</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">zipmap </span><span style="color: #000000">headers</span> <span style="color: #000000">%</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000">%</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">rest </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)))]</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">doseq </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">h</span> <span style="color: #000000">headers</span><span style="color: #000000; font-weight: bold">]</span>
+      	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #000000">h</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">set </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">get </span><span style="color: #000000">%</span> <span style="color: #000000">h</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000">values</span><span style="color: #000000; font-weight: bold">)))))))</span>
+</pre></div>
+
+
+<pre><code class="language-bash">$ java -cp ~/clojure-1.8.0.jar:. clojure.main -m tutorial.got character-deaths.csv
+Name #{Jared Frey Gared Creighton Longbough Young Henly Mord Tristifer Botley Larra Blackmont Arwyn Oakheart Kraznys mo Nakloz Gyles Rosby Denys Mallister Alys Karstark Spotted Pate of Maidenpool Lanna (Happy Port) Watt Skinner Arwyn Frey Marwyn Hazzea Bowen Marsh Arron Mohor Ossy Myles Morton Waynwood Lady of the Leaves Qhorin Halfhand Salladhor Saan Jarman Buckwell Esgred Cotter Pyke Philip Foote Pypar Loras Tyrell Dick Crabb Bran Stark Donnel Drumm Brenett Gage Umfred Squirrel Wallen Jeor Mormont Kojja Mo Gerren Ondrew Locke Walda Rivers (daughter of Aemon) Grenn Tom of Sevenstreams Hake Davos Seaworth Maril
+...
+...too many names...
+...
+Allegiances #{House Tyrell Arryn Wildling Tully House Arryn House Baratheon Martell Baratheon House Tully House Martell None Tyrell House Greyjoy Lannister House Lannister House Targaryen House Stark Stark Targaryen Greyjoy Night's Watch}
+Death Year #{ 300 299 297 298}
+Book of Death #{ 3 4 5 1 2}
+Death Chapter #{ 58 9 3 51 50 34 69 49 26 4 60 14 59 61 57 68 30 21 80 33 20 67 47 19 17 25 73 42 7 66 44 48 53 18 36 12 27 62 75 24 76 35 6 38 70 77 39 1 63 0 43 74 37 46 11 45 56 32 55 2 72 16 41 10 65 40 31 64 23 52 29}
+Book Intro Chapter #{ 58 9 3 51 50 34 69 49 22 26 4 8 28 60 14 59 61 57 68 30 21 80 33 20 67 47 19 17 25 73 78 15 42 7 66 44 5 48 53 18 36 12 13 27 62 75 24 35 6 38 70 39 1 63 0 43 74 37 46 11 45 56 32 55 2 72 54 16 41 10 65 40 31 71 64 23 52 79 29}
+Gender #{1 0}
+Nobility #{1 0}
+GoT #{1 0}
+CoK #{1 0}
+SoS #{1 0}
+FfC #{1 0}
+DwD #{1 0}
+</code></pre>
+
+<p>Now we can apply a count to the sets!</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">ns </span><span style="color: #000000">tutorial.got</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000">clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">clojure.string</span> <span style="color: #4e9a06">:only</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span><span style="color: #000000; font-weight: bold">)]))</span>
+    
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">defn </span><span style="color: #000000">-main</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">]</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">)]</span>
+    <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">ls</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">line-seq </span><span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">headers</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">first </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">values</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">zipmap </span><span style="color: #000000">headers</span> <span style="color: #000000">%</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000">%</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">rest </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)))]</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">doseq </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">h</span> <span style="color: #000000">headers</span><span style="color: #000000; font-weight: bold">]</span>
+      	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #000000">h</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">count </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">set </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">get </span><span style="color: #000000">%</span> <span style="color: #000000">h</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000">values</span><span style="color: #000000; font-weight: bold">))))))))</span>
+</pre></div>
+
+
+<pre><code class="language-bash">$ java -cp ~/clojure-1.8.0.jar:. clojure.main -m tutorial.got character-deaths.csv
+Name 916
+Allegiances 21
+Death Year 5
+Book of Death 6
+Death Chapter 72
+Book Intro Chapter 80
+Gender 2
+Nobility 2
+GoT 2
+CoK 2
+SoS 2
+FfC 2
+DwD 2
+
+</code></pre>
+
+<h2 id="applying-more-statistics">Applying More Statistics</h2>
+
+<p>What if I want to apply more than just <code>count</code> to the set of mapped values? I could make a let statement within the body of the <code>doseq</code> for the set, but turns out, there is a <code>:let</code> keyword that we can apply to the arguments of the <code>doseq</code>!</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">ns </span><span style="color: #000000">tutorial.got</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000">clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">clojure.string</span> <span style="color: #4e9a06">:only</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span><span style="color: #000000; font-weight: bold">)]))</span>
+    
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">defn </span><span style="color: #000000">-main</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">]</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">)]</span>
+    <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">ls</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">line-seq </span><span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">headers</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">first </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">values</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">zipmap </span><span style="color: #000000">headers</span> <span style="color: #000000">%</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000">%</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">rest </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)))]</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">doseq </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">h</span> <span style="color: #000000">headers</span>
+      	      <span style="color: #4e9a06">:let</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">value_sets</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">set </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">get </span><span style="color: #000000">%</span> <span style="color: #000000">h</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000">values</span><span style="color: #000000; font-weight: bold">))]]</span>
+      	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #000000">h</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">count </span><span style="color: #000000">value_sets</span><span style="color: #000000; font-weight: bold">))))))</span>
+</pre></div>
+
+
+<pre><code class="language-bash">$ java -cp ~/clojure-1.8.0.jar:. clojure.main -m tutorial.got character-deaths.csv
+Name 916
+Allegiances 21
+Death Year 5
+Book of Death 6
+Death Chapter 72
+Book Intro Chapter 80
+Gender 2
+Nobility 2
+GoT 2
+CoK 2
+SoS 2
+FfC 2
+DwD 2
+</code></pre>
+
+<p>Nothing has changed, but now we are ready to apply more functions! Let&rsquo;s try finding the <code>min</code> of each set!</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">ns </span><span style="color: #000000">tutorial.got</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000">clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">clojure.string</span> <span style="color: #4e9a06">:only</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span><span style="color: #000000; font-weight: bold">)]))</span>
+    
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">defn </span><span style="color: #000000">-main</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">]</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">)]</span>
+    <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">ls</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">line-seq </span><span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">headers</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">first </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">values</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">zipmap </span><span style="color: #000000">headers</span> <span style="color: #000000">%</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000">%</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">rest </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)))]</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">doseq </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">h</span> <span style="color: #000000">headers</span>
+      	      <span style="color: #4e9a06">:let</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">value_sets</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">set </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">get </span><span style="color: #000000">%</span> <span style="color: #000000">h</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000">values</span><span style="color: #000000; font-weight: bold">))]]</span>
+      	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #000000">h</span> <span style="color: #4e9a06">&quot;- count:&quot;</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">count </span><span style="color: #000000">value_sets</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #4e9a06">&quot;- min:&quot;</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">min </span><span style="color: #000000">value_sets</span><span style="color: #000000; font-weight: bold">))))))</span>
+</pre></div>
+
+
+<pre><code class="language-bash">$ java -cp ~/clojure-1.8.0.jar:. clojure.main -m tutorial.got character-deaths.csv
+Name - count: 916 - min: #{Jared Frey Gared Creighton Longbough Young Henly Mord Tristifer Botley Larra Blackmont Arwyn Oakheart Kraznys mo Nakloz Gyles Rosby Denys Mallister Alys Karstark Spotted Pate of Maidenpool Lanna (Happy Port) Watt Skinner Arwyn Frey Marwyn Hazzea Bowen Marsh Arron Mohor Ossy Myles Morton Waynwood Lady of the Leaves Qhorin Halfhand Salladhor Saan Jarman Buckwell Esgred Cotter Pyke Philip Foote Pypar Loras Tyrell Dick Crabb Bran Stark Donnel Drumm Brenett Gage Umfred Squirrel Wallen Jeor Mormont Kojja Mo Gerren Ondrew Locke Walda Rivers (daughter of Aemon) Grenn Tom of Sevenstreams Hake Davos Seaworth Marillion Wat (orphan) Dale Seaworth Leo Lefford Patrek of King's Mountain Hosteen Frey Wayn (guard) Godwyn Horas Redwyne Syrio Forel Lewys Lydden Qyburn Jonos Bracken Lyonel Amory Lorch Nute Sylva Santagar Falia Flowers Ghael Mordane Leo Tyrell Eldred Codd William Mooton Garth Greyfeather Forley Prester Ellaria Sand Tim Tangletongue Josua Willum Ravella Swann Andrey Dalt Osmund Kettleblack Ottyn Wythers Dagmer Orphan Oss Ryger Rivers Rodrik Ry
+...
+</code></pre>
+
+<p>What just happened? Let&rsquo;s take a closer look at the <code>min</code> function <a href="https://clojuredocs.org/clojure.core/min">documentation</a>. The documentation describes the form as <code>(min x)</code>, <code>(min x y)</code>, <code>(min x y &amp; more)</code>, which means we have the write the arguments out, not hand it a collection! We are able to apply the <code>min</code> function along the elements of a collection if we use the <code>apply</code> function though!</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">ns </span><span style="color: #000000">tutorial.got</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000">clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">clojure.string</span> <span style="color: #4e9a06">:only</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span><span style="color: #000000; font-weight: bold">)]))</span>
+    
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">defn </span><span style="color: #000000">-main</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">]</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">)]</span>
+    <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">ls</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">line-seq </span><span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">headers</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">first </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">values</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">zipmap </span><span style="color: #000000">headers</span> <span style="color: #000000">%</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000">%</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">rest </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)))]</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">doseq </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">h</span> <span style="color: #000000">headers</span>
+      	      <span style="color: #4e9a06">:let</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">value_sets</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">set </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">get </span><span style="color: #000000">%</span> <span style="color: #000000">h</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000">values</span><span style="color: #000000; font-weight: bold">))]]</span>
+      	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #000000">h</span> <span style="color: #4e9a06">&quot;- count:&quot;</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">count </span><span style="color: #000000">value_sets</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #4e9a06">&quot;- min:&quot;</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">apply min </span><span style="color: #000000">value_sets</span><span style="color: #000000; font-weight: bold">))))))</span>
+</pre></div>
+
+
+<pre><code class="language-bash">l$ java -cp ~/clojure-1.8.0.jar:. clojure.main -m tutorial.got character-deaths.csv
+Exception in thread &quot;main&quot; java.lang.ClassCastException: java.lang.String cannot be cast to java.lang.Number
+	at clojure.lang.Numbers.lt(Numbers.java:221)
+	at clojure.lang.Numbers.min(Numbers.java:4124)
+	at clojure.core$min.invokeStatic(core.clj:1114)
+	at clojure.core$min.doInvoke(core.clj:1106)
+	at clojure.lang.RestFn.applyTo(RestFn.java:142)
+	at clojure.core$apply.invokeStatic(core.clj:646)
+	at clojure.core$apply.invoke(core.clj:641)
+</code></pre>
+
+<p>Oh the struggle is real now. Alright, we only want to apply the <code>min</code> function <em>if</em> the contents of the set are a number then!</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">ns </span><span style="color: #000000">tutorial.got</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000">clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">clojure.string</span> <span style="color: #4e9a06">:only</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span><span style="color: #000000; font-weight: bold">)]))</span>
+    
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">defn </span><span style="color: #000000">-main</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">]</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">)]</span>
+    <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">ls</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">line-seq </span><span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">headers</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">first </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">values</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">zipmap </span><span style="color: #000000">headers</span> <span style="color: #000000">%</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000">%</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">rest </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)))]</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">doseq </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">h</span> <span style="color: #000000">headers</span>
+      	      <span style="color: #4e9a06">:let</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">value_sets</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">set </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">get </span><span style="color: #000000">%</span> <span style="color: #000000">h</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000">values</span><span style="color: #000000; font-weight: bold">))]]</span>
+      	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #000000">h</span> 
+      		     <span style="color: #4e9a06">&quot;- count:&quot;</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">count </span><span style="color: #000000">value_sets</span><span style="color: #000000; font-weight: bold">)</span> 
+      		     <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">if </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">= </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">type</span> <span style="color: #0000cf; font-weight: bold">1</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">type</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">first </span><span style="color: #000000">value_sets</span><span style="color: #000000; font-weight: bold">)))</span>
+      		     	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">str </span><span style="color: #4e9a06">&quot;- min:&quot;</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">apply min </span><span style="color: #000000">value_sets</span><span style="color: #000000; font-weight: bold">))))))))</span>
+</pre></div>
+
+
+<pre><code class="language-bash">$ java -cp ~/clojure-1.8.0.jar:. clojure.main -m tutorial.got character-deaths.csv
+Name - count: 916 nil
+Allegiances - count: 21 nil
+Death Year - count: 5 nil
+Book of Death - count: 6 nil
+Death Chapter - count: 72 nil
+Book Intro Chapter - count: 80 nil
+Gender - count: 2 nil
+Nobility - count: 2 nil
+GoT - count: 2 nil
+CoK - count: 2 nil
+SoS - count: 2 nil
+FfC - count: 2 nil
+DwD - count: 2 nil
+</code></pre>
+
+<p>Apparently everything is considered a string, which makes sense seeing as how I never told the script to see the contents of the csv file as anything other than a string! Time to cast things! First I&rsquo;m going to see if the first item in the set contains digits, and if it does then I will parse it as an integer.</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">ns </span><span style="color: #000000">tutorial.got</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000">clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">clojure.string</span> <span style="color: #4e9a06">:only</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span><span style="color: #000000; font-weight: bold">)]))</span>
+    
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">defn </span><span style="color: #000000">-main</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">]</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">)]</span>
+    <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">ls</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">line-seq </span><span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">headers</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">first </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">values</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">zipmap </span><span style="color: #000000">headers</span> <span style="color: #000000">%</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000">%</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">rest </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)))]</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">doseq </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">h</span> <span style="color: #000000">headers</span>
+      	      <span style="color: #4e9a06">:let</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">value_sets</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">set </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">get </span><span style="color: #000000">%</span> <span style="color: #000000">h</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000">values</span><span style="color: #000000; font-weight: bold">))]]</span>
+      	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #000000">h</span> 
+      		     <span style="color: #4e9a06">&quot;- count:&quot;</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">count </span><span style="color: #000000">value_sets</span><span style="color: #000000; font-weight: bold">)</span> 
+      		     <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">if </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">= </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">type</span> <span style="color: #0000cf; font-weight: bold">1</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">type</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">first </span><span style="color: #000000">value_sets</span><span style="color: #000000; font-weight: bold">)))</span>
+      		     	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">str </span><span style="color: #4e9a06">&quot;- min:&quot;</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">apply min </span><span style="color: #000000">value_sets</span><span style="color: #000000; font-weight: bold">))))))))</span>
+</pre></div>
+
+
+<pre><code class="language-bash">$ java -cp ~/clojure-1.8.0.jar:. clojure.main -m tutorial.got character-deaths.csv
+Name - count: 916 nil
+Allegiances - count: 21 nil
+Death Year - count: 5 nil
+Book of Death - count: 6 nil
+Death Chapter - count: 72 nil
+Book Intro Chapter - count: 80 nil
+Gender - count: 2 - min:0
+Nobility - count: 2 - min:0
+GoT - count: 2 - min:0
+CoK - count: 2 - min:0
+SoS - count: 2 - min:0
+FfC - count: 2 - min:0
+DwD - count: 2 - min:0
+</code></pre>
+
+<p>Are you frustrated? I sure am! At this point in my lesson planning I actually go into the data and see that the only two columns that contain strings are the first two: Name and Alliances. Now my plan is to check to see if the header is either of those two, and if it isn&rsquo;t, then I am going to parse everything as an integer.</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">ns </span><span style="color: #000000">tutorial.got</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000">clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">clojure.string</span> <span style="color: #4e9a06">:only</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span><span style="color: #000000; font-weight: bold">)]))</span>
+    
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">defn </span><span style="color: #000000">-main</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">]</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">)]</span>
+    <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">ls</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">line-seq </span><span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">headers</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">first </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">values</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">zipmap </span><span style="color: #000000">headers</span> <span style="color: #000000">%</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000">%</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">rest </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)))]</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">doseq </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">h</span> <span style="color: #000000">headers</span>
+      	      <span style="color: #4e9a06">:let</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">value_sets</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">set </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">get </span><span style="color: #000000">%</span> <span style="color: #000000">h</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000">values</span><span style="color: #000000; font-weight: bold">))]]</span>
+      	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #000000">h</span> 
+      		     <span style="color: #4e9a06">&quot;- count:&quot;</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">count </span><span style="color: #000000">value_sets</span><span style="color: #000000; font-weight: bold">)</span> 
+      		     <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">if-not </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">or </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">= </span><span style="color: #000000">h</span> <span style="color: #4e9a06">&quot;Name&quot;</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">= </span><span style="color: #000000">h</span> <span style="color: #4e9a06">&quot;Allegiances&quot;</span><span style="color: #000000; font-weight: bold">))</span>
+      		     	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">str </span><span style="color: #4e9a06">&quot;- min:&quot;</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">apply min </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">Integer/parseInt</span> <span style="color: #000000">%</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000">value_sets</span><span style="color: #000000; font-weight: bold">)))))))))</span>
+</pre></div>
+
+
+<pre><code class="language-bash">$ java -cp ~/clojure-1.8.0.jar:. clojure.main -m tutorial.got character-deaths.csv
+Name - count: 916 nil
+Allegiances - count: 21 nil
+Exception in thread &quot;main&quot; java.lang.NumberFormatException: For input string: &quot;&quot;
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:592)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at tutorial.got$_main$fn__25.invoke(got.clj:15)
+	at clojure.core$map$fn__4785.invoke(core.clj:2646)
+	at clojure.lang.LazySeq.sval(LazySeq.java:40)
+	at clojure.lang.LazySeq.seq(LazySeq.java:49)
+</code></pre>
+
+<p>Come on! Really? At least I know what&rsquo;s going on. The <code>parseInt</code> is struggling with the empty string, so we need to filter them out of the <code>value-set</code> before we parse the values as integers.</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">ns </span><span style="color: #000000">tutorial.got</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000">clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">clojure.string</span> <span style="color: #4e9a06">:only</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span><span style="color: #000000; font-weight: bold">)]))</span>
+    
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">defn </span><span style="color: #000000">-main</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">]</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">)]</span>
+    <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">ls</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">line-seq </span><span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">headers</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">first </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">values</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">zipmap </span><span style="color: #000000">headers</span> <span style="color: #000000">%</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000">%</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">rest </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)))]</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">doseq </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">h</span> <span style="color: #000000">headers</span>
+      	      <span style="color: #4e9a06">:let</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">value_sets</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">set </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">get </span><span style="color: #000000">%</span> <span style="color: #000000">h</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000">values</span><span style="color: #000000; font-weight: bold">))]]</span>
+      	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #000000">h</span> 
+      		     <span style="color: #4e9a06">&quot;- count:&quot;</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">count </span><span style="color: #000000">value_sets</span><span style="color: #000000; font-weight: bold">)</span> 
+      		     <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">if-not </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">or </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">= </span><span style="color: #000000">h</span> <span style="color: #4e9a06">&quot;Name&quot;</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">= </span><span style="color: #000000">h</span> <span style="color: #4e9a06">&quot;Allegiances&quot;</span><span style="color: #000000; font-weight: bold">))</span>
+      		     	<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">str </span><span style="color: #4e9a06">&quot;- min:&quot;</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">apply min </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">Integer/parseInt</span> <span style="color: #000000">%</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">filter </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">&gt; </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">count </span><span style="color: #000000">%</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #0000cf; font-weight: bold">0</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000">value_sets</span><span style="color: #000000; font-weight: bold">))))))))))</span>
+</pre></div>
+
+
+<pre><code class="language-bash">$ java -cp ~/clojure-1.8.0.jar:. clojure.main -m tutorial.got character-deaths.csv
+Name - count: 916 nil
+Allegiances - count: 21 nil
+Death Year - count: 5 - min:297
+Book of Death - count: 6 - min:1
+Death Chapter - count: 72 - min:0
+Book Intro Chapter - count: 80 - min:0
+Gender - count: 2 - min:0
+Nobility - count: 2 - min:0
+GoT - count: 2 - min:0
+CoK - count: 2 - min:0
+SoS - count: 2 - min:0
+FfC - count: 2 - min:0
+DwD - count: 2 - min:0
+
+</code></pre>
+
+<p>Victory! Now let&rsquo;s print out the max! I&rsquo;m going to do a little restructuring because I want to <code>apply</code> <code>max</code> and <code>min</code> to the same filtered collection of integers, so I am going to create a symbol for it in a <code>let</code>.</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">ns </span><span style="color: #000000">tutorial.got</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000">clojure.java.io</span><span style="color: #000000; font-weight: bold">)</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">use</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">clojure.string</span> <span style="color: #4e9a06">:only</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span><span style="color: #000000; font-weight: bold">)]))</span>
+    
+<span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">defn </span><span style="color: #000000">-main</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">]</span>
+  <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">with-open </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">r</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">reader</span> <span style="color: #000000">filename</span><span style="color: #000000; font-weight: bold">)]</span>
+    <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">ls</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">line-seq </span><span style="color: #000000">r</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">headers</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">first </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span>
+          <span style="color: #000000">values</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">zipmap </span><span style="color: #000000">headers</span> <span style="color: #000000">%</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">split</span> <span style="color: #000000">%</span> <span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #4e9a06">&quot;,&quot;</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">rest </span><span style="color: #000000">ls</span><span style="color: #000000; font-weight: bold">)))]</span>
+      <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">doseq </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">h</span> <span style="color: #000000">headers</span>
+              <span style="color: #4e9a06">:let</span> <span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">value_sets</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">set </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">get </span><span style="color: #000000">%</span> <span style="color: #000000">h</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000">values</span><span style="color: #000000; font-weight: bold">))]]</span>
+        <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">println </span><span style="color: #000000">h</span> 
+                 <span style="color: #4e9a06">&quot;- count:&quot;</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">count </span><span style="color: #000000">value_sets</span><span style="color: #000000; font-weight: bold">)</span> 
+                 <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">if-not </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">or </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">= </span><span style="color: #000000">h</span> <span style="color: #4e9a06">&quot;Name&quot;</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">= </span><span style="color: #000000">h</span> <span style="color: #4e9a06">&quot;Allegiances&quot;</span><span style="color: #000000; font-weight: bold">))</span>
+                   <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87; font-weight: bold">let </span><span style="color: #000000; font-weight: bold">[</span><span style="color: #000000">int_values</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">map </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">Integer/parseInt</span> <span style="color: #000000">%</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">filter </span><span style="color: #ce5c00; font-weight: bold">#</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">&gt; </span><span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">count </span><span style="color: #000000">%</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #0000cf; font-weight: bold">0</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000">value_sets</span><span style="color: #000000; font-weight: bold">))]</span>
+                     <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">str </span><span style="color: #4e9a06">&quot;- min:&quot;</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">apply min </span><span style="color: #000000">int_values</span><span style="color: #000000; font-weight: bold">)</span>
+                          <span style="color: #4e9a06">&quot;- max:&quot;</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #204a87">apply max </span><span style="color: #000000">int_values</span><span style="color: #000000; font-weight: bold">)))))))))</span>
+</pre></div>
+
+
+<pre><code class="language-bash">$ java -cp ~/clojure-1.8.0.jar:. clojure.main -m tutorial.got character-deaths.csv
+Name - count: 916 nil
+Allegiances - count: 21 nil
+Death Year - count: 5 - min:297- max:300
+Book of Death - count: 6 - min:1- max:5
+Death Chapter - count: 72 - min:0- max:80
+Book Intro Chapter - count: 80 - min:0- max:80
+Gender - count: 2 - min:0- max:1
+Nobility - count: 2 - min:0- max:1
+GoT - count: 2 - min:0- max:1
+CoK - count: 2 - min:0- max:1
+SoS - count: 2 - min:0- max:1
+FfC - count: 2 - min:0- max:1
+DwD - count: 2 - min:0- max:1
+
+</code></pre>
+
+                        </div>
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'adele-hedrick-csci-3055u';
+    var disqus_identifier = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/10\/15\/clojure-got-tutorial\/';
+    var disqus_title = 'Exploring Game of Thrones Dataset with Clojure';
+    var disqus_url = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/10\/15\/clojure-got-tutorial\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+        <h3 class="panel-title">Search</h3>
+    </div>
+
+    <div class="panel-body">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" role="search">
+            <div class="input-group">
+                <input type="search" name="q" results="0" class="form-control" placeholder="Search">
+                <input type="hidden" name="q" value="site:https://adelehedrick.github.io/Fall-2016-CSCI-3055U/">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+        <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/categories/bonus">bonus (1)</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/categories/clojure">clojure (10)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/aliases"><i class="fa fa-tags"></i> aliases</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/bash"><i class="fa fa-tags"></i> bash</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/classes"><i class="fa fa-tags"></i> classes</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/clojure"><i class="fa fa-tags"></i> clojure</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/gedit"><i class="fa fa-tags"></i> gedit</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/if-statement"><i class="fa fa-tags"></i> if-statement</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/input"><i class="fa fa-tags"></i> input</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/java"><i class="fa fa-tags"></i> java</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/leiningen"><i class="fa fa-tags"></i> leiningen</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/let"><i class="fa fa-tags"></i> let</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/loop"><i class="fa fa-tags"></i> loop</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/recur"><i class="fa fa-tags"></i> recur</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/set-up"><i class="fa fa-tags"></i> set-up</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/split"><i class="fa fa-tags"></i> split</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/string"><i class="fa fa-tags"></i> string</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/syntax-highlighting"><i class="fa fa-tags"></i> syntax-highlighting</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>About Me</h4>
+
+            <p>I'm a very enthusiastic programmer, happy to be a graduate student at UOIT.</p>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+            <h4>Recent posts</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/10/15/clojure-got-tutorial/">
+                          
+                            <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/banners/setting-up-clojure.jpg" class="img-responsive" alt="">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/10/15/clojure-got-tutorial/">Exploring Game of Thrones Dataset with Clojure</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/24/clojure-gedit-syntax-highlighting/">
+                          
+                            <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/banners/setting-up-clojure.jpg" class="img-responsive" alt="">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/24/clojure-gedit-syntax-highlighting/">Syntax Highlighting for Clojure in gedit</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/command-line-arguments-clojure/">
+                          
+                            <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/banners/setting-up-clojure.jpg" class="img-responsive" alt="">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/22/command-line-arguments-clojure/">Basics of Command Line Arguments in Clojure</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+
+        </div>
+        
+
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2016, Adele Hedrick; all rights reserved.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<script src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/js/jquery.cookie.js"></script>
+<script src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/js/waypoints.min.js"></script>
+<script src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/js/jquery.counterup.min.js"></script>
+<script src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/js/jquery.parallax-1.1.3.js"></script>
+<script src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/js/front.js"></script>
+
+
+<script src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>
