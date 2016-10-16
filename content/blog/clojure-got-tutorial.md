@@ -19,7 +19,7 @@ This post is also assuming that you are running Ubuntu or some other Linux flavo
 
 The data set we are going to be using is the Game of Thrones dataset on Kaggle, so you will need to make an account so you can [download the zip](https://www.kaggle.com/mylesoneill/game-of-thrones).
 
-## Setup Hello World
+## Setup Hello Realm
 
 You need to define a namespace, which is the same as the file path and name of this file in reference to where it will be executed from. Since we are just going to execute it in the current directory, we just need to define the namespace as the file name, without the extension.
 
