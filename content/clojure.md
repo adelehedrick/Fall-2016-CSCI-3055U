@@ -28,10 +28,6 @@ Let me help you through the wonderful world of the Lisp like language *Clojure* 
 
     How to split a string on a character.
     
- 6. [Breaking Problems Down, Then Building Them Up in Clojure]({{< ref "blog/break-down-build-up-clojure.md" >}})
- 
-    Adele's thought process when breaking down a problem, then building it up in Clojure.
-    
     
 ## Bonus
 
