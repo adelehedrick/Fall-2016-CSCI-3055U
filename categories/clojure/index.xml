@@ -25,7 +25,7 @@
 
 &lt;p&gt;The data set we are going to be using is the Game of Thrones dataset on Kaggle, so you will need to make an account so you can &lt;a href=&#34;https://www.kaggle.com/mylesoneill/game-of-thrones&#34;&gt;download the zip&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;setup-hello-world&#34;&gt;Setup Hello World&lt;/h2&gt;
+&lt;h2 id=&#34;setup-hello-realm&#34;&gt;Setup Hello Realm&lt;/h2&gt;
 
 &lt;p&gt;You need to define a namespace, which is the same as the file path and name of this file in reference to where it will be executed from. Since we are just going to execute it in the current directory, we just need to define the namespace as the file name, without the extension.&lt;/p&gt;
 
