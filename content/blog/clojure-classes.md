@@ -63,7 +63,7 @@ You may now save and close this file.
 
 In terminal:
 ```bash
-rlwrap java -cp ~/clojure-1.8.0.jar clojure.main
+rlwrap java -cp ~/clojure-1.8.0.jar:. clojure.main
 ```
 Notice the `~/` which points to the home folder no matter what directory you are currently in!
 
