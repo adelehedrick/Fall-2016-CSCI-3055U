@@ -948,7 +948,7 @@ sudo update-mime-database mime
 
 &lt;p&gt;In terminal:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rlwrap java -cp ~/clojure-1.8.0.jar clojure.main
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rlwrap java -cp ~/clojure-1.8.0.jar:. clojure.main
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Notice the &lt;code&gt;~/&lt;/code&gt; which points to the home folder no matter what directory you are currently in!&lt;/p&gt;
