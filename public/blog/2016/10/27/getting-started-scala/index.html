@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Getting Started with Scala</title>
+
+  <meta name="author" content="" />
+  <meta name="keywords" content="">
+
+  
+
+  <meta name="generator" content="Hugo 0.16" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+  
+  <link href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/css/animate.css" rel="stylesheet">
+
+  
+  <link href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+
+  
+  <link href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/css/custom.css" rel="stylesheet">
+
+  
+    
+
+  
+  <link rel="shortcut icon" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/apple-touch-icon.png" />
+  
+
+  <link href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/css/owl.carousel.css" rel="stylesheet">
+  <link href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://adelehedrick.github.io/index.xml" type="application/rss+xml" title="Programming Languages">
+
+  
+  <meta property="og:title" content="Getting Started with Scala" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/" />
+  <meta property="og:image" content="img/logo.png" />
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/">
+                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo.png" alt="Getting Started with Scala logo" class="hidden-xs hidden-sm">
+                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo-small.png" alt="Getting Started with Scala logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Getting Started with Scala - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li class="dropdown">
+                        <a href="../../../../../">Home</a>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="../../../../../clojure/">Clojure</a>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="../../../../../scala/">Scala</a>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="../../../../../blog/">Blog</a>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="../../../../../contact/">Contact</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Getting Started with Scala</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">October 27, 2016</p>
+
+                        <div id="post-content">
+                          
+
+<h2 id="before-we-begin">Before We Begin</h2>
+
+<p>This guide will be for setting up your environment in a Linux OS, I&rsquo;m currently using Ubuntu. You will need Java version 1.8</p>
+
+<p>To check your Java version just open up a terminal and type:</p>
+
+<pre><code class="language-bash">java -version
+</code></pre>
+
+<p>Just like Clojure, Scala compiles into JVM, that is why we need Java!</p>
+
+<h2 id="get-scala-up-running">Get Scala Up &amp; Running</h2>
+
+<p>For this tutorial I used the Scala <a href="http://www.scala-lang.org/documentation/getting-started.html">Getting Started</a> instructions as a resource. If you find my tutorials have too much detail, then work from that resource, otherwise you can continue on with my tutorial.</p>
+
+<h3 id="step-1-download-scala">Step 1. Download Scala</h3>
+
+<p>You can use <code>wget</code> to download the tgz from <a href="http://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.tgz">http://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.tgz</a></p>
+
+<pre><code class="language-bash">wget http://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.tgz
+</code></pre>
+
+<h3 id="step-2-unzip-and-move">Step 2. Unzip and Move</h3>
+
+<p>Unzip the compressed file using <code>tar</code> then move and rename the folder to <em>scala</em> in the <code>/usr/local/share</code> folder.</p>
+
+<pre><code class="language-bash">tar -xvzf scala-2.11.8.tgz
+sudo mv scala-2.11.8 /usr/local/share/scala
+</code></pre>
+
+<h3 id="step-3-modify-environment-variables">Step 3. Modify Environment Variables</h3>
+
+<p>Open up your environment variables file in an editor via <code>sudo gedit /etc/environment</code> and within the PATH variable assignment, between the double quotes, add <code>:/usr/local/share/scala/bin</code></p>
+
+<pre><code class="language-bash">PATH=&quot;&lt;other stuff&gt;:/usr/local/share/scala/bin&quot;
+</code></pre>
+
+<h3 id="step-4-restart-computer">Step 4. Restart Computer</h3>
+
+<p>Restart your computer make the changes you made to the <code>environment</code> file come into effect.</p>
+
+<h3 id="step-5-test-scala-repl">Step 5. Test Scala REPL</h3>
+
+<p>In your terminal type the command <code>scala</code> and you should then see a <code>scala&gt;</code> prompt. At this point you can test a simple &lsquo;hello world&rsquo; by typing <code>println(&quot;Hello World&quot;)</code> which should then print out the response to the console.</p>
+
+<p>To exit the REPL use the command <code>:q</code>.</p>
+
+<h3 id="step-6-compile-scala">Step 6. Compile Scala</h3>
+
+<p>Create a <code>hello.scala</code> file with the following <em>hello world</em> contents:</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #204a87; font-weight: bold">object</span> <span style="color: #000000">HelloWorld</span> <span style="color: #ce5c00; font-weight: bold">{</span>
+  <span style="color: #204a87; font-weight: bold">def</span> <span style="color: #000000">main</span><span style="color: #ce5c00; font-weight: bold">(</span><span style="color: #000000">args</span><span style="color: #204a87; font-weight: bold">:</span> <span style="color: #204a87; font-weight: bold">Array</span><span style="color: #ce5c00; font-weight: bold">[</span><span style="color: #204a87; font-weight: bold">String</span><span style="color: #ce5c00; font-weight: bold">])</span><span style="color: #204a87; font-weight: bold">:</span> <span style="color: #204a87; font-weight: bold">Unit</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #ce5c00; font-weight: bold">{</span>
+    <span style="color: #000000">println</span><span style="color: #ce5c00; font-weight: bold">(</span><span style="color: #4e9a06">&quot;Hello, world!&quot;</span><span style="color: #ce5c00; font-weight: bold">)</span>
+  <span style="color: #ce5c00; font-weight: bold">}</span>
+<span style="color: #ce5c00; font-weight: bold">}</span>
+</pre></div>
+
+
+<p>Open up a terminal at the location of your Scala file and use the Scala compiler to compile the class.</p>
+
+<pre><code class="language-bash">scalac hello.scala
+</code></pre>
+
+<p>Now if you type <code>ls</code> to list the files in the current folder, you will find <code>HelloWorld.class</code> and <code>HelloWorld$.class</code>. To run your new Scala class, execute:</p>
+
+<pre><code class="language-bash">scala HelloWorld
+</code></pre>
+
+                        </div>
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'adele-hedrick-csci-3055u';
+    var disqus_identifier = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/10\/27\/getting-started-scala\/';
+    var disqus_title = 'Getting Started with Scala';
+    var disqus_url = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/10\/27\/getting-started-scala\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+        <h3 class="panel-title">Search</h3>
+    </div>
+
+    <div class="panel-body">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" role="search">
+            <div class="input-group">
+                <input type="search" name="q" results="0" class="form-control" placeholder="Search">
+                <input type="hidden" name="q" value="site:https://adelehedrick.github.io/Fall-2016-CSCI-3055U/">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+        <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/categories/bonus">bonus (1)</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/categories/clojure">clojure (10)</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/categories/scala">scala (1)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/aliases"><i class="fa fa-tags"></i> aliases</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/bash"><i class="fa fa-tags"></i> bash</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/classes"><i class="fa fa-tags"></i> classes</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/clojure"><i class="fa fa-tags"></i> clojure</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/gedit"><i class="fa fa-tags"></i> gedit</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/if-statement"><i class="fa fa-tags"></i> if-statement</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/input"><i class="fa fa-tags"></i> input</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/java"><i class="fa fa-tags"></i> java</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/leiningen"><i class="fa fa-tags"></i> leiningen</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/let"><i class="fa fa-tags"></i> let</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/loop"><i class="fa fa-tags"></i> loop</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/recur"><i class="fa fa-tags"></i> recur</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/scala"><i class="fa fa-tags"></i> scala</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/set-up"><i class="fa fa-tags"></i> set-up</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/split"><i class="fa fa-tags"></i> split</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/string"><i class="fa fa-tags"></i> string</a>
+            </li>
+            
+            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/syntax-highlighting"><i class="fa fa-tags"></i> syntax-highlighting</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>About Me</h4>
+
+            <p>I'm a very enthusiastic programmer, happy to be a graduate student at UOIT.</p>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+            <h4>Recent posts</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/10/27/getting-started-scala/">
+                          
+                            <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/banners/setting-up-scala.jpg" class="img-responsive" alt="">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/10/27/getting-started-scala/">Getting Started with Scala</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/10/15/clojure-got-tutorial/">
+                          
+                            <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/banners/setting-up-clojure.jpg" class="img-responsive" alt="">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/10/15/clojure-got-tutorial/">Exploring Game of Thrones Dataset with Clojure</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/24/clojure-gedit-syntax-highlighting/">
+                          
+                            <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/banners/setting-up-clojure.jpg" class="img-responsive" alt="">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/24/clojure-gedit-syntax-highlighting/">Syntax Highlighting for Clojure in gedit</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+
+        </div>
+        
+
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2016, Adele Hedrick; all rights reserved.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<script src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/js/jquery.cookie.js"></script>
+<script src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/js/waypoints.min.js"></script>
+<script src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/js/jquery.counterup.min.js"></script>
+<script src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/js/jquery.parallax-1.1.3.js"></script>
+<script src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/js/front.js"></script>
+
+
+<script src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>

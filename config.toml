@@ -37,9 +37,14 @@ paginate = 10
     weight = 2
 
 [[params.menu]]
+    name = "Scala"
+    url  = "/scala/"
+    weight = 3
+
+[[params.menu]]
     name = "Blog"
     url  = "/blog/"
-    weight = 3
+    weight = 4
 
 
 [[params.menu]]
