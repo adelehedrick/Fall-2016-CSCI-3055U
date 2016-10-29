@@ -7,7 +7,7 @@
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Your First Clojure REPL</title>
+  <title>Getting Started with Scala</title>
 
   <meta name="author" content="" />
   <meta name="keywords" content="">
@@ -45,7 +45,7 @@
   <link rel="alternate" href="https://adelehedrick.github.io/index.xml" type="application/rss+xml" title="Programming Languages">
 
   
-  <meta property="og:title" content="Your First Clojure REPL" />
+  <meta property="og:title" content="Getting Started with Scala" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/" />
   <meta property="og:image" content="img/logo.png" />
@@ -66,9 +66,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/">
-                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo.png" alt="Your First Clojure REPL logo" class="hidden-xs hidden-sm">
-                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo-small.png" alt="Your First Clojure REPL logo" class="visible-xs visible-sm">
-                    <span class="sr-only">Your First Clojure REPL - go to homepage</span>
+                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo.png" alt="Getting Started with Scala logo" class="hidden-xs hidden-sm">
+                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo-small.png" alt="Getting Started with Scala logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Getting Started with Scala - go to homepage</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -137,7 +137,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Your First Clojure REPL</h1>
+                <h1>Getting Started with Scala</h1>
             </div>
         </div>
     </div>
@@ -153,41 +153,79 @@
 
                     <div class="col-md-9" id="blog-post">
 
-                        <p class="text-muted text-uppercase mb-small text-right">September 19, 2016</p>
+                        <p class="text-muted text-uppercase mb-small text-right">October 27, 2016</p>
 
                         <div id="post-content">
                           
 
 <h2 id="before-we-begin">Before We Begin</h2>
 
-<p>Do you have the Clojure JAR? If not check out the <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/18/getting-started-clojure/">Setting Up Clojure</a> post</p>
+<p>This guide will be for setting up your environment in a Linux OS, I&rsquo;m currently using Ubuntu. You will need Java version 1.8</p>
 
-<h2 id="your-first-clojure-repl">Your First Clojure REPL</h2>
+<p>To check your Java version just open up a terminal and type:</p>
 
-<p>I like to think of the read-eval-print loop (REPL) as the <em>interactive programming</em> mode of a language.</p>
-
-<h3 id="step-1-find-your-clojure-jar">Step 1. Find your Clojure JAR</h3>
-
-<p>First open a terminal window and navigate to where your Clojure JAR is located.</p>
-
-<h3 id="step-2-run-the-main-method">Step 2. Run the main method!</h3>
-
-<pre><code class="language-bash">rlwrap java -cp clojure-1.8.0.jar clojure.main
+<pre><code class="language-bash">java -version
 </code></pre>
 
-<p>You will now see that you have a new prompt that looks like:</p>
+<p>Just like Clojure, Scala compiles into JVM, that is why we need Java!</p>
 
-<pre><code class="language-bash">user=&gt;
+<h2 id="get-scala-up-running">Get Scala Up &amp; Running</h2>
+
+<p>For this tutorial I used the Scala <a href="http://www.scala-lang.org/documentation/getting-started.html">Getting Started</a> instructions as a resource. If you find my tutorials have too much detail, then work from that resource, otherwise you can continue on with my tutorial.</p>
+
+<h3 id="step-1-download-scala">Step 1. Download Scala</h3>
+
+<p>You can use <code>wget</code> to download the tgz from <a href="http://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.tgz">http://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.tgz</a></p>
+
+<pre><code class="language-bash">wget http://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.tgz
 </code></pre>
 
-<p>You are now ready to get your Clojure on! When starting a new language, it is good luck to do the typical &ldquo;Hello World&rdquo;. To do this, we will use the <code>println</code> function.</p>
+<h3 id="step-2-unzip-and-move">Step 2. Unzip and Move</h3>
 
-<p>Type the following Clojure command to bring yourself lots of good luck with Clojure:</p>
+<p>Unzip the compressed file using <code>tar</code> then move and rename the folder to <em>scala</em> in the <code>/usr/local/share</code> folder.</p>
 
-<pre><code class="language-clojure">(println &quot;Hello World&quot;)
+<pre><code class="language-bash">tar -xvzf scala-2.11.8.tgz
+sudo mv scala-2.11.8 /usr/local/share/scala
 </code></pre>
 
-<p>To leave the REPL, you just need to use <code>CTRL + D</code></p>
+<h3 id="step-3-modify-environment-variables">Step 3. Modify Environment Variables</h3>
+
+<p>Open up your environment variables file in an editor via <code>sudo gedit /etc/environment</code> and within the PATH variable assignment, between the double quotes, add <code>:/usr/local/share/scala/bin</code></p>
+
+<pre><code class="language-bash">PATH=&quot;&lt;other stuff&gt;:/usr/local/share/scala/bin&quot;
+</code></pre>
+
+<h3 id="step-4-restart-computer">Step 4. Restart Computer</h3>
+
+<p>Restart your computer make the changes you made to the <code>environment</code> file come into effect.</p>
+
+<h3 id="step-5-test-scala-repl">Step 5. Test Scala REPL</h3>
+
+<p>In your terminal type the command <code>scala</code> and you should then see a <code>scala&gt;</code> prompt. At this point you can test a simple &lsquo;hello world&rsquo; by typing <code>println(&quot;Hello World&quot;)</code> which should then print out the response to the console.</p>
+
+<p>To exit the REPL use the command <code>:q</code>.</p>
+
+<h3 id="step-6-compile-scala">Step 6. Compile Scala</h3>
+
+<p>Create a <code>hello.scala</code> file with the following <em>hello world</em> contents:</p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #204a87; font-weight: bold">object</span> <span style="color: #000000">HelloWorld</span> <span style="color: #ce5c00; font-weight: bold">{</span>
+  <span style="color: #204a87; font-weight: bold">def</span> <span style="color: #000000">main</span><span style="color: #ce5c00; font-weight: bold">(</span><span style="color: #000000">args</span><span style="color: #204a87; font-weight: bold">:</span> <span style="color: #204a87; font-weight: bold">Array</span><span style="color: #ce5c00; font-weight: bold">[</span><span style="color: #204a87; font-weight: bold">String</span><span style="color: #ce5c00; font-weight: bold">])</span><span style="color: #204a87; font-weight: bold">:</span> <span style="color: #204a87; font-weight: bold">Unit</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #ce5c00; font-weight: bold">{</span>
+    <span style="color: #000000">println</span><span style="color: #ce5c00; font-weight: bold">(</span><span style="color: #4e9a06">&quot;Hello, world!&quot;</span><span style="color: #ce5c00; font-weight: bold">)</span>
+  <span style="color: #ce5c00; font-weight: bold">}</span>
+<span style="color: #ce5c00; font-weight: bold">}</span>
+</pre></div>
+
+
+<p>Open up a terminal at the location of your Scala file and use the Scala compiler to compile the class.</p>
+
+<pre><code class="language-bash">scalac hello.scala
+</code></pre>
+
+<p>Now if you type <code>ls</code> to list the files in the current folder, you will find <code>HelloWorld.class</code> and <code>HelloWorld$.class</code>. To run your new Scala class, execute:</p>
+
+<pre><code class="language-bash">scala HelloWorld
+</code></pre>
 
                         </div>
                         
@@ -196,9 +234,9 @@
                             <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'adele-hedrick-csci-3055u';
-    var disqus_identifier = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/09\/19\/first-clojure-repl\/';
-    var disqus_title = 'Your First Clojure REPL';
-    var disqus_url = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/09\/19\/first-clojure-repl\/';
+    var disqus_identifier = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/10\/27\/getting-started-scala\/';
+    var disqus_title = 'Getting Started with Scala';
+    var disqus_url = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/10\/27\/getting-started-scala\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

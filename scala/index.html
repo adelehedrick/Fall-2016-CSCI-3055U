@@ -7,7 +7,7 @@
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Your First Clojure REPL</title>
+  <title>Learn Scala</title>
 
   <meta name="author" content="" />
   <meta name="keywords" content="">
@@ -45,7 +45,7 @@
   <link rel="alternate" href="https://adelehedrick.github.io/index.xml" type="application/rss+xml" title="Programming Languages">
 
   
-  <meta property="og:title" content="Your First Clojure REPL" />
+  <meta property="og:title" content="Learn Scala" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/" />
   <meta property="og:image" content="img/logo.png" />
@@ -66,9 +66,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/">
-                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo.png" alt="Your First Clojure REPL logo" class="hidden-xs hidden-sm">
-                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo-small.png" alt="Your First Clojure REPL logo" class="visible-xs visible-sm">
-                    <span class="sr-only">Your First Clojure REPL - go to homepage</span>
+                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo.png" alt="Learn Scala logo" class="hidden-xs hidden-sm">
+                    <img src="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/img/logo-small.png" alt="Learn Scala logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Learn Scala - go to homepage</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -83,23 +83,23 @@
                 <ul class="nav navbar-nav navbar-right">
                     
                     <li class="dropdown">
-                        <a href="../../../../../">Home</a>
+                        <a href="../">Home</a>
                     </li>
                     
                     <li class="dropdown">
-                        <a href="../../../../../clojure/">Clojure</a>
+                        <a href="../clojure/">Clojure</a>
                     </li>
                     
                     <li class="dropdown">
-                        <a href="../../../../../scala/">Scala</a>
+                        <a href="../scala/">Scala</a>
                     </li>
                     
                     <li class="dropdown">
-                        <a href="../../../../../blog/">Blog</a>
+                        <a href="../blog/">Blog</a>
                     </li>
                     
                     <li class="dropdown">
-                        <a href="../../../../../contact/">Contact</a>
+                        <a href="../contact/">Contact</a>
                     </li>
                     
                 </ul>
@@ -137,7 +137,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Your First Clojure REPL</h1>
+                <h1>Learn Scala</h1>
             </div>
         </div>
     </div>
@@ -145,218 +145,46 @@
 
 
         <div id="content">
+            
+
             <div class="container">
 
                 <div class="row">
 
-                    
+                    <div class="col-md-12">
 
-                    <div class="col-md-9" id="blog-post">
-
-                        <p class="text-muted text-uppercase mb-small text-right">September 19, 2016</p>
-
-                        <div id="post-content">
+                        <div>
                           
 
-<h2 id="before-we-begin">Before We Begin</h2>
+<h2 id="tutorials">Tutorials</h2>
 
-<p>Do you have the Clojure JAR? If not check out the <a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/09/18/getting-started-clojure/">Setting Up Clojure</a> post</p>
+<p>Let me help you through the wonderful world of the Lisp like language <em>Scala</em> by providing you&ndash;in order&ndash;the blog posts dedicated to the topic.</p>
 
-<h2 id="your-first-clojure-repl">Your First Clojure REPL</h2>
+<ol>
+<li><p><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/blog/2016/10/27/getting-started-scala/">Getting Started with Scala</a></p>
 
-<p>I like to think of the read-eval-print loop (REPL) as the <em>interactive programming</em> mode of a language.</p>
+<p>How to set up your environment for Scala</p></li>
+</ol>
 
-<h3 id="step-1-find-your-clojure-jar">Step 1. Find your Clojure JAR</h3>
+<h2 id="resources">Resources</h2>
 
-<p>First open a terminal window and navigate to where your Clojure JAR is located.</p>
-
-<h3 id="step-2-run-the-main-method">Step 2. Run the main method!</h3>
-
-<pre><code class="language-bash">rlwrap java -cp clojure-1.8.0.jar clojure.main
-</code></pre>
-
-<p>You will now see that you have a new prompt that looks like:</p>
-
-<pre><code class="language-bash">user=&gt;
-</code></pre>
-
-<p>You are now ready to get your Clojure on! When starting a new language, it is good luck to do the typical &ldquo;Hello World&rdquo;. To do this, we will use the <code>println</code> function.</p>
-
-<p>Type the following Clojure command to bring yourself lots of good luck with Clojure:</p>
-
-<pre><code class="language-clojure">(println &quot;Hello World&quot;)
-</code></pre>
-
-<p>To leave the REPL, you just need to use <code>CTRL + D</code></p>
+<ul>
+<li><a href="https://www.coursera.org/learn/progfun1">Coursera: Functional Programming Principles in Scala</a></li>
+<li><a href="https://github.com/lampepfl/progfun-wiki/blob/gh-pages/CheatSheet.md">progfun Scala Cheetsheet</a></li>
+<li><a href="http://www.scala-sbt.org/0.13/docs/Getting-Started.html">Getting Started with sbt</a></li>
+<li><a href="http://www.scala-lang.org/documentation/getting-started.html">Scala: Getting Started</a></li>
+</ul>
 
                         </div>
-                        
-                        
-                        <div id="comments">
-                            <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'adele-hedrick-csci-3055u';
-    var disqus_identifier = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/09\/19\/first-clojure-repl\/';
-    var disqus_title = 'Your First Clojure REPL';
-    var disqus_url = 'https:\/\/adelehedrick.github.io\/Fall-2016-CSCI-3055U\/blog\/2016\/09\/19\/first-clojure-repl\/';
-
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-                        </div>
-                        
 
                     </div>
-                    
-
-                    
-
-                    
-
-                    <div class="col-md-3">
-
-                        
-
-                        
-
-<div class="panel panel-default sidebar-menu">
-
-    <div class="panel-heading">
-        <h3 class="panel-title">Search</h3>
-    </div>
-
-    <div class="panel-body">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" role="search">
-            <div class="input-group">
-                <input type="search" name="q" results="0" class="form-control" placeholder="Search">
-                <input type="hidden" name="q" value="site:https://adelehedrick.github.io/Fall-2016-CSCI-3055U/">
-                <span class="input-group-btn">
-                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
-                </span>
-            </div>
-        </form>
-    </div>
-</div>
-
-
-
-
-
-
-
-<div class="panel panel-default sidebar-menu">
-
-    <div class="panel-heading">
-        <h3 class="panel-title">Categories</h3>
-    </div>
-
-    <div class="panel-body">
-        <ul class="nav nav-pills nav-stacked">
-            
-            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/categories/bonus">bonus (1)</a>
-            </li>
-            
-            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/categories/clojure">clojure (10)</a>
-            </li>
-            
-            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/categories/scala">scala (1)</a>
-            </li>
-            
-        </ul>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-<div class="panel sidebar-menu">
-    <div class="panel-heading">
-        <h3 class="panel-title">Tags</h3>
-    </div>
-
-    <div class="panel-body">
-        <ul class="tag-cloud">
-            
-            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/aliases"><i class="fa fa-tags"></i> aliases</a>
-            </li>
-            
-            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/bash"><i class="fa fa-tags"></i> bash</a>
-            </li>
-            
-            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/classes"><i class="fa fa-tags"></i> classes</a>
-            </li>
-            
-            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/clojure"><i class="fa fa-tags"></i> clojure</a>
-            </li>
-            
-            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/gedit"><i class="fa fa-tags"></i> gedit</a>
-            </li>
-            
-            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/if-statement"><i class="fa fa-tags"></i> if-statement</a>
-            </li>
-            
-            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/input"><i class="fa fa-tags"></i> input</a>
-            </li>
-            
-            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/java"><i class="fa fa-tags"></i> java</a>
-            </li>
-            
-            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/leiningen"><i class="fa fa-tags"></i> leiningen</a>
-            </li>
-            
-            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/let"><i class="fa fa-tags"></i> let</a>
-            </li>
-            
-            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/loop"><i class="fa fa-tags"></i> loop</a>
-            </li>
-            
-            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/recur"><i class="fa fa-tags"></i> recur</a>
-            </li>
-            
-            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/scala"><i class="fa fa-tags"></i> scala</a>
-            </li>
-            
-            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/set-up"><i class="fa fa-tags"></i> set-up</a>
-            </li>
-            
-            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/split"><i class="fa fa-tags"></i> split</a>
-            </li>
-            
-            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/string"><i class="fa fa-tags"></i> string</a>
-            </li>
-            
-            <li><a href="https://adelehedrick.github.io/Fall-2016-CSCI-3055U/tags/syntax-highlighting"><i class="fa fa-tags"></i> syntax-highlighting</a>
-            </li>
-            
-        </ul>
-    </div>
-</div>
-
-
-
-
-
-
-                        
-
-                    </div>
-                    
-
-                    
 
                 </div>
                 
 
             </div>
+            
+
             
         </div>
         
